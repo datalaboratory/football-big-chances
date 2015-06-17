@@ -6,38 +6,47 @@ sass = require 'gulp-sass'
 coffee = require 'gulp-coffee'
 concat = require 'gulp-concat'
 uglify = require 'gulp-uglify'
-filter = require 'gulp-filter'
-order = require 'gulp-order'
-mainBowerFiles = require 'main-bower-files'
 
 # Config
 sources =
   styles: 'src/styles/**/*.scss'
   scripts: 'src/app/**/*.coffee'
-  html: 'src/index.html'
+  templates: 'src/templates/**/*.html'
+  index: 'src/index.html'
   favicon: 'src/img/favicon.png'
   img: 'src/img/**/*.png'
   data: 'src/data/**/*.csv'
 
 destinations =
-  styles: 'dist/styles'
-  scripts: 'dist/scripts'
-  html: 'dist'
-  favicon: 'dist'
-  img: 'dist/img'
-  data: 'dist/data'
+  styles: 'public/styles'
+  scripts: 'public/scripts'
+  templates: 'public/templates'
+  index: 'public'
+  favicon: 'public'
+  img: 'public/img'
+  data: 'public/data'
 
-vendors = mainBowerFiles()
+vendors = [
+  'bower_components/angular/angular.js'
+  'bower_components/angular-route/angular-route.js'
+  'bower_components/d3/d3.js'
+  'bower_components/lodash/lodash.js'
+]
 
 # Tasks
 gulp.task 'clean', ->
-  del 'dist'
+  del 'public'
   return
 
 gulp.task 'connect', ->
   connect.server
-    root: 'dist'
+    root: 'public'
     livereload: true
+  return
+
+gulp.task 'index', ->
+  gulp.src sources.index
+  .pipe gulp.dest destinations.index
   return
 
 gulp.task 'favicon', ->
@@ -53,6 +62,13 @@ gulp.task 'img', ->
 gulp.task 'data', ->
   gulp.src sources.data
   .pipe gulp.dest destinations.data
+  return
+
+gulp.task 'scripts:vendor', ->
+  gulp.src vendors
+  .pipe concat 'vendor.js'
+  .pipe uglify()
+  .pipe gulp.dest destinations.scripts
   return
 
 gulp.task 'styles', ->
@@ -72,27 +88,18 @@ gulp.task 'scripts', ->
   .pipe connect.reload()
   return
 
-gulp.task 'scripts:vendor', ->
-  gulp.src vendors
-  .pipe filter '*.js'
-  .pipe order vendors
-  .pipe concat 'vendor.js'
-  .pipe uglify()
-  .pipe gulp.dest destinations.scripts
-  return
-
-gulp.task 'html', ->
-  gulp.src sources.html
-  .pipe gulp.dest destinations.html
+gulp.task 'templates', ->
+  gulp.src sources.templates
+  .pipe gulp.dest destinations.templates
   .pipe connect.reload()
   return
 
 gulp.task 'watch', ->
   gulp.watch sources.styles, ['styles']
-  gulp.watch sources.html, ['html']
   gulp.watch sources.scripts, ['scripts']
+  gulp.watch sources.templates, ['templates']
   return
 
-gulp.task 'build', ['styles', 'scripts', 'html']
-gulp.task 'clean-build', ['clean', 'favicon', 'img', 'data', 'scripts:vendor', 'build']
-gulp.task 'dev', ['build', 'watch', 'connect']
+gulp.task 'build', ['index', 'favicon', 'img', 'data', 'scripts:vendor', 'styles', 'scripts', 'templates']
+
+gulp.task 'dev', ['styles', 'scripts', 'templates', 'watch', 'connect']
