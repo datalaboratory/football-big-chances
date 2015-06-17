@@ -1,0 +1,14 @@
+{
+  "name": "football-big-chances",
+  "version": "1.0.0",
+  "authors": [
+    "Damir Melnikov",
+    "Kirill Belyaev",
+    "Tanya Bibikova"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "d3": "~3.5.5",
+    "lodash": "~3.9.3"
+  }
+}
