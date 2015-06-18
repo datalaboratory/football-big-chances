@@ -1,0 +1,29 @@
+@import '../variables';
+
+.leagues-switch {
+	.premier-league.active {
+		background: linear-gradient(to bottom, $switch-premier-league-color, #fff);
+	}
+
+	.la-liga.active {
+		background: linear-gradient(to bottom, $switch-la-liga-color, #fff);
+	}
+
+	.bundesliga.active {
+		background: linear-gradient(to bottom, $switch-bundesliga-color, #fff);
+	}
+
+	.serie-a.active {
+		background: linear-gradient(to bottom, $switch-serie-a-color, #fff);
+	}
+
+	.ligue-one.active {
+		background: linear-gradient(to bottom, $switch-ligue-one-color, #fff);
+	}
+
+	img {
+		width: 15px;
+		height: 9px;
+		margin: 0 0 0 5px;
+	}
+}

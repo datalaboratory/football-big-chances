@@ -1,0 +1,76 @@
+@import '../variables';
+
+.main {
+	.roof {
+		display: inline-block;
+		padding: 20px 0 0 0;
+
+		.header-container {
+			margin: 0 0 0 60px;
+		}
+
+		.header {
+			font-family: $helvetica-neue-medium;
+			font-size: 27px;
+
+			.goal {
+				color: $goal-color;
+			}
+
+			.big-chance {
+				color: $big-chance-color;
+			}
+		}
+
+		.leagues-switch-container {
+			margin: 10px 0 0 45px;
+		}
+
+		.arrow-container {
+			margin: 0 0 0 10px;
+
+			img {
+				width: 50%;
+				height: 50%;
+			}
+		}
+
+		.view-switch-container {
+			float: right;
+			margin: 10px 0 0 0;
+		}
+	}
+
+	.button {
+		display: inline-block;
+		padding: 5px 14px 5px 14px;
+		font-family: $helvetica-neue-light;
+		font-size: 15px;
+		background-color: #fff;
+		border-color: $outline-color;
+		border-width: 1px;
+		border-style: solid;
+		cursor: pointer;
+	}
+
+	.left-button {
+		border-right: none;
+		border-radius: 5px 0 0 5px;
+	}
+
+	.central-button {
+		border-right: none;
+	}
+	
+	.right-button {
+		border-radius: 0 5px 5px 0;
+	}
+
+	.inline {
+		float: left;
+	}
+
+	.clear-both {
+		clear: both;
+	}
+}

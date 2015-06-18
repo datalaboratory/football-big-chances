@@ -1,0 +1,17 @@
+@import '../variables';
+
+.view-switch {
+	.button {
+		line-height: 0 !important;
+		padding: 6px 10px 5px 10px !important;
+	}
+
+	.active {
+		background: linear-gradient(to bottom, $view-button-start-color, #fff);
+	}
+
+	img {
+		width: 23px;
+		height: 17px;
+	}
+}
