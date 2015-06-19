@@ -17,12 +17,24 @@
 			</view-switch>
 		</div>
 		<br class="clear-both" />
-		<div class="slider-container">
+		<div class="date-slider-container">
 			<date-slider
-				data-date="date">
+				data-ng-if="isDataPrepared"
+				data-match-dates="matchDates"
+				data-all-dates="allDates"
+				data-start-date="startDate"
+				data-end-date="endDate"
+				data-current-date="currentDate"
+				data-date-format="dateFormat">
 			</date-slider>
 		</div>
 	</div>
-	<div class="content"></div>
+	<div class="field">
+		<img src="../img/fields/big.png">
+	</div>
+	<div class="table-header-container">
+		<table-header></table-header>
+	</div>
+	<div class="tables"></div>
 	<div class="floor"></div>
 </div>

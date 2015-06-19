@@ -7,9 +7,13 @@
     "Tanya Bibikova"
   ],
   "dependencies": {
+    "jquery": "~2.1.4",
+    "d3": "~3.5.5",
+    "queue-async": "~1.0.7",
     "angular": "~1.4.1",
     "angular-route": "~1.4.1",
-    "d3": "~3.5.5",
-    "lodash": "~3.9.3"
+    "lodash": "~3.9.3",
+    "moment": "~2.10.3",
+    "moment-range": "~2.0.2"
   }
 }

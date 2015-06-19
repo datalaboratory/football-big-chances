@@ -27,10 +27,14 @@ destinations =
   data: 'public/data'
 
 vendors = [
+  'bower_components/jquery/dist/jquery.js'
   'bower_components/angular/angular.js'
   'bower_components/angular-route/angular-route.js'
   'bower_components/d3/d3.js'
+  'bower_components/queue-async/queue.js'
   'bower_components/lodash/lodash.js'
+  'bower_components/moment/moment.js'
+  'bower_components/moment-range/dist/moment-range.js'
 ]
 
 # Tasks

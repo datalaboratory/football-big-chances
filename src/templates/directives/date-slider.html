@@ -1,0 +1,28 @@
+<div
+	class="date-slider"
+	data-ng-mouseup="isHandleClicked = false"
+	data-ng-mousemove="sliderOnMousemove($event)">
+	<div class="slider-captions">
+		<div
+			class="caption"
+			data-ng-repeat="date in allDates track by $index"
+			data-ng-if="getCaptionText(date, !$index)"
+			data-ng-style="{transform: 'translateX(' + getDateX(date) + 'px)'}">{{getCaptionText(date, !$index)}}</div>
+			<div class="current-date-caption">{{getCurrentDay()}}</div>
+		<br class="clear-both" />
+	</div>
+	<div class="slider-track">
+		<div class="fill"></div>
+		<div class="ticks">
+			<div
+				class="tick"
+				data-ng-repeat="date in matchDates track by $index"
+				data-ng-style="{transform: 'translateX(' + getDateX(date) + 'px)'}"></div>
+			<br class="clear-both" />
+		</div>
+	</div>
+	<div
+		class="slider-handle"
+		data-ng-mousedown="isHandleClicked = true; $event.preventDefault();"></div>
+	<br class="clear-both" />
+</div>
