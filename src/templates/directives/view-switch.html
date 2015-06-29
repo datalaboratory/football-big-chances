@@ -1,11 +1,15 @@
 <div class="view-switch">
 	<div
 		class="button left-button inline"
+		data-ng-mouseover="lbHovered = true"
+		data-ng-mouseleave="lbHovered = false"
 		data-ng-click="buttonOnClick('field-table')"
-		data-ng-class="{'active': isButtonActive('field-table')}"><img src="../img/accessories/field-table.png"></div>
+		data-ng-class="{'active': isButtonActive('field-table')}"><img data-ng-src="../img/accessories/{{'field-table' + (lbHovered ? '-hover' : '')}}.png"></div>
 	<div
 		class="button right-button inline"
+		data-ng-mouseover="rbHovered = true"
+		data-ng-mouseleave="rbHovered = false"
 		data-ng-click="buttonOnClick('fields')"
-		data-ng-class="{'active': isButtonActive('fields')}"><img src="../img/accessories/fields.png"></div>
+		data-ng-class="{'active': isButtonActive('fields')}"><img data-ng-src="../img/accessories/{{'fields' + (rbHovered ? '-hover' : '')}}.png"></div>
 	<br class="clear-both" />
 </div>

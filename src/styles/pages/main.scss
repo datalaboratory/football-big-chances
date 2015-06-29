@@ -82,40 +82,4 @@
 	.tables {}
 
 	.floor {}
-
-	.button {
-		padding: 5px 14px 5px 14px;
-		font-family: $helvetica-neue-light;
-		font-size: 15px;
-		background-color: #fff;
-		border-color: $outline-color;
-		border-width: 1px;
-		border-style: solid;
-		cursor: pointer;
-  	-webkit-user-select: none;
-  	-moz-user-select: none;
-  	-ms-user-select: none;
-  	user-select: none;
-	}
-
-	.left-button {
-		border-right: none;
-		border-radius: 5px 0 0 5px;
-	}
-
-	.central-button {
-		border-right: none;
-	}
-	
-	.right-button {
-		border-radius: 0 5px 5px 0;
-	}
-
-	.inline {
-		float: left;
-	}
-
-	.clear-both {
-		clear: both;
-	}
 }

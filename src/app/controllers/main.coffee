@@ -1,4 +1,10 @@
 app.controller 'MainCtrl', ($scope) ->
+  $scope.dateFormat = 'DD.MM.YYYY'
+
+  $scope.data = {}
+
+  $scope.isDataPrepared = false
+
   $scope.leagues =
     premierLeague: active: true
     laLiga: active: false
@@ -7,12 +13,6 @@ app.controller 'MainCtrl', ($scope) ->
     ligueOne: active: false
 
   $scope.view = 'field-table'
-
-  $scope.dateFormat = 'DD.MM.YYYY'
-
-  $scope.data = {}
-
-  $scope.isDataPrepared = false
 
   # Parse data
   parseData = (error, rawData) ->
@@ -61,11 +61,11 @@ app.controller 'MainCtrl', ($scope) ->
 
     $scope.startDate = moment($scope.matchDates[0]).subtract(1, 'days').toDate()
     $scope.endDate = $scope.matchDates[$scope.matchDates.length - 1]
-       
+
     moment.range($scope.startDate, $scope.endDate).by 'days', (d) ->
       $scope.allDates.push d.toDate()
       return
-    
+
     $scope.currentDate = moment($scope.matchDates[0]).subtract(1, 'days')
 
     $scope.isDataPrepared = true
@@ -84,4 +84,5 @@ app.controller 'MainCtrl', ($scope) ->
   .defer d3.csv, '../data/ligue-one-teams.csv'
   .defer d3.csv, '../data/ligue-one-results.csv'
   .awaitAll parseData
+  
   return

@@ -56,7 +56,7 @@ app.directive 'dateSlider', ->
 
     $scope.sliderOnMousemove = ($event) ->
       return unless $scope.isHandleClicked
-      
+
       x = $event.clientX - sliderLeftOffset - handleWidth / 2
       x = -handleWidth / 2 if x < -handleWidth / 2
       x = sliderWidth - handleWidth / 2 if x > sliderWidth - handleWidth / 2
@@ -64,9 +64,10 @@ app.directive 'dateSlider', ->
 
       $scope.currentDate = mdate if x < sliderWidth - handleWidth / 2
       $scope.currentDate = moment($scope.matchDates[0]).subtract(1, 'days') if x is -handleWidth / 2
-      
+
       $handle.css 'transform', 'translateX(' + x + 'px)'
       $fill.width x + handleWidth / 2
       $dateCaption.css 'transform', 'translateX(' + x + 'px)'
       return
+      
     return

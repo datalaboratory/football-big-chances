@@ -10,4 +10,5 @@ app.directive 'leaguesSwitch', ->
 
     $scope.isButtonActive = (league) ->
       $scope.leagues[league].active
+      
     return

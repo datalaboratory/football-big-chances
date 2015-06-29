@@ -4,10 +4,14 @@ app.directive 'viewSwitch', ->
   scope:
     view: '='
   link: ($scope, $element, $attrs) ->
+    $scope.lbHovered = false
+    $scope.rbHovered = false
+
     $scope.buttonOnClick = (view) ->
       $scope.view = view
       return
 
     $scope.isButtonActive = (view) ->
       view is $scope.view
+      
     return
