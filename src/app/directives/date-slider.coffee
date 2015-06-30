@@ -1,73 +1,79 @@
-app.directive 'dateSlider', ->
+app.directive 'dateSlider', ($document) ->
+  monthNames = [
+    'янв'
+    'фев'
+    'мар'
+    'апр'
+    'май'
+    'июнь'
+    'июль'
+    'авг'
+    'сен'
+    'окт'
+    'ноя'
+    'дек'
+  ]
   restrict: 'E'
   templateUrl: 'templates/directives/date-slider.html'
   scope:
-    matchDates: '='
     allDates: '='
+    matchDates: '='
     startDate: '='
-    endDate: '='
     currentDate: '='
-    dateFormat: '@'
   link: ($scope, $element, $attrs) ->
-    $slider = $($element)
-    $handle = $slider.find '.slider-handle'
-    $fill = $slider.find '.fill'
-    $dateCaption = $slider.find '.current-date-caption'
+    sliderWidth = $element[0].getBoundingClientRect().width
+    sliderLeftOffset = $element.offset().left
+    $handle = $element.find '.handle'
+    $currentDateCaption = $element.find '.current-date-caption'
+    tickWidth = 1
+    nOfDays = $scope.allDates.length
+    step = sliderWidth / nOfDays
 
-    sliderWidth = $slider.width()
-    sliderLeftOffset = $slider.offset().left
-    handleWidth = $handle.width()
-
-    nOfDays = moment($scope.matchDates[$scope.matchDates.length - 1]).diff($scope.startDate, 'days') + 1
-    dayWidth = sliderWidth / nOfDays
-    monthNames = [
-      'янв'
-      'фев'
-      'мар'
-      'апр'
-      'май'
-      'июнь'
-      'июль'
-      'авг'
-      'сен'
-      'окт'
-      'ноя'
-      'дек'
-    ]
-
-    $scope.isHandleClicked = false
+    $scope.handleShift = ($handle.width() - tickWidth) / 2
+    $scope.currentDateCaptionShift = ($currentDateCaption.width() - tickWidth) / 2
+    $scope.currentX = 0
 
     $scope.getCurrentDay = ->
-      if !$scope.currentDate.isSame($scope.startDate)
-        $scope.currentDate.date()
+      if !moment($scope.currentDate).isSame($scope.startDate)
+        moment($scope.currentDate).date()
+      else
+        ''
 
     $scope.getDateX = (date) ->
-      moment(date).diff($scope.startDate, 'days') * dayWidth
+      moment(date).diff($scope.startDate, 'days') * step
 
-    $scope.getCaptionText = (date, isFirst) ->
+    $scope.getCaptionText = (date, isStart) ->
       day = moment(date).date()
       month = moment(date).month()
       year = moment(date).year()
 
-      if isFirst or day is 1 and !month
+      if isStart or day is 1 and !month
         monthNames[month] + ' ' + year
       else if day is 1
         monthNames[month]
+      else
+        ''
 
-    $scope.sliderOnMousemove = ($event) ->
-      return unless $scope.isHandleClicked
+    $handle.on 'mousedown', (event) ->
+      mousemove = (event) ->
+        daysFromStart = Math.floor (event.screenX - sliderLeftOffset) / step
+        daysFromStart = 0 if daysFromStart < 0
+        daysFromStart = nOfDays - 1 if daysFromStart > nOfDays - 1
 
-      x = $event.clientX - sliderLeftOffset - handleWidth / 2
-      x = -handleWidth / 2 if x < -handleWidth / 2
-      x = sliderWidth - handleWidth / 2 if x > sliderWidth - handleWidth / 2
-      mdate = moment($scope.startDate).add(Math.floor((x + handleWidth / 2) / dayWidth), 'days')
+        $scope.currentX = daysFromStart * step
+        $scope.currentDate = moment($scope.startDate).add(daysFromStart, 'days').toDate()
 
-      $scope.currentDate = mdate if x < sliderWidth - handleWidth / 2
-      $scope.currentDate = moment($scope.matchDates[0]).subtract(1, 'days') if x is -handleWidth / 2
+        $scope.$apply()
+        return
 
-      $handle.css 'transform', 'translateX(' + x + 'px)'
-      $fill.width x + handleWidth / 2
-      $dateCaption.css 'transform', 'translateX(' + x + 'px)'
+      mouseup = ->
+        $document.unbind 'mousemove', mousemove
+        $document.unbind 'mouseup', mouseup
+        return
+
+      event.preventDefault()
+      $document.on 'mousemove', mousemove
+      $document.on 'mouseup', mouseup
       return
-      
+
     return

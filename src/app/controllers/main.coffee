@@ -1,9 +1,5 @@
 app.controller 'MainCtrl', ($scope) ->
-  $scope.dateFormat = 'DD.MM.YYYY'
-
-  $scope.data = {}
-
-  $scope.isDataPrepared = false
+  dateFormat = 'DD.MM.YYYY'
 
   $scope.leagues =
     premierLeague: active: true
@@ -13,6 +9,15 @@ app.controller 'MainCtrl', ($scope) ->
     ligueOne: active: false
 
   $scope.view = 'field-table'
+
+  $scope.data = {}
+
+  $scope.dates = {}
+  $scope.dates.all = []
+  $scope.dates.matches = []
+  $scope.dates.current = undefined
+
+  $scope.isDataPrepared = false
 
   # Parse data
   parseData = (error, rawData) ->
@@ -32,7 +37,7 @@ app.controller 'MainCtrl', ($scope) ->
         matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
           {
             Opp: d.Opp
-            Date: moment(d.Date, $scope.dateFormat).toDate()
+            Date: moment(d.Date, dateFormat).toDate()
             GF: parseInt d.GF
             GA: parseInt d.GA
             CF: parseInt d.CF
@@ -45,8 +50,6 @@ app.controller 'MainCtrl', ($scope) ->
         return
       return
 
-    $scope.matchDates = []
-    $scope.allDates = []
     dates = []
     i = 1
 
@@ -54,21 +57,21 @@ app.controller 'MainCtrl', ($scope) ->
       dates = dates.concat _.pluck rawData[i], 'Date'
       i += 2
 
-    $scope.matchDates = _.map(_.uniq(dates), (d) ->
-      moment(d, $scope.dateFormat).toDate()
+    $scope.dates.matches = _.map(_.uniq(dates), (d) ->
+      moment(d, dateFormat).toDate()
     ).sort (a, b) ->
       a - b
 
-    $scope.startDate = moment($scope.matchDates[0]).subtract(1, 'days').toDate()
-    $scope.endDate = $scope.matchDates[$scope.matchDates.length - 1]
+    startDate = moment($scope.dates.matches[0]).subtract(1, 'days').toDate()
 
-    moment.range($scope.startDate, $scope.endDate).by 'days', (d) ->
-      $scope.allDates.push d.toDate()
-      return
+    moment.range(startDate, $scope.dates.matches[$scope.dates.matches.length - 1]).by 'days', (d) ->
+      $scope.dates.all.push d.toDate()
 
-    $scope.currentDate = moment($scope.matchDates[0]).subtract(1, 'days')
+    $scope.dates.current = startDate
 
     $scope.isDataPrepared = true
+
+    $scope.$apply()
     return
 
   # Load data
@@ -84,5 +87,5 @@ app.controller 'MainCtrl', ($scope) ->
   .defer d3.csv, '../data/ligue-one-teams.csv'
   .defer d3.csv, '../data/ligue-one-results.csv'
   .awaitAll parseData
-  
+
   return

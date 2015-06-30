@@ -5,7 +5,7 @@
 	display: inline-block;
 	width: 100%;
 
-	.slider-captions {
+	.captions {
 		position: relative;
 
 		.caption {
@@ -13,10 +13,10 @@
 			font-family: $helvetica-neue-light;
 			font-size: 15px;
 		}
-		
+
 		.current-date-caption {
 			position: absolute;
-			width: 17.5px;
+			width: 18px;
 			font-family: $helvetica-neue-light;
 			font-size: 15px;
 			text-align: center;
@@ -24,17 +24,17 @@
 		}
 	}
 
-	.slider-track {
+	.track {
 		position: relative;
 		margin: 3px 0 0 0;
 		line-height: 9px;
-		
+
 		.fill {
 			position: absolute;
 			height: 9px;
 			background-color: $slider-fill-color;
 		}
-		
+
 		.tick {
 			position: absolute;
 			width: 1px;
@@ -43,14 +43,13 @@
 		}
 	}
 
-	.slider-handle {
+	.handle {
 		position: absolute;
 		top: 21px;
-		transform: translateX(-8.75px);
 		width: 18px;
-		height: 31px;
+		height: 32px;
 		background-image: url(../img/accessories/slider-handle.png);
-		background-size: 18px 31px;
+		background-size: 18px 32px;
 		cursor: pointer;
 	}
 }

@@ -20,12 +20,10 @@
 		<div class="date-slider-container">
 			<date-slider
 				data-ng-if="isDataPrepared"
-				data-match-dates="matchDates"
-				data-all-dates="allDates"
-				data-start-date="startDate"
-				data-end-date="endDate"
-				data-current-date="currentDate"
-				data-date-format="dateFormat">
+				data-all-dates="dates.all"
+				data-match-dates="dates.matches"
+				data-start-date="dates.all[0]"
+				data-current-date="dates.current">
 			</date-slider>
 		</div>
 	</div>
