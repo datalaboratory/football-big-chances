@@ -1,21 +1,19 @@
 app.controller 'MainCtrl', ($scope) ->
   dateFormat = 'DD.MM.YYYY'
 
-  $scope.leagues =
-    premierLeague: active: true
-    laLiga: active: false
-    bundesliga: active: false
-    serieA: active: false
-    ligueOne: active: false
-
-  $scope.view = 'field-table'
-
-  $scope.data = {}
-
-  $scope.dates = {}
-  $scope.dates.all = []
-  $scope.dates.matches = []
-  $scope.dates.current = undefined
+  $scope.data =
+    activeLeagues:
+      premierLeague: true
+      laLiga: false
+      bundesliga: false
+      serieA: false
+      ligueOne: false
+    currentView: 'field-table'
+    dates:
+      all: []
+      matches: []
+      current: undefined
+    teamsData: {}
 
   $scope.isDataPrepared = false
 
@@ -31,7 +29,7 @@ app.controller 'MainCtrl', ($scope) ->
       'serieA'
       'ligueOne'
     ].forEach (league, index) ->
-      $scope.data[league] = {}
+      $scope.data.teamsData[league] = {}
 
       rawData[index * 2].forEach (d) ->
         matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
@@ -44,7 +42,7 @@ app.controller 'MainCtrl', ($scope) ->
             CA: parseInt d.CA
           }
 
-        $scope.data[league][d.Team] =
+        $scope.data.teamsData[league][d.Team] =
           RUS: d.RUS
           Matches: matches
         return
@@ -57,17 +55,17 @@ app.controller 'MainCtrl', ($scope) ->
       dates = dates.concat _.pluck rawData[i], 'Date'
       i += 2
 
-    $scope.dates.matches = _.map(_.uniq(dates), (d) ->
+    $scope.data.dates.matches = _.map(_.uniq(dates), (d) ->
       moment(d, dateFormat).toDate()
     ).sort (a, b) ->
       a - b
 
-    startDate = moment($scope.dates.matches[0]).subtract(1, 'days').toDate()
+    startDate = moment($scope.data.dates.matches[0]).subtract(1, 'days').toDate()
 
-    moment.range(startDate, $scope.dates.matches[$scope.dates.matches.length - 1]).by 'days', (d) ->
-      $scope.dates.all.push d.toDate()
+    moment.range(startDate, $scope.data.dates.matches[$scope.data.dates.matches.length - 1]).by 'days', (d) ->
+      $scope.data.dates.all.push d.toDate()
 
-    $scope.dates.current = startDate
+    $scope.data.dates.current = startDate
 
     $scope.isDataPrepared = true
 

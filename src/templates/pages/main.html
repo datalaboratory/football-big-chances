@@ -5,7 +5,7 @@
 		</div>
 		<div class="leagues-switch-container inline">
 			<leagues-switch
-				data-leagues="leagues">
+				data-leagues="data.activeLeagues">
 			</leagues-switch>
 		</div>
 		<div class="arrow-container inline">
@@ -13,17 +13,17 @@
 		</div>
 		<div class="view-switch-container inline">
 			<view-switch
-				data-view="view">
+				data-view="data.view">
 			</view-switch>
 		</div>
 		<br class="clear-both" />
 		<div class="date-slider-container">
 			<date-slider
 				data-ng-if="isDataPrepared"
-				data-all-dates="dates.all"
-				data-match-dates="dates.matches"
-				data-start-date="dates.all[0]"
-				data-current-date="dates.current">
+				data-all-dates="data.dates.all"
+				data-match-dates="data.dates.matches"
+				data-start-date="data.dates.all[0]"
+				data-current-date="data.dates.current">
 			</date-slider>
 		</div>
 	</div>

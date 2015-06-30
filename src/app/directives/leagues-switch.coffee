@@ -5,10 +5,10 @@ app.directive 'leaguesSwitch', ->
     leagues: '='
   link: ($scope, $element, $attrs) ->
     $scope.buttonOnClick = (league) ->
-      $scope.leagues[league].active = !$scope.leagues[league].active
+      $scope.leagues[league] = !$scope.leagues[league]
       return
 
     $scope.isButtonActive = (league) ->
-      $scope.leagues[league].active
-      
+      $scope.leagues[league]
+
     return
