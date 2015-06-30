@@ -19,11 +19,9 @@
 				class="tick"
 				data-ng-repeat="date in matchDates track by $index"
 				data-ng-style="{'transform': 'translateX(' + getDateX(date) + 'px)'}"></div>
-			<br class="clear-both" />
 		</div>
 	</div>
 	<div
 		class="handle"
 		data-ng-style="{'transform': 'translateX(' + (currentX - handleShift) + 'px)'}"></div>
-	<br class="clear-both" />
 </div>

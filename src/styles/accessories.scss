@@ -5,7 +5,9 @@
   font-family: $helvetica-neue-light;
   font-size: 15px;
   background-color: #fff;
-  border: 1px $outline-color solid;
+  border-width: 1px;
+  border-color: $outline-color;
+  border-style: solid;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -27,7 +29,9 @@
 }
 
 .button:hover {
-  border: 1px $outline-hover-color solid;
+  border-width: 1px;
+  border-color: $outline-hover-color;
+  border-style: solid;
   color: $button-hover-color;
 }
 

@@ -11,22 +11,22 @@
 		.caption {
 			position: absolute;
 			font-family: $helvetica-neue-light;
-			font-size: 15px;
+			font-size: $common-font-size;
 		}
 
 		.current-date-caption {
 			position: absolute;
 			width: 18px;
 			font-family: $helvetica-neue-light;
-			font-size: 15px;
+			font-size: $common-font-size;
 			text-align: center;
-			background-color: rgba(255, 255, 255, .8);
+			background-color: $slider-transparent-base-color;
 		}
 	}
 
 	.track {
 		position: relative;
-		margin: 3px 0 0 0;
+		padding: 3px 0 0 0;
 		line-height: 9px;
 
 		.fill {

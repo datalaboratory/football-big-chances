@@ -3,35 +3,36 @@
 .main {
 	.roof {
 		position: fixed;
+		height: 150px;
 		padding: 20px 0 0 0;
 		background-color: #fff;
 		z-index: 1;
 
 		.header-container {
-			margin: 0 0 0 60px;
-		}
+			padding: 0 0 0 $common-padding-left;
 
-		.header {
-			font-family: $helvetica-neue-medium;
-			font-size: 27px;
+			.header {
+				font-family: $helvetica-neue-medium;
+				font-size: $header-font-size;
 
-			.goal {
-				color: $goal-color;
-				cursor: pointer;
-			}
+				.goal {
+					color: $goal-color;
+					cursor: pointer;
+				}
 
-			.big-chance {
-				color: $big-chance-color;
-				cursor: pointer;
+				.big-chance {
+					color: $big-chance-color;
+					cursor: pointer;
+				}
 			}
 		}
 
 		.leagues-switch-container {
-			margin: 10px 0 0 45px;
+			padding: 10px 0 0 ($common-padding-left - 15px);
 		}
 
 		.arrow-container {
-			margin: 0 0 0 10px;
+			padding: 0 0 0 10px;
 
 			img {
 				width: 33.5px;
@@ -41,12 +42,11 @@
 
 		.view-switch-container {
 			float: right;
-			margin: 10px 0 0 0;
+			padding: 10px 0 0 0;
 		}
 
 		.date-slider-container {
-			margin: 15px 0 0 0;
-			padding: 0 0 0 60px;
+			padding: 15px 0 0 $common-padding-left;
 			width: 100%;
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
@@ -57,9 +57,10 @@
 
 	.field {
 		position: fixed;
-		top: 161px;
+		top: 150px + 20px;
 		width: 100%;
-		padding: 20px 0 0 0;
+		height: 310px;
+		padding: 10px 0 0 39px;
 		background-color: #fff;
 		line-height: 0;
 		z-index: 1;
@@ -67,14 +68,13 @@
 		img {
 			width: 506.5px;
 			height: 307px;
-			margin: 0 0 0 39px;
 		}
 	}
 
 	.table-header-container {
 		position: fixed;
-		top: 488px;
-		padding: 20px 0 0 0;
+		top: 150px + 20px + 310px + 10px;
+		padding: 0 0 0 ($common-padding-left - $numerical-td-width - 20px);
 		background-color: #fff;
 		z-index: 1;
 	}

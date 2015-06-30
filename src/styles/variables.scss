@@ -1,6 +1,10 @@
 $helvetica-neue-light: 'HelveticaNeueLight', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 $helvetica-neue-medium: 'HelveticaNeueMedium', 'HelveticaNeue-Medium', 'Helvetica Neue Medium', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 
+$header-font-size: 27px;
+$common-font-size: 15px;
+$small-font-size: 12px;
+
 $goal-color: #c03;
 $big-chance-color: #65a;
 
@@ -18,10 +22,14 @@ $table-ligue-one-color: #eef;
 
 $outline-color: rgba(187, 194, 194, .5);
 $outline-hover-color: rgba(0, 85, 153, .5);
-$button-hover-color: #059;
+$button-hover-color: #005599;
 $view-button-start-color: #e6e8e8;
 
 $slider-fill-color: #f2f3f3;
-$slider-tick-color: rgba(170, 178, 178, .7);
+$slider-tick-color: rgba(170, 178, 178, .5);
+$slider-transparent-base-color: rgba(255, 255, 255, .8);
 
 $table-hover-color: #f6f7f7;
+
+$common-padding-left: 60px;
+$numerical-td-width: 30px;
