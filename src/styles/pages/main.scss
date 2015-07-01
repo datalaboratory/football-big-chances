@@ -53,23 +53,18 @@
 		}
 	}
 
-	.field-container {
+	.big-field-container {
 		display: block;
-		height: 310px;
-		padding: 10px 0 0 49px;
+		position: absolute;
+		top: 150px + 20px;
+		height: 317px;
 		line-height: 0;
-
-		img {
-			width: 506.5px;
-			height: 307px;
-		}
 	}
 
 	.tables-header-container {
 		display: block;
 		position: absolute;
-		top: 150px + 20px + 310px + 10px;
-		height: 54px;
+		top: 150px + 20px + 317px;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;

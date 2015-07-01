@@ -1,0 +1,13 @@
+@import '../variables';
+
+.field-container {
+  display: block;
+  position: relative;
+  width: 896px - 49px;
+  padding: 10px 0 0 49px;
+
+  img {
+    width: 506.5px;
+    height: 307px;
+  }
+}
