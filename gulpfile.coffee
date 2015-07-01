@@ -17,6 +17,7 @@ sources =
   favicon: 'src/img/favicon.png'
   img: 'src/img/**/*.png'
   data: 'src/data/**/*.csv'
+  fonts: 'src/fonts/**'
 
 destinations =
   styles: 'public/styles'
@@ -26,17 +27,23 @@ destinations =
   favicon: 'public'
   img: 'public/img'
   data: 'public/data'
+  fonts: 'public/fonts'
 
-vendors = [
-  'bower_components/jquery/dist/jquery.js'
-  'bower_components/angular/angular.js'
-  'bower_components/angular-route/angular-route.js'
-  'bower_components/d3/d3.js'
-  'bower_components/queue-async/queue.js'
-  'bower_components/lodash/lodash.js'
-  'bower_components/moment/moment.js'
-  'bower_components/moment-range/dist/moment-range.js'
-]
+vendors =
+  scripts: [
+    'bower_components/jquery/dist/jquery.js'
+    'bower_components/angular/angular.js'
+    'bower_components/angular-route/angular-route.js'
+    'bower_components/d3/d3.js'
+    'bower_components/queue-async/queue.js'
+    'bower_components/lodash/lodash.js'
+    'bower_components/moment/moment.js'
+    'bower_components/moment-range/dist/moment-range.js'
+    'external_libs/ilya-birman-likely-0.91/likely.js'
+  ]
+  styles: [
+    'external_libs/ilya-birman-likely-0.91/likely.css'
+  ]
 
 # Tasks
 gulp.task 'clean', ->
@@ -69,8 +76,19 @@ gulp.task 'data', ->
   .pipe gulp.dest destinations.data
   return
 
+gulp.task 'fonts', ->
+  gulp.src sources.fonts
+  .pipe gulp.dest destinations.fonts
+  return
+
+gulp.task 'styles:vendor', ->
+  gulp.src vendors.styles
+  .pipe concat 'vendor.css'
+  .pipe gulp.dest destinations.styles
+  return
+
 gulp.task 'scripts:vendor', ->
-  gulp.src vendors
+  gulp.src vendors.scripts
   .pipe concat 'vendor.js'
   .pipe uglify()
   .pipe gulp.dest destinations.scripts
@@ -105,6 +123,6 @@ gulp.task 'watch', ->
   gulp.watch sources.templates, ['templates']
   return
 
-gulp.task 'build', ['index', 'favicon', 'img', 'data', 'scripts:vendor', 'styles', 'scripts', 'templates']
+gulp.task 'build', ['index', 'favicon', 'img', 'data', 'fonts', 'styles:vendor', 'scripts:vendor', 'styles', 'scripts', 'templates']
 
 gulp.task 'dev', ['styles', 'scripts', 'templates', 'watch', 'connect']

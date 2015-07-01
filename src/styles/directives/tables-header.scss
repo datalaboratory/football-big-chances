@@ -4,8 +4,6 @@
   position: relative;
   display: block;
   padding: 20px 0 10px 0;
-  background-color: #fff;
-  z-index: 1;
 
   .small-table-caption {
     position: absolute;
@@ -55,4 +53,6 @@
   -webkit-box-shadow: 0 3px 3px -3px #a39ba3;
   -moz-box-shadow: 0 3px 3px -3px #a39ba3;
   box-shadow: 0 3px 3px -3px #a39ba3;
+  background-color: #fff;
+  z-index: 1;
 }
