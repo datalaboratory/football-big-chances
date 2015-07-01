@@ -1,0 +1,57 @@
+<div class="league-table">
+	<table class="common-table">
+		<tbody>
+			<tr
+				data-ng-repeat="(team, data) in leagueData | orderBy : value.RUS : true track by team">
+				<td class="num numerical">{{$index + 1}}</td>
+				<td class="logo"><img data-ng-src="../img/teams/{{league}}/{{team}}.png"></td>
+				<td class="name textual">{{data.RUS}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].cf}">{{teamValues[team].cf}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].gf}">{{teamValues[team].gf}}</td>
+				<td class="buffer"></td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].ca}">{{teamValues[team].ca}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].ga}">{{teamValues[team].ga}}</td>
+				<td class="buffer"></td>
+				<td class="buffer"></td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].m}">{{teamValues[team].m}}</td>
+				<td class="buffer"></td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].wg}">{{teamValues[team].wg}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].dg}">{{teamValues[team].dg}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].lg}">{{teamValues[team].lg}}</td>
+				<td class="buffer"></td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].wc}">{{teamValues[team].wc}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].dc}">{{teamValues[team].dc}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].lc}">{{teamValues[team].lc}}</td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].pc}">{{teamValues[team].pc}}</td>
+				<td class="buffer"></td>
+				<td
+					class="value numerical"
+					data-ng-class="{'nil': !teamValues[team].pg}">{{teamValues[team].pg}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

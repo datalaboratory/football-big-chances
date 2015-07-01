@@ -1,0 +1,47 @@
+@import '../variables';
+
+.tables-header {
+  position: relative;
+  padding: 20px 0 0 0;
+
+  .small-table-caption {
+    position: absolute;
+    top: 5px;
+    font-family: $helvetica-neue-light;
+    font-size: $small-font-size;
+  }
+
+  .small-table-caption.first {
+    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 5 + $buffer-td-width * 4);
+  }
+
+  .small-table-caption.second {
+    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 8 + $buffer-td-width * 5);
+  }
+
+  .small-table-caption.third {
+    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 12 + $buffer-td-width * 6);
+  }
+
+  .common-table {
+    td {
+      font-weight: bold;
+    }
+  }
+
+  .value {
+    cursor: default;
+  }
+
+  .full {
+    display: none;
+    position: absolute;
+    padding: 2px 4px 2px 4px;
+    background-color: $tables-header-full-color;
+    transform: translate(-4px, -2px);
+  }
+
+  .value:hover .full {
+    display: block;
+  }
+}

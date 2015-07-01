@@ -56,7 +56,7 @@ app.directive 'dateSlider', ($document) ->
 
     $handle.on 'mousedown', (event) ->
       mousemove = (event) ->
-        daysFromStart = Math.floor (event.screenX - sliderLeftOffset) / step
+        daysFromStart = Math.floor (event.clientX - sliderLeftOffset) / step
         daysFromStart = 0 if daysFromStart < 0
         daysFromStart = nOfDays - 1 if daysFromStart > nOfDays - 1
 

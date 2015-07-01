@@ -1,0 +1,42 @@
+@import 'variables';
+
+.common-table {
+  border-spacing: 0 0;
+
+  td {
+    height: 24px;
+    font-family: $helvetica-neue-light;
+    font-size: $common-font-size;
+    vertical-align: middle;
+    padding: 0 0 0 0;
+  }
+
+  .textual {
+    text-align: left;
+  }
+
+  .numerical {
+    text-align: right;
+  }
+
+  .num {
+    width: $num-td-width;
+  }
+
+  .logo {
+    width: $logo-td-width;
+    text-align: center;
+  }
+
+  .name {
+    width: $name-td-width;
+  }
+
+  .value {
+    width: $value-td-width;
+  }
+
+  .buffer {
+    width: $buffer-td-width;
+  }
+}

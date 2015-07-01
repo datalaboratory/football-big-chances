@@ -1,4 +1,9 @@
-<div class="main">
+<loading-cover
+	data-ng-if="!isDataPrepared">
+</loading-cover>
+<div
+	class="main"
+	data-ng-if="isDataPrepared">
 	<div class="roof">
 		<div class="header-container">
 			<div class="header"><span class="goal">Голы</span> и <span class="big-chance">явные голевые моменты</span> главных чемпионатов Европы</div>
@@ -19,7 +24,6 @@
 		<br class="clear-both" />
 		<div class="date-slider-container">
 			<date-slider
-				data-ng-if="isDataPrepared"
 				data-all-dates="data.dates.all"
 				data-match-dates="data.dates.matches"
 				data-start-date="data.dates.all[0]"
@@ -27,12 +31,20 @@
 			</date-slider>
 		</div>
 	</div>
-	<div class="field">
+	<div class="field-container">
 		<img src="../img/fields/big.png">
 	</div>
-	<div class="table-header-container">
-		<table-header></table-header>
+	<div class="tables-header-container">
+		<tables-header></tables-header>
 	</div>
-	<div class="tables"></div>
+	<div class="tables-container">
+		<league-table
+			data-ng-repeat="league in leagues track by $index"
+			data-ng-if="data.activeLeagues[league]"
+			data-league="league"
+			data-league-data="data.leaguesData[league]"
+			data-current-date="data.dates.current">
+		</league-table>
+	</div>
 	<div class="floor"></div>
 </div>

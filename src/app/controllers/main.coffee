@@ -1,6 +1,8 @@
 app.controller 'MainCtrl', ($scope) ->
   dateFormat = 'DD.MM.YYYY'
 
+  $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
+
   $scope.data =
     activeLeagues:
       premierLeague: true
@@ -13,7 +15,7 @@ app.controller 'MainCtrl', ($scope) ->
       all: []
       matches: []
       current: undefined
-    teamsData: {}
+    leaguesData: {}
 
   $scope.isDataPrepared = false
 
@@ -22,14 +24,8 @@ app.controller 'MainCtrl', ($scope) ->
     if error
       console.log error
 
-    [
-      'premierLeague'
-      'laLiga'
-      'bundesliga'
-      'serieA'
-      'ligueOne'
-    ].forEach (league, index) ->
-      $scope.data.teamsData[league] = {}
+    $scope.leagues.forEach (league, index) ->
+      $scope.data.leaguesData[league] = {}
 
       rawData[index * 2].forEach (d) ->
         matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
@@ -42,7 +38,7 @@ app.controller 'MainCtrl', ($scope) ->
             CA: parseInt d.CA
           }
 
-        $scope.data.teamsData[league][d.Team] =
+        $scope.data.leaguesData[league][d.Team] =
           RUS: d.RUS
           Matches: matches
         return
