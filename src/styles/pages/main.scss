@@ -67,17 +67,20 @@
 
 	.tables-header-container {
 		display: block;
-		width: 100%;
-		height: 50px;
+		position: absolute;
+		top: 150px + 20px + 310px + 10px;
+		height: 54px;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-ms-box-sizing: border-box;
 		box-sizing: border-box;
-		padding: 0 ($common-padding-left - $num-td-width - $logo-td-width);
+		padding: 0 0 0 ($common-padding-left - $num-td-width - $logo-td-width);
 	}
 
 	.tables-container {
 		display: block;
+		position: absolute;
+		top: 150px + 20px + 310px + 10px + 54px;
 		padding: 0 0 0 ($common-padding-left - $num-td-width - $logo-td-width);
 	}
 
