@@ -6,15 +6,6 @@
   width: 926px - 9px;
   padding: 10px 0 0 9px;
 
-  .svg-container {
-    margin: 0 0 0 10px;
-
-    img.main-field {
-      width: 506.5px;
-      height: 307px;
-    }
-  }
-
   .team-logo-container {
     display: block;
     position: relative;
@@ -28,6 +19,15 @@
       top: 50%;
       left: 10px;
       transform: translateY(-50%);
+    }
+  }
+
+  .svg-container {
+    margin: 0 0 0 10px;
+
+    img.main-field {
+      width: 506.5px;
+      height: 307px;
     }
   }
 }
