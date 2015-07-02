@@ -1,4 +1,4 @@
-app.directive 'tablesHeader', ($window, $document) ->
+app.directive 'tablesHeader', ->
   restrict: 'E'
   templateUrl: 'templates/directives/tables-header.html'
   scope:

@@ -2,56 +2,13 @@
 	<table class="common-table">
 		<tbody>
 			<tr
-				data-ng-repeat="(key, value) in leagueData | toArray | orderBy : (sortBy === 'cf' ? [getCF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'gf' ? [getGF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ca' ? [getCA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ga' ? [getGA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'cp' ? [getCP, getCDiff, getCW, (sortingOrder ? '-RUS' : 'RUS')] : [getGP, getGDiff, getGW, (sortingOrder ? '-RUS' : 'RUS')]) : sortingOrder">
-				<td class="num numerical">{{$index + 1}}</td>
-				<td class="logo"><img data-ng-src="../img/teams/{{league}}/{{value.$key}}.png"></td>
-				<td class="name textual">{{value.RUS}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cf}">{{teamValues[value.$key].cf < 0 ? '' : teamValues[value.$key].cf}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].gf}">{{teamValues[value.$key].gf}}</td>
-				<td class="buffer"></td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].ca}">{{teamValues[value.$key].ca < 0 ? '' : teamValues[value.$key].ca}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].ga}">{{teamValues[value.$key].ga}}</td>
-				<td class="buffer"></td>
-				<td class="buffer"></td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].m}">{{teamValues[value.$key].m}}</td>
-				<td class="buffer"></td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].gw}">{{teamValues[value.$key].gw}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].gd}">{{teamValues[value.$key].gd}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].gl}">{{teamValues[value.$key].gl}}</td>
-				<td class="buffer"></td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cw}">{{teamValues[value.$key].cw < 0 ? '' : teamValues[value.$key].cw}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cd}">{{teamValues[value.$key].cd < 0 ? '' : teamValues[value.$key].cd}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cl}">{{teamValues[value.$key].cl < 0 ? '' : teamValues[value.$key].cl}}</td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cp}">{{teamValues[value.$key].cp < 0 ? '' : teamValues[value.$key].cp}}</td>
-				<td class="buffer"></td>
-				<td
-					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].gp}">{{teamValues[value.$key].gp}}</td>
-				<td class="buffer"></td>
+				class="league-table-row"
+				data-ng-repeat="(key, value) in leagueData | toArray | orderBy : (sortBy === 'cf' ? [getCF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'gf' ? [getGF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ca' ? [getCA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ga' ? [getGA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'cp' ? [getCP, getCDiff, getCW, (sortingOrder ? '-RUS' : 'RUS')] : [getGP, getGDiff, getGW, (sortingOrder ? '-RUS' : 'RUS')]) : sortingOrder"
+				data-index="$index + 1"
+				data-league="league"
+				data-team="value.$key"
+				data-team-values="teamValues[value.$key]"
+				data-rus="value.RUS">
 			</tr>
 		</tbody>
 	</table>

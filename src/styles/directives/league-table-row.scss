@@ -1,0 +1,24 @@
+@import '../variables';
+
+.league-table-row {
+  .logo {
+    line-height: 0;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .nil {
+    color: #e6e6e6;
+  }
+
+  .value {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 15px 0 0;
+  }
+}

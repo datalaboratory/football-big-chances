@@ -1,4 +1,4 @@
-app.directive 'field', ($window, $document) ->
+app.directive 'field', ->
   restrict: 'E'
   templateUrl: 'templates/directives/field.html'
   link: ($scope, $element, $attrs) ->
