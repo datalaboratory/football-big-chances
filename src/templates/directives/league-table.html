@@ -8,14 +8,14 @@
 				<td class="name textual">{{value.RUS}}</td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cf}">{{teamValues[value.$key].cf}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].cf}">{{teamValues[value.$key].cf < 0 ? '' : teamValues[value.$key].cf}}</td>
 				<td
 					class="value numerical"
 					data-ng-class="{'nil': !teamValues[value.$key].gf}">{{teamValues[value.$key].gf}}</td>
 				<td class="buffer"></td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].ca}">{{teamValues[value.$key].ca}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].ca}">{{teamValues[value.$key].ca < 0 ? '' : teamValues[value.$key].ca}}</td>
 				<td
 					class="value numerical"
 					data-ng-class="{'nil': !teamValues[value.$key].ga}">{{teamValues[value.$key].ga}}</td>
@@ -37,16 +37,16 @@
 				<td class="buffer"></td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cw}">{{teamValues[value.$key].cw}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].cw}">{{teamValues[value.$key].cw < 0 ? '' : teamValues[value.$key].cw}}</td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cd}">{{teamValues[value.$key].cd}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].cd}">{{teamValues[value.$key].cd < 0 ? '' : teamValues[value.$key].cd}}</td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cl}">{{teamValues[value.$key].cl}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].cl}">{{teamValues[value.$key].cl < 0 ? '' : teamValues[value.$key].cl}}</td>
 				<td
 					class="value numerical"
-					data-ng-class="{'nil': !teamValues[value.$key].cp}">{{teamValues[value.$key].cp}}</td>
+					data-ng-class="{'nil': !teamValues[value.$key].cp}">{{teamValues[value.$key].cp < 0 ? '' : teamValues[value.$key].cp}}</td>
 				<td class="buffer"></td>
 				<td
 					class="value numerical"

@@ -18,17 +18,17 @@ app.directive 'leagueTable', ->
         matches = _.filter $scope.leagueData[key].Matches, (M) ->
           moment($scope.currentDate).diff(M.Date, 'days') >= 0
         values = {
-          cf: _.sum matches, 'CF'
+          cf: if $scope.league is 'premierLeague' then _.sum matches, 'CF' else -1
           gf: _.sum matches, 'GF'
-          ca: _.sum matches, 'CA'
+          ca: if $scope.league is 'premierLeague' then _.sum matches, 'CA' else -1
           ga: _.sum matches, 'GA'
           m: matches.length
           gw: _.filter(matches, (m) -> m.GF > m.GA).length
           gd: _.filter(matches, (m) -> m.GF is m.GA).length
           gl: _.filter(matches, (m) -> m.GF < m.GA).length
-          cw: _.filter(matches, (m) -> m.CF > m.CA).length
-          cd: _.filter(matches, (m) -> m.CF is m.CA).length
-          cl: _.filter(matches, (m) -> m.CF < m.CA).length
+          cw: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF > m.CA).length else -1
+          cd: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF is m.CA).length else -1
+          cl: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF < m.CA).length else -1
         }
 
         values.cp = values.cw * 3 + values.cd
@@ -62,7 +62,7 @@ app.directive 'leagueTable', ->
       $scope.teamValues[obj.$key].gp
 
     $scope.getCW = (obj) ->
-      $scope.teamValues[obj.$key].cw  
+      $scope.teamValues[obj.$key].cw
 
     $scope.getCP = (obj) ->
       $scope.teamValues[obj.$key].cp
