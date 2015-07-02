@@ -1,4 +1,6 @@
-<div class="league-table">
+<div
+	class="league-table"
+	data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne'}">
 	<table class="common-table">
 		<tbody>
 			<tr
@@ -8,7 +10,9 @@
 				data-league="league"
 				data-team="value.$key"
 				data-team-values="teamValues[value.$key]"
-				data-rus="value.RUS">
+				data-rus="value.RUS"
+				data-ng-click="rowOnClick(value.$key)"
+				data-ng-class="{'active': value.$key === selectedTeam}">
 			</tr>
 		</tbody>
 	</table>

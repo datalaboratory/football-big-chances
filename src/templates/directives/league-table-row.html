@@ -7,14 +7,22 @@
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.gf}">{{teamValues.gf}}</td>
-<td class="buffer"></td>
+<td
+  class="buffer hidden-value"
+  data-ng-class="{'nil': !(teamValues.cf - teamValues.gf)}">
+  <div class="difference">{{teamValues.cf < 0 ? '' : teamValues.cf - teamValues.gf | goodMinus}}</div>
+</td>
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.ca}">{{teamValues.ca < 0 ? '' : teamValues.ca}}</td>
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.ga}">{{teamValues.ga}}</td>
-<td class="buffer"></td>
+<td
+  class="buffer hidden-value"
+  data-ng-class="{'nil': !(teamValues.ca - teamValues.ga)}">
+  <div class="difference">{{teamValues.ca < 0 ? '' : teamValues.ca - teamValues.ga | goodMinus}}</div>
+</td>
 <td class="buffer"></td>
 <td
   class="value numerical"
@@ -42,8 +50,11 @@
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.cp}">{{teamValues.cp < 0 ? '' : teamValues.cp}}</td>
-<td class="buffer"></td>
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.gp}">{{teamValues.gp}}</td>
-<td class="buffer"></td>
+<td
+  class="buffer hidden-value"
+  data-ng-class="{'nil': !(teamValues.cp - teamValues.gp)}">
+  <div class="difference">{{teamValues.cp < 0 ? '' : teamValues.cp - teamValues.gp | goodMinus}}</div>
+</td>

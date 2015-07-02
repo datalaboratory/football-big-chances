@@ -7,6 +7,7 @@ app.directive 'leagueTable', ->
     currentDate: '='
     sortBy: '='
     sortingOrder: '='
+    selectedTeam: '='
   link: ($scope, $element, $attrs) ->
     $scope.teamValues = {}
 
@@ -66,5 +67,12 @@ app.directive 'leagueTable', ->
 
     $scope.getCP = (obj) ->
       $scope.teamValues[obj.$key].cp
+
+    $scope.rowOnClick = (team) ->
+      if team is $scope.selectedTeam
+        $scope.selectedTeam = ''
+      else
+        $scope.selectedTeam = team
+      return
 
     return
