@@ -68,11 +68,13 @@ app.directive 'leagueTable', ->
     $scope.getCP = (obj) ->
       $scope.teamValues[obj.$key].cp
 
-    $scope.rowOnClick = (team) ->
-      if team is $scope.selectedTeam
-        $scope.selectedTeam = ''
+    $scope.rowOnClick = (team, league) ->
+      if league is $scope.selectedTeam.league and team is $scope.selectedTeam.name
+        $scope.selectedTeam.league = ''
+        $scope.selectedTeam.name = ''
       else
-        $scope.selectedTeam = team
+        $scope.selectedTeam.league = league
+        $scope.selectedTeam.name = team
       return
 
     return

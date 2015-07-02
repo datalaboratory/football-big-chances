@@ -3,11 +3,31 @@
 .field-container {
   display: block;
   position: relative;
-  width: 926px - 49px;
-  padding: 10px 0 0 49px;
+  width: 926px - 9px;
+  padding: 10px 0 0 9px;
 
-  img {
-    width: 506.5px;
+  .svg-container {
+    margin: 0 0 0 10px;
+
+    img.main-field {
+      width: 506.5px;
+      height: 307px;
+    }
+  }
+
+  .team-logo-container {
+    display: block;
+    position: relative;
+    width: 30px;
     height: 307px;
+
+    img.team-logo {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+    }
   }
 }

@@ -18,7 +18,9 @@ app.controller 'MainCtrl', ($scope) ->
     leaguesData: {}
     sortBy: 'gp'
     sortingOrder: true
-    selectedTeam: ''
+    selectedTeam:
+      league: ''
+      name: ''
 
   $scope.isDataPrepared = false
 
