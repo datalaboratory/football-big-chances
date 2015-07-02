@@ -11,25 +11,33 @@
 				<td class="num"></td>
 				<td class="logo"></td>
 				<td class="name textual">Команда</td>
-				<td class="value">
-					<span class="short inline">Сз</span>
-					<span class="full inline">Созданные моменты</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('cf')">
+					<span class="short inline">Сз<span class="sort-symbol" data-ng-show="sortBy === 'cf'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Созданные моменты<span class="sort-symbol" data-ng-show="sortBy === 'cf'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
-				<td class="value">
-					<span class="short inline">Зб</span>
-					<span class="full inline">Забитые голы</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('gf')">
+					<span class="short inline">Зб<span class="sort-symbol" data-ng-show="sortBy === 'gf'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Забитые голы<span class="sort-symbol" data-ng-show="sortBy === 'gf'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
 				<td class="buffer"></td>
-				<td class="value">
-					<span class="short inline">Дп</span>
-					<span class="full inline">Допущенные моменты</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('ca')">
+					<span class="short inline">Дп<span class="sort-symbol" data-ng-show="sortBy === 'ca'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Допущенные моменты<span class="sort-symbol" data-ng-show="sortBy === 'ca'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
-				<td class="value">
-					<span class="short inline">Пр</span>
-					<span class="full inline">Пропущенные голы</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('ga')">
+					<span class="short inline">Пр<span class="sort-symbol" data-ng-show="sortBy === 'ga'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Пропущенные голы<span class="sort-symbol" data-ng-show="sortBy === 'ga'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
 				<td class="buffer"></td>
@@ -71,15 +79,19 @@
 					<span class="full inline">Проигрыши</span>
 					<br class="clear-both" />
 				</td>
-				<td class="value">
-					<span class="short inline">О</span>
-					<span class="full inline">Очки</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('cp')">
+					<span class="short inline">О<span class="sort-symbol" data-ng-show="sortBy === 'cp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Очки<span class="sort-symbol" data-ng-show="sortBy === 'cp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
 				<td class="buffer"></td>
-				<td class="value">
-					<span class="short inline">О</span>
-					<span class="full inline">Очки</span>
+				<td
+					class="value sortable"
+					data-ng-click="sortableOnClick('gp')">
+					<span class="short inline">О<span class="sort-symbol" data-ng-show="sortBy === 'gp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
+					<span class="full inline">Очки<span class="sort-symbol" data-ng-show="sortBy === 'gp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
 				<td class="buffer"></td>

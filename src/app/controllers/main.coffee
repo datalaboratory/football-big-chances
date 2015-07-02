@@ -16,6 +16,8 @@ app.controller 'MainCtrl', ($scope) ->
       matches: []
       current: undefined
     leaguesData: {}
+    sortBy: 'gp'
+    sortingOrder: true
 
   $scope.isDataPrepared = false
 

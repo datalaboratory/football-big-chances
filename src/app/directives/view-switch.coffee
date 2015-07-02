@@ -13,5 +13,5 @@ app.directive 'viewSwitch', ->
 
     $scope.isButtonActive = (view) ->
       view is $scope.view
-      
+
     return

@@ -28,11 +28,8 @@
   .common-table {
     td {
       font-weight: bold;
+      cursor: default;
     }
-  }
-
-  .value {
-    cursor: default;
   }
 
   .full {
@@ -45,5 +42,24 @@
 
   .value:hover .full {
     display: block;
+  }
+
+  .value:hover .short {
+    display: none;
+  }
+
+  .sortable {
+    cursor: pointer !important;
+    transition: color 0.25s ease-out;
+
+    .sort-symbol {
+      float: right;
+      margin: 0 0 0 1px;
+      font-size: $small-font-size;
+    }
+  }
+
+  .sortable:hover {
+    color: $button-hover-color;
   }
 }

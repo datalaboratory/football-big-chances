@@ -5,6 +5,8 @@ app.directive 'leagueTable', ->
     league: '='
     leagueData: '='
     currentDate: '='
+    sortBy: '='
+    sortingOrder: '='
   link: ($scope, $element, $attrs) ->
     $scope.teamValues = {}
 
@@ -21,18 +23,48 @@ app.directive 'leagueTable', ->
           ca: _.sum matches, 'CA'
           ga: _.sum matches, 'GA'
           m: matches.length
-          wg: _.filter(matches, (m) -> m.GF > m.GA).length
-          dg: _.filter(matches, (m) -> m.GF is m.GA).length
-          lg: _.filter(matches, (m) -> m.GF < m.GA).length
-          wc: _.filter(matches, (m) -> m.CF > m.CA).length
-          dc: _.filter(matches, (m) -> m.CF is m.CA).length
-          lc: _.filter(matches, (m) -> m.CF < m.CA).length
+          gw: _.filter(matches, (m) -> m.GF > m.GA).length
+          gd: _.filter(matches, (m) -> m.GF is m.GA).length
+          gl: _.filter(matches, (m) -> m.GF < m.GA).length
+          cw: _.filter(matches, (m) -> m.CF > m.CA).length
+          cd: _.filter(matches, (m) -> m.CF is m.CA).length
+          cl: _.filter(matches, (m) -> m.CF < m.CA).length
         }
 
-        values.pc = values.wc * 3 + values.dc
-        values.pg = values.wg * 3 + values.dg
+        values.cp = values.cw * 3 + values.cd
+        values.gp = values.gw * 3 + values.gd
 
         $scope.teamValues[key] = values
       return
+
+    $scope.getGF = (obj) ->
+      $scope.teamValues[obj.$key].gf
+
+    $scope.getGA = (obj) ->
+      $scope.teamValues[obj.$key].ga
+
+    $scope.getGDiff = (obj) ->
+      $scope.teamValues[obj.$key].gf - $scope.teamValues[obj.$key].ga
+
+    $scope.getCF = (obj) ->
+      $scope.teamValues[obj.$key].cf
+
+    $scope.getCA = (obj) ->
+      $scope.teamValues[obj.$key].ca
+
+    $scope.getCDiff = (obj) ->
+      $scope.teamValues[obj.$key].cf - $scope.teamValues[obj.$key].ca
+
+    $scope.getGW = (obj) ->
+      $scope.teamValues[obj.$key].gw
+
+    $scope.getGP = (obj) ->
+      $scope.teamValues[obj.$key].gp
+
+    $scope.getCW = (obj) ->
+      $scope.teamValues[obj.$key].cw  
+
+    $scope.getCP = (obj) ->
+      $scope.teamValues[obj.$key].cp
 
     return

@@ -35,7 +35,10 @@
 		<field></field>
 	</div>
 	<div class="tables-header-container">
-		<tables-header></tables-header>
+		<tables-header
+			data-sort-by="data.sortBy"
+			data-sorting-order="data.sortingOrder">
+		</tables-header>
 	</div>
 	<div class="tables-container">
 		<league-table
@@ -43,7 +46,9 @@
 			data-ng-if="data.activeLeagues[league]"
 			data-league="league"
 			data-league-data="data.leaguesData[league]"
-			data-current-date="data.dates.current">
+			data-current-date="data.dates.current"
+			data-sort-by="data.sortBy"
+			data-sorting-order="data.sortingOrder">
 		</league-table>
 		<datalab-footer></datalab-footer>
 	</div>
