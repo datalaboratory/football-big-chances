@@ -1,0 +1,16 @@
+@import '../variables';
+
+.markers {
+  width: 0px;
+  height: 0px;
+
+  .goal {
+    stroke: $goal-color;
+    fill: $goal-color;
+  }
+
+  .big-chance {
+    stroke: $big-chance-color;
+    fill: $big-chance-color;
+  }
+}

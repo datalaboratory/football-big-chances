@@ -4,6 +4,7 @@
 <div
 	class="main"
 	data-ng-if="isDataPrepared">
+	<markers></markers>
 	<div class="roof">
 		<div class="header-container">
 			<div class="header"><span class="goal">Голы</span> и <span class="big-chance">явные голевые моменты</span> главных чемпионатов Европы</div>
@@ -32,38 +33,73 @@
 		</div>
 	</div>
 	<div
-		class="field-container"
-		sticky
-		data-offset="0">
-    <img
-      class="team-logo"
-      data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
-      data-ng-src="../img/teams/{{data.selectedTeam.league}}/{{data.selectedTeam.name}}.png">
-	  <div class="svg-field-container inline">
-			<field
-				data-selected-team="data.selectedTeam"
-				type="big">
-			</field>
-	  </div>
-	  <br class="clear-both" />
+		class="field-table"
+		data-ng-if="data.currentView === 'field-table'">
+		<div
+			class="field-container sticky"
+			data-offset="0"
+			data-condition="true">
+	    <img
+	      class="team-logo"
+	      data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
+	      data-ng-src="../img/teams/{{data.selectedTeam.league}}/{{data.selectedTeam.name}}.png">
+		  <div class="svg-field-container inline">
+				<field
+					data-lines-data="data.leaguesData[data.selectedTeam.league][data.selectedTeam.name].Lines"
+					data-team="data.selectedTeam"
+					data-current-date="data.dates.current"
+					type="big">
+				</field>
+		  </div>
+		</div>
+		<div class="tables-header-container">
+			<tables-header
+				data-sort-by="data.sortBy"
+				data-sorting-order="data.sortingOrder">
+			</tables-header>
+		</div>
+		<div class="tables-container">
+			<league-table
+				data-ng-repeat="league in leagues track by $index"
+				data-ng-if="data.activeLeagues[league]"
+				data-league="league"
+				data-league-data="data.leaguesData[league]"
+				data-current-date="data.dates.current"
+				data-sort-by="data.sortBy"
+				data-sorting-order="data.sortingOrder"
+				data-selected-team="data.selectedTeam">
+			</league-table>
+			<datalab-footer></datalab-footer>
+		</div>
 	</div>
-	<div class="tables-header-container">
-		<tables-header
-			data-sort-by="data.sortBy"
-			data-sorting-order="data.sortingOrder">
-		</tables-header>
-	</div>
-	<div class="tables-container">
-		<league-table
-			data-ng-repeat="league in leagues track by $index"
-			data-ng-if="data.activeLeagues[league]"
-			data-league="league"
-			data-league-data="data.leaguesData[league]"
-			data-current-date="data.dates.current"
-			data-sort-by="data.sortBy"
-			data-sorting-order="data.sortingOrder"
-			data-selected-team="data.selectedTeam">
-		</league-table>
+	<div
+		class="fields"
+		data-ng-if="data.currentView === 'fields'">
+		<div
+			class="small-multiples"
+			data-ng-repeat="(league, isActive) in data.activeLeagues"
+			data-ng-if="isActive">
+			<div
+				class="small-multiple"
+				data-ng-repeat="(team, teamData) in data.leaguesData[league]">
+				<div
+					class="team-number inline"
+					data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne'}">{{$index + 1}}</div>
+				<div class="team-name inline">{{teamData.RUS}}</div>
+				<br class="clear-both" />
+				<img
+					class="team-logo"
+					data-ng-src="../img/teams/{{league}}/{{team}}.png">
+				<div class="svg-field-container inline">
+					<field
+						data-lines-data="data.leaguesData[league][team].Lines"
+						data-team="{'name': team, 'league': league}"
+						data-current-date="data.dates.current"
+						type="small">
+					</field>
+				</div>
+			</div>
+		</div>
 		<datalab-footer></datalab-footer>
 	</div>
 </div>

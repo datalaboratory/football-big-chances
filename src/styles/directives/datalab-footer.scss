@@ -2,7 +2,8 @@
 
 .datalab-footer {
   display: block;
-  padding: 15px 0 30px $num-td-width + $logo-td-width;
+  width: 926px - $common-padding-left;
+  padding: 15px 0 30px $common-padding-left;
   line-height: 1.5;
 
   .typical-info {

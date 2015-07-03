@@ -29,6 +29,7 @@ app.controller 'MainCtrl', ($scope) ->
     if error
       console.log error
 
+    # Leagues and teams data
     $scope.leagues.forEach (league, index) ->
       $scope.data.leaguesData[league] = {}
 
@@ -46,9 +47,11 @@ app.controller 'MainCtrl', ($scope) ->
         $scope.data.leaguesData[league][d.Team] =
           RUS: d.RUS
           Matches: matches
+          Lines: []
         return
       return
 
+    # Dates
     dates = []
     i = 1
 
@@ -66,11 +69,34 @@ app.controller 'MainCtrl', ($scope) ->
     moment.range(startDate, $scope.data.dates.matches[$scope.data.dates.matches.length - 1]).by 'days', (d) ->
       $scope.data.dates.all.push d.toDate()
 
-    $scope.data.dates.current = $scope.data.dates.all[$scope.data.dates.all.length - 1]
+    $scope.data.dates.current = $scope.data.dates.matches[$scope.data.dates.matches.length - 1]
 
-    $scope.isDataPrepared = true
+    # Goals and chances
+    d3.csv '../data/premier-league-goals-chances.csv', ((d) ->
+      {
+        Team: d.Team
+        Opp: d.Opp
+        Date: moment(d.Date, dateFormat).toDate()
+        Type: d.Type
+        Player: d.Player
+        Timer: d.Timer
+        x1: parseFloat d.x1
+        y1: parseFloat d.y1
+        x2: parseFloat d.x2
+        y2: parseFloat d.y2
+      }
+    ), (error, preparsedData) ->
+      _.keys($scope.data.leaguesData['premierLeague']).forEach (key) ->
+        lines = _.filter preparsedData, (pD) ->
+          (pD.Team is key or pD.Opp is key) and pD.Type
 
-    $scope.$apply()
+        $scope.data.leaguesData['premierLeague'][key].Lines = lines
+        return
+
+      $scope.isDataPrepared = true
+
+      $scope.$apply()
+      return
     return
 
   # Load data
