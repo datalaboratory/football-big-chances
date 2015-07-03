@@ -21,12 +21,16 @@
 }
 
 .field.big {
-  width: $big-field-width;
-  height: $big-field-height;
+  width: $big-field-height;
+  height: $big-field-width;
 
-  image {
-    width: $big-field-width;
-    height: $big-field-height;
+  .content {
+    transform: rotate(90deg) translate(0, 0 - $big-field-height);
+
+    image {
+      width: $big-field-width;
+      height: $big-field-height;
+    }
   }
 }
 

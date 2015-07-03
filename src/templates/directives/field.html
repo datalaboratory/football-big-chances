@@ -18,13 +18,20 @@
       <path d="M2,2 L2,15 L15,8 L2,2" style="fill: none; stroke-width: 1"></path>
     </marker>
   </defs>
-  <image data-ng-attr-xlink:href="{{'../img/fields/' + type + '.png'}}" xlink:href=""></image>
-  <!--
-  <g class="lines">
-    <line class="goal" x1="50" y1="20" x2="150" y2="60" marker-end="url(#accidental-goal)"></line>
-    <line class="big-chance" x1="120" y1="200" x2="200" y2="80" marker-end="url(#accidental-goal)"></line>
-    <line class="goal past" x1="70" y1="90" x2="300" y2="100" marker-end="url(#accidental-goal)"></line>
-    <line class="big-chance past" x1="50" y1="80" x2="150" y2="80" marker-end="url(#accidental-goal)"></line>
+  <g class="content">
+    <image
+      data-ng-attr-xlink:href="{{'../img/fields/' + type + '.png'}}"
+      xlink:href="">
+    </image>
+    <g class="lines">
+      <line
+        class="goal"
+        data-ng-attr-x1="{{getX(330.08)}}"
+        data-ng-attr-y1="{{getY(255.2)}}"
+        data-ng-attr-x2="{{getX(354)}}"
+        data-ng-attr-y2="{{getY(158.907)}}"
+        marker-end="url(#common-goal)">
+      </line>
+    </g>
   </g>
-  -->
 </svg>
