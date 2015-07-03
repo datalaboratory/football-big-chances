@@ -50,29 +50,37 @@
 }
 
 .league-table-row:not(.active):hover {
-  background-color: $table-hover-color;
-
   .hidden-value .difference {
     opacity: 1;
   }
 }
 
-.premier-league .league-table-row.active {
-  background-color: $table-premier-league-color;
+.premier-league {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-premier-league-color;
+  }
 }
 
-.la-liga .league-table-row.active {
-  background-color: $table-la-liga-color;
+.la-liga {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-la-liga-color;
+  }
 }
 
-.bundesliga .league-table-row.active {
-  background-color: $table-bundesliga-color;
+.bundesliga {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-bundesliga-color;
+  }
 }
 
-.serie-a .league-table-row.active {
-  background-color: $table-serie-a-color;
+.serie-a {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-serie-a-color;
+  }
 }
 
-.ligue-one .league-table-row.active {
-  background-color: $table-ligue-one-color;
+.ligue-one {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-ligue-one-color;
+  }
 }
