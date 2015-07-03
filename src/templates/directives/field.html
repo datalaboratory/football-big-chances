@@ -1,15 +1,30 @@
-<div
-  class="field-container"
-  sticky
-	data-offset="0">
-  <div class="team-logo-container inline">
-    <img
-      class="team-logo"
-      data-ng-if="selectedTeam.league && selectedTeam.name"
-      data-ng-src="../img/teams/{{selectedTeam.league}}/{{selectedTeam.name}}.png">
-  </div>
-  <div class="svg-container inline">
-    <img class="main-field" src="../img/fields/big.png">
-  </div>
-  <br class="clear-both" />
-</div>
+<svg
+  class="field"
+  data-ng-class="{'big': type === 'big', 'small': type === 'small'}">
+  <defs>
+    <marker class="big-chance" id="saved" markerWidth="12" markerHeight="12" refX="7" refY="7" orient="auto">
+      <circle cx="7" cy="7" r="4" style="fill: #fff; stroke-width: 1"></circle>
+    </marker>
+    <marker class="big-chance" id="blocked" markerWidth="3" markerHeight="12" refX="1" refY="6" orient="auto">
+      <path d="M1,0 L1,12" style="stroke-width: 1"></line>
+    </marker>
+    <marker class="goal" id="common-goal" markerWidth="17" markerHeight="17" refX="2" refY="8" orient="auto">
+      <path d="M2,2 L2,15 L15,8 L2,2" style="stroke: none"></path>
+    </marker>
+    <marker class="big-chance" id="common-big-chance" markerWidth="17" markerHeight="17" refX="2" refY="8" orient="auto">
+      <path d="M2,2 L2,15 L15,8 L2,2" style="stroke: none"></path>
+    </marker>
+    <marker class="goal" id="accidental-goal" markerWidth="17" markerHeight="17" refX="2" refY="8" orient="auto">
+      <path d="M2,2 L2,15 L15,8 L2,2" style="fill: none; stroke-width: 1"></path>
+    </marker>
+  </defs>
+  <image data-ng-attr-xlink:href="{{'../img/fields/' + type + '.png'}}" xlink:href=""></image>
+  <!--
+  <g class="lines">
+    <line class="goal" x1="50" y1="20" x2="150" y2="60" marker-end="url(#accidental-goal)"></line>
+    <line class="big-chance" x1="120" y1="200" x2="200" y2="80" marker-end="url(#accidental-goal)"></line>
+    <line class="goal past" x1="70" y1="90" x2="300" y2="100" marker-end="url(#accidental-goal)"></line>
+    <line class="big-chance past" x1="50" y1="80" x2="150" y2="80" marker-end="url(#accidental-goal)"></line>
+  </g>
+  -->
+</svg>

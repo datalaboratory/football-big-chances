@@ -53,12 +53,33 @@
 		}
 	}
 
-	.big-field-container {
-		display: block;
-		position: absolute;
+	.field-container {
+	  display: block;
+	  position: absolute;
 		top: 150px + 20px;
+	  width: 926px - 9px;
 		height: 317px;
-		line-height: 0;
+	  padding: 10px 0 0 9px;
+
+	  .team-logo-container {
+	    display: block;
+	    position: relative;
+	    width: 30px;
+	    height: 307px;
+
+	    img.team-logo {
+	      position: absolute;
+	      width: 20px;
+	      height: 20px;
+	      top: 50%;
+	      left: 10px;
+	      transform: translateY(-50%);
+	    }
+	  }
+
+	  .svg-field-container {
+	    margin: 0 0 0 10px;
+	  }
 	}
 
 	.tables-header-container {

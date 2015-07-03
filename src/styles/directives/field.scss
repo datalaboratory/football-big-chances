@@ -1,33 +1,41 @@
 @import '../variables';
 
-.field-container {
-  display: block;
-  position: relative;
-  width: 926px - 9px;
-  padding: 10px 0 0 9px;
-
-  .team-logo-container {
-    display: block;
-    position: relative;
-    width: 30px;
-    height: 307px;
-
-    img.team-logo {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 50%;
-      left: 10px;
-      transform: translateY(-50%);
-    }
+.field {
+  line {
+    stroke-width: .5;
   }
 
-  .svg-container {
-    margin: 0 0 0 10px;
+  .goal {
+    stroke: $goal-color;
+    fill: $goal-color;
+  }
 
-    img.main-field {
-      width: 506.5px;
-      height: 307px;
-    }
+  .big-chance {
+    stroke: $big-chance-color;
+    fill: $big-chance-color;
+  }
+
+  .past {
+    opacity: .5;
+  }
+}
+
+.field.big {
+  width: $big-field-width;
+  height: $big-field-height;
+
+  image {
+    width: $big-field-width;
+    height: $big-field-height;
+  }
+}
+
+.field.small {
+  width: $small-field-width;
+  height: $small-field-height;
+
+  image {
+    width: $small-field-width;
+    height: $small-field-height;
   }
 }

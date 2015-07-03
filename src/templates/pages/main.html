@@ -31,10 +31,23 @@
 			</date-slider>
 		</div>
 	</div>
-	<div class="big-field-container">
-		<field
-			data-selected-team="data.selectedTeam">
-		</field>
+	<div
+		class="field-container"
+		sticky
+		data-offset="0">
+	  <div class="team-logo-container inline">
+	    <img
+	      class="team-logo"
+	      data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
+	      data-ng-src="../img/teams/{{data.selectedTeam.league}}/{{data.selectedTeam.name}}.png">
+	  </div>
+	  <div class="svg-field-container inline">
+			<field
+				data-selected-team="data.selectedTeam"
+				type="big">
+			</field>
+	  </div>
+	  <br class="clear-both" />
 	</div>
 	<div class="tables-header-container">
 		<tables-header
