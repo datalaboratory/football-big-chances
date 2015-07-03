@@ -31,7 +31,7 @@ app.directive 'dateSlider', ($document) ->
 
     $scope.handleShift = ($handle.width() - tickWidth) / 2
     $scope.currentDateCaptionShift = ($currentDateCaption.width() - tickWidth) / 2
-    $scope.currentX = 0
+    $scope.currentX = moment($scope.currentDate).diff($scope.startDate, 'days') * step
 
     $scope.getCurrentDay = ->
       if !moment($scope.currentDate).isSame($scope.startDate)

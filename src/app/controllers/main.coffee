@@ -66,7 +66,7 @@ app.controller 'MainCtrl', ($scope) ->
     moment.range(startDate, $scope.data.dates.matches[$scope.data.dates.matches.length - 1]).by 'days', (d) ->
       $scope.data.dates.all.push d.toDate()
 
-    $scope.data.dates.current = startDate
+    $scope.data.dates.current = $scope.data.dates.all[$scope.data.dates.all.length - 1]
 
     $scope.isDataPrepared = true
 
