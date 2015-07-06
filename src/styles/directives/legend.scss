@@ -1,0 +1,28 @@
+@import '../variables';
+
+.legend {
+  .line-sample {
+    width: 110px;
+    height: 15px;
+
+    line {
+      stroke-width: .5;
+    }
+
+    .goal {
+      stroke: $goal-color;
+      fill: $goal-color;
+    }
+
+    .big-chance {
+      stroke: $big-chance-color;
+      fill: $big-chance-color;
+    }
+  }
+
+  .line-caption {
+    display: inline-block;
+    font-family: $helvetica-neue-light;
+    font-size: $small-font-size;
+  }
+}

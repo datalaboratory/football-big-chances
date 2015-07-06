@@ -41,9 +41,7 @@
 			</date-slider>
 		</div>
 	</div>
-	<div
-		class="field-table"
-		data-ng-if="data.currentView === 'field-table'">
+	<div data-ng-if="data.currentView === 'field-table'">
 		<div
 			class="field-container sticky"
 			data-offset="0"
@@ -61,6 +59,9 @@
 					data-type="big">
 				</field>
 		  </div>
+			<div class="legend-container">
+				<legend></legend>
+			</div>
 		</div>
 		<div class="tables-header-container">
 			<tables-header
@@ -82,9 +83,7 @@
 			<datalab-footer></datalab-footer>
 		</div>
 	</div>
-	<div
-		class="fields"
-		data-ng-if="data.currentView === 'fields'">
+	<div data-ng-if="data.currentView === 'fields'">
 		<small-multiples
 			data-active-leagues="data.activeLeagues"
 			data-leagues-data="data.leaguesData"
