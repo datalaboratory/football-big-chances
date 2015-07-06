@@ -24,18 +24,17 @@ app.directive 'dateSlider', ($document) ->
     sliderWidth = $element[0].getBoundingClientRect().width
     sliderLeftOffset = $element.offset().left
     $handle = $element.find '.handle'
-    $currentDateCaption = $element.find '.current-date-caption'
     tickWidth = 1
     nOfDays = $scope.allDates.length
     step = sliderWidth / nOfDays
 
     $scope.handleShift = ($handle.width() - tickWidth) / 2
-    $scope.currentDateCaptionShift = ($currentDateCaption.width() - tickWidth) / 2
     $scope.currentX = moment($scope.currentDate).diff($scope.startDate, 'days') * step
 
     $scope.getCurrentDay = ->
-      if !moment($scope.currentDate).isSame($scope.startDate)
-        moment($scope.currentDate).date()
+      mDate = moment($scope.currentDate)
+      if !mDate.isSame($scope.startDate)
+        mDate.date() + ' ' + monthNames[mDate.month()]
       else
         ''
 
@@ -53,6 +52,9 @@ app.directive 'dateSlider', ($document) ->
         monthNames[month]
       else
         ''
+
+    $scope.isCaptionHidden = (date) ->
+      moment(date).month() is moment($scope.currentDate).month() and !moment($scope.currentDate).isSame($scope.startDate)
 
     $handle.on 'mousedown', (event) ->
       mousemove = (event) ->

@@ -14,12 +14,14 @@
 			font-size: $common-font-size;
 		}
 
+		.caption.hidden {
+			display: none;
+		}
+
 		.current-date-caption {
 			position: absolute;
-			width: 18px;
 			font-family: $helvetica-neue-light;
 			font-size: $common-font-size;
-			text-align: center;
 			background-color: $slider-transparent-base-color;
 		}
 	}

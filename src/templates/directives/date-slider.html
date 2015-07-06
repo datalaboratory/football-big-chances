@@ -4,10 +4,11 @@
 			class="caption"
 			data-ng-repeat="date in allDates track by $index"
 			data-ng-if="getCaptionText(date, !$index)"
+			data-ng-class="{'hidden': isCaptionHidden(date)}"
 			data-ng-style="{'transform': 'translateX(' + getDateX(date) + 'px)'}">{{getCaptionText(date, !$index)}}</div>
 		<div
 			class="current-date-caption"
-			data-ng-style="{'transform': 'translateX(' + (currentX - currentDateCaptionShift) + 'px)'}">{{getCurrentDay()}}</div>
+			data-ng-style="{'transform': 'translateX(' + (currentX - handleShift) + 'px)'}">{{getCurrentDay()}}</div>
 		<br class="clear-both" />
 	</div>
 	<div class="track">
