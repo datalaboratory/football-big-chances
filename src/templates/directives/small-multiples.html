@@ -1,0 +1,26 @@
+<div
+  class="small-multiples"
+  data-ng-repeat="(league, isActive) in activeLeagues"
+  data-ng-if="isActive">
+  <div
+    class="small-multiple"
+    data-ng-repeat="(key, value) in leaguesData[league] | toArray | orderBy : getPoints : true">
+    <div
+      class="team-number inline"
+      data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne'}">{{$index + 1}}</div>
+    <div class="team-name inline">{{value.RUS}}</div>
+    <br class="clear-both" />
+    <img
+      class="team-logo"
+      data-ng-src="../img/teams/{{league}}/{{value.$key}}.png">
+    <div class="svg-field-container inline">
+      <field
+        data-lines-data="leaguesData[league][value.$key].Lines"
+        data-team="{'name': value.$key, 'league': league}"
+        data-current-date="currentDate"
+        data-show-only="showOnly"
+        data-type="small">
+      </field>
+    </div>
+  </div>
+</div>

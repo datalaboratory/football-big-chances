@@ -85,32 +85,12 @@
 	<div
 		class="fields"
 		data-ng-if="data.currentView === 'fields'">
-		<div
-			class="small-multiples"
-			data-ng-repeat="(league, isActive) in data.activeLeagues"
-			data-ng-if="isActive">
-			<div
-				class="small-multiple"
-				data-ng-repeat="(team, teamData) in data.leaguesData[league]">
-				<div
-					class="team-number inline"
-					data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne'}">{{$index + 1}}</div>
-				<div class="team-name inline">{{teamData.RUS}}</div>
-				<br class="clear-both" />
-				<img
-					class="team-logo"
-					data-ng-src="../img/teams/{{league}}/{{team}}.png">
-				<div class="svg-field-container inline">
-					<field
-						data-lines-data="data.leaguesData[league][team].Lines"
-						data-team="{'name': team, 'league': league}"
-						data-current-date="data.dates.current"
-						data-show-only="data.showOnly"
-						data-type="small">
-					</field>
-				</div>
-			</div>
-		</div>
+		<small-multiples
+			data-active-leagues="data.activeLeagues"
+			data-leagues-data="data.leaguesData"
+			data-current-date="data.dates.current"
+			data-show-only="data.showOnly">
+		</small-multiples>
 		<datalab-footer></datalab-footer>
 	</div>
 </div>

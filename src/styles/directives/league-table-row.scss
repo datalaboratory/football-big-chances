@@ -55,7 +55,7 @@
 
 .league-table-row.active {
   .hidden-value * {
-    opacity: .7;
+    opacity: .5;
   }
 
   td:first-child {
@@ -69,7 +69,7 @@
 
 .league-table-row:not(.active):hover {
   .hidden-value * {
-    opacity: .7;
+    opacity: .5;
   }
 }
 
