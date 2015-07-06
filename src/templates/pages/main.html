@@ -7,7 +7,16 @@
 	<markers></markers>
 	<div class="roof">
 		<div class="header-container">
-			<div class="header"><span class="goal">Голы</span> и <span class="big-chance">явные голевые моменты</span> главных чемпионатов Европы</div>
+			<div class="header">
+				<span
+					class="goal"
+					data-ng-mouseover="data.showOnly = 'goals'"
+					data-ng-mouseleave="data.showOnly = ''">Голы</span> и
+				<span
+					class="big-chance"
+					data-ng-mouseover="data.showOnly = 'big-chances'"
+					data-ng-mouseleave="data.showOnly = ''">явные голевые моменты</span>
+				главных чемпионатов Европы</div>
 		</div>
 		<div class="leagues-switch-container inline">
 			<leagues-switch
@@ -48,7 +57,8 @@
 					data-lines-data="data.leaguesData[data.selectedTeam.league][data.selectedTeam.name].Lines"
 					data-team="data.selectedTeam"
 					data-current-date="data.dates.current"
-					type="big">
+					data-show-only="data.showOnly"
+					data-type="big">
 				</field>
 		  </div>
 		</div>
@@ -95,7 +105,8 @@
 						data-lines-data="data.leaguesData[league][team].Lines"
 						data-team="{'name': team, 'league': league}"
 						data-current-date="data.dates.current"
-						type="small">
+						data-show-only="data.showOnly"
+						data-type="small">
 					</field>
 				</div>
 			</div>

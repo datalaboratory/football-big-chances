@@ -2,22 +2,22 @@
   class="field"
   data-ng-class="{'big': type === 'big', 'small': type === 'small'}">
   <g class="content">
-    <image
-      data-ng-attr-xlink:href="{{'../img/fields/' + type + '.png'}}"
-      xlink:href="">
-    </image>
     <g
       class="lines"
       data-ng-if="lines.length">
       <line
+        class="line"
         data-ng-repeat="line in lines track by $index"
         data-ng-class="getStyle(line)"
         data-ng-attr-x1="{{getX(line.x1)}}"
         data-ng-attr-y1="{{getY(line.y1)}}"
         data-ng-attr-x2="{{getX(line.x2)}}"
         data-ng-attr-y2="{{getY(line.y2)}}"
-        data-ng-attr-marker-end="{{getMarkerEnd(line)}}">
+        data-ng-attr-marker-end="{{getMarkerEnd(line)}}"
       </line>
     </g>
   </g>
 </svg>
+<img
+  data-ng-class="{'big-field-image': type === 'big', 'small-field-image': type === 'small'}"
+  data-ng-src="../img/fields/{{type}}.png">

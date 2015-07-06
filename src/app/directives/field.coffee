@@ -12,8 +12,11 @@ app.directive 'field', ->
     linesData: '='
     team: '='
     currentDate: '='
+    showOnly: '='
     type: '@'
   link: ($scope, $element, $attrs) ->
+    d3element = d3.select $element[0]
+
     $scope.lines = []
 
     updateLines = ->
@@ -27,6 +30,19 @@ app.directive 'field', ->
     $scope.$watch 'currentDate', -> updateLines()
 
     $scope.$watch 'team', (-> updateLines()), true
+
+    $scope.$watch 'showOnly', ->
+      if $scope.showOnly is 'goals'
+        d3element.selectAll('.big-chance').style 'opacity', 0
+      else if $scope.showOnly is 'big-chances'
+        d3element.selectAll('.goal').style 'opacity', 0
+      else
+        d3element.selectAll('.line').style 'opacity', ->
+          if d3.select(@).classed('past')
+            .5
+          else
+            1
+      return
 
     $scope.getX = (original) ->
       original / coeff[$scope.type] + xOffset[$scope.type]

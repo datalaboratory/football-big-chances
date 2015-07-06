@@ -59,20 +59,18 @@
 		top: 150px + 20px;
 	  width: 100%;
 		height: 317px;
-	  padding: 10px 0 0 0;
 
     img.team-logo {
       position: absolute;
       width: 20px;
       height: 20px;
-      top: 50%;
+      top: calc(50% + 5px);
 			left: 20px;
       transform: translateY(-50%);
     }
 
 		.svg-field-container {
-			margin: 0 0 0 $common-padding-left - $big-field-offset;
-			line-height: 0;
+			padding: 10px 0 0 $common-padding-left - $big-field-offset;
 		}
 	}
 
@@ -91,7 +89,7 @@
 
 	.small-multiples {
 		margin: 0 0 30px 0;
-		
+
 		.small-multiple {
 			display: inline-block;
 			position: relative;
@@ -99,7 +97,7 @@
 
 			.team-number {
 				margin: 10px 5px 10px $common-padding-left;
-				padding: 2px 2px 2px 2px;
+				padding: 0 2px 0 2px;
 				font-family: $helvetica-neue-light;
 				font-size: $common-font-size;
 				text-align: center;
@@ -107,23 +105,23 @@
 			}
 
 			.team-number.premier-league {
-				background-color: $table-premier-league-color;
+				background-color: $sm-premier-league-color;
 			}
 
 			.team-number.la-liga {
-				background-color: $table-la-liga-color;
+				background-color: $sm-la-liga-color;
 			}
 
 			.team-number.bundesliga {
-				background-color: $table-bundesliga-color;
+				background-color: $sm-bundesliga-color;
 			}
 
 			.team-number.serie-a {
-				background-color: $table-serie-a-color;
+				background-color: $sm-serie-a-color;
 			}
 
 			.team-number.ligue-one {
-				background-color: $table-ligue-one-color;
+				background-color: $sm-ligue-one-color;
 			}
 
 			.team-name {
@@ -143,7 +141,6 @@
 
 			.svg-field-container {
 				padding: 0 0 0 $common-padding-left - $small-field-offset;
-				line-height: 0;
 			}
 		}
 	}

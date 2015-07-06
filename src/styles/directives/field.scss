@@ -3,6 +3,7 @@
 .field {
   line {
     stroke-width: .5;
+    transition: opacity .25s ease-out;
   }
 
   .goal {
@@ -24,11 +25,6 @@
   width: $big-field-width;
   height: $big-field-height;
 
-  image {
-    width: $big-field-width;
-    height: $big-field-height;
-  }
-
   .for {
     transform: rotate(90deg) translate(0, 0 - $big-field-width);
   }
@@ -38,14 +34,16 @@
   }
 }
 
+.big-field-image {
+  position: absolute;
+  top: 10px;
+  width: $big-field-width;
+  height: $big-field-height;
+}
+
 .field.small {
   width: $small-field-width;
   height: $small-field-height;
-
-  image {
-    width: $small-field-width;
-    height: $small-field-height;
-  }
 
   .for {
     transform: rotate(90deg) translate(0, 0 - $small-field-width);
@@ -54,4 +52,11 @@
   .against {
     transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
   }
+}
+
+.small-field-image {
+  position: absolute;
+  top: 38px;
+  width: $small-field-width;
+  height: $small-field-height;
 }
