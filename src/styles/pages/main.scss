@@ -9,6 +9,10 @@
 		height: 0;
 	}
 
+	.roof-container {
+		width: 100%;
+	}
+
 	.roof {
 		display: inline-block;
 		height: 150px;
@@ -100,5 +104,11 @@
 		display: block;
 		position: absolute;
 		top: 150px + 20px + 317px + 55px;
+	}
+
+	.small-multiples-container {
+		display: block;
+		position: absolute;
+		top: 150px + 20px;
 	}
 }
