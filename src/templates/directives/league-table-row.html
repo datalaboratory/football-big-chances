@@ -50,6 +50,7 @@
 <td
   class="value numerical"
   data-ng-class="{'nil': !teamValues.gp}">{{teamValues.gp}}</td>
-<td class="big-buffer hidden-value">
+<td class="buffer hidden-value">
   <div class="points-difference">{{teamValues.cp < 0 ? '' : '− ' + teamValues.cp + ' = ' + (teamValues.gp - teamValues.cp | goodMinus)}}</div>
 </td>
+<td class="buffer"></td>
