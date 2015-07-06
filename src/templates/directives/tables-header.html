@@ -2,15 +2,20 @@
 	class="tables-header sticky"
 	data-offset="317"
 	data-condition="true">
-	<div class="small-table-caption first">По голам</div>
-	<div class="small-table-caption second">По моментам</div>
-	<div class="small-table-caption third">По голам</div>
+	<div class="small-table-caption first">По моментам</div>
+	<div class="small-table-caption second">По голам</div>
 	<table class="common-table">
 		<tbody>
 			<tr>
 				<td class="num"></td>
 				<td class="logo"></td>
 				<td class="name textual">Команда</td>
+				<td class="value">
+					<span class="short inline">М</span>
+					<span class="full inline">Матчи</span>
+					<br class="clear-both" />
+				</td>
+				<td class="buffer"></td>
 				<td
 					class="value sortable"
 					data-ng-click="sortableOnClick('cf')">
@@ -41,29 +46,6 @@
 					<br class="clear-both" />
 				</td>
 				<td class="buffer"></td>
-				<td class="buffer"></td>
-				<td class="value">
-					<span class="short inline">М</span>
-					<span class="full inline">Матчи</span>
-					<br class="clear-both" />
-				</td>
-				<td class="buffer"></td>
-				<td class="value">
-					<span class="short inline">В</span>
-					<span class="full inline">Выигрыши</span>
-					<br class="clear-both" />
-				</td>
-				<td class="value">
-					<span class="short inline">Н</span>
-					<span class="full inline">Ничьи</span>
-					<br class="clear-both" />
-				</td>
-				<td class="value">
-					<span class="short inline">П</span>
-					<span class="full inline">Проигрыши</span>
-					<br class="clear-both" />
-				</td>
-				<td class="buffer"></td>
 				<td class="value">
 					<span class="short inline">В</span>
 					<span class="full inline">Выигрыши</span>
@@ -86,6 +68,22 @@
 					<span class="full inline">Очки<span class="sort-symbol" data-ng-show="sortBy === 'cp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
+				<td class="buffer"></td>
+				<td class="value">
+					<span class="short inline">В</span>
+					<span class="full inline">Выигрыши</span>
+					<br class="clear-both" />
+				</td>
+				<td class="value">
+					<span class="short inline">Н</span>
+					<span class="full inline">Ничьи</span>
+					<br class="clear-both" />
+				</td>
+				<td class="value">
+					<span class="short inline">П</span>
+					<span class="full inline">Проигрыши</span>
+					<br class="clear-both" />
+				</td>
 				<td
 					class="value sortable"
 					data-ng-click="sortableOnClick('gp')">
@@ -93,7 +91,7 @@
 					<span class="full inline">Очки<span class="sort-symbol" data-ng-show="sortBy === 'gp'">{{sortingOrder ? '↑' : '↓'}}</span></span>
 					<br class="clear-both" />
 				</td>
-				<td class="buffer"></td>
+				<td class="big-buffer"></td>
 			</tr>
 		</tbody>
 	</table>

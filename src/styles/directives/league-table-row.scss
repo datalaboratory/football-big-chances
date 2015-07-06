@@ -22,22 +22,40 @@
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    padding: 0 15px 0 0;
+    padding: 0 18px 0 0;
+  }
+
+  .hidden-value .minus {
+    position: absolute;
+    width: 9px;
+    transform: translate(-48px, -50%);
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
   }
 
   .hidden-value .difference {
     position: absolute;
-    width: 30px;
-    transform: translate(-50%, -50%);
-    text-align: right;
+    width: 50px;
+    transform: translate(-13px, -50%);
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+  }
+
+  .hidden-value .points-difference {
+    position: absolute;
+    width: 80px;
+    transform: translate(-13px, -50%);
+    text-align: left;
     opacity: 0;
     transition: opacity 0.1s ease-out;
   }
 }
 
 .league-table-row.active {
-  .hidden-value .difference {
-    opacity: 1;
+  .hidden-value * {
+    opacity: .7;
   }
 
   td:first-child {
@@ -50,8 +68,8 @@
 }
 
 .league-table-row:not(.active):hover {
-  .hidden-value .difference {
-    opacity: 1;
+  .hidden-value * {
+    opacity: .7;
   }
 }
 

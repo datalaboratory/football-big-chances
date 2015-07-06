@@ -14,15 +14,11 @@
   }
 
   .small-table-caption.first {
-    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 5 + $buffer-td-width * 4);
+    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 5 + $buffer-td-width * 3);
   }
 
   .small-table-caption.second {
-    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 8 + $buffer-td-width * 5);
-  }
-
-  .small-table-caption.third {
-    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 12 + $buffer-td-width * 5);
+    transform: translateX($num-td-width + $logo-td-width + $name-td-width + $value-td-width * 9 + $buffer-td-width * 4);
   }
 
   .common-table {
