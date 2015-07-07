@@ -26,10 +26,18 @@
   height: $big-field-height;
 
   .for {
+    -ms-transform: rotate(90deg) translate(0, 0 - $big-field-width);
+    -webkit-transform: rotate(90deg) translate(0, 0 - $big-field-width);
+    -moz-transform: rotate(90deg) translate(0, 0 - $big-field-width);
+    -o-transform: rotate(90deg) translate(0, 0 - $big-field-width);
     transform: rotate(90deg) translate(0, 0 - $big-field-width);
   }
 
   .against {
+    -ms-transform: rotate(90deg) scale(-1, -1) translate(0 - $big-field-height, 0);
+    -webkit-transform: rotate(90deg) scale(-1, -1) translate(0 - $big-field-height, 0);
+    -moz-transform: rotate(90deg) scale(-1, -1) translate(0 - $big-field-height, 0);
+    -o-transform: rotate(90deg) scale(-1, -1) translate(0 - $big-field-height, 0);
     transform: rotate(90deg) scale(-1, -1) translate(0 - $big-field-height, 0);
   }
 }
@@ -46,10 +54,18 @@
   height: $small-field-height;
 
   .for {
+    -ms-transform: rotate(90deg) translate(0, 0 - $small-field-width);
+    -webkit-transform: rotate(90deg) translate(0, 0 - $small-field-width);
+    -moz-transform: rotate(90deg) translate(0, 0 - $small-field-width);
+    -o-transform: rotate(90deg) translate(0, 0 - $small-field-width);
     transform: rotate(90deg) translate(0, 0 - $small-field-width);
   }
 
   .against {
+    -ms-transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
+    -webkit-transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
+    -moz-transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
+    -o-transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
     transform: rotate(90deg) scale(-1, -1) translate(0 - $small-field-height, 0);
   }
 }

@@ -28,6 +28,10 @@
   .hidden-value .minus {
     position: absolute;
     width: 9px;
+    -ms-transform: translate(-48px, -50%);
+    -webkit-transform: translate(-48px, -50%);
+    -moz-transform: translate(-48px, -50%);
+    -o-transform: translate(-48px, -50%);
     transform: translate(-48px, -50%);
     text-align: left;
     opacity: 0;
@@ -37,6 +41,10 @@
   .hidden-value .difference {
     position: absolute;
     width: 50px;
+    -ms-transform: translate(-13px, -50%);
+    -webkit-transform: translate(-13px, -50%);
+    -moz-transform: translate(-13px, -50%);
+    -o-transform: translate(-13px, -50%);
     transform: translate(-13px, -50%);
     text-align: left;
     opacity: 0;
@@ -46,6 +54,10 @@
   .hidden-value .points-difference {
     position: absolute;
     width: 80px;
+    -ms-transform: translate(-13px, -50%);
+    -webkit-transform: translate(-13px, -50%);
+    -moz-transform: translate(-13px, -50%);
+    -o-transform: translate(-13px, -50%);
     transform: translate(-13px, -50%);
     text-align: left;
     opacity: 0;
