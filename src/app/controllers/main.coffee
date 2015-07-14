@@ -94,6 +94,32 @@ app.controller 'MainCtrl', ($scope) ->
         $scope.data.leaguesData['premierLeague'][key].Lines = lines
         return
 
+      d3.csv '../data/la-liga-goals-chances.csv', ((d) ->
+        {
+          Team: d.Team
+          Opp: d.Opp
+          Date: moment(d.Date, dateFormat).toDate()
+          Type: d.Type
+          Player: d.Player
+          Timer: d.Timer
+          x1: parseFloat d.x1
+          y1: parseFloat d.y1
+          x2: parseFloat d.x2
+          y2: parseFloat d.y2
+        }
+      ), (error, preparsedData) ->
+        _.keys($scope.data.leaguesData['laLiga']).forEach (key) ->
+          lines = _.filter preparsedData, (pD) ->
+            (pD.Team is key or pD.Opp is key) and pD.Type
+
+          $scope.data.leaguesData['laLiga'][key].Lines = lines
+          return
+
+        $scope.isDataPrepared = true
+
+        $scope.$apply()
+        return
+
       $scope.isDataPrepared = true
 
       $scope.$apply()
