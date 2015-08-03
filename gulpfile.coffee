@@ -39,10 +39,10 @@ vendors =
     'bower_components/lodash/lodash.js'
     'bower_components/moment/moment.js'
     'bower_components/moment-range/dist/moment-range.js'
-    'external_libs/ilya-birman-likely-0.91/likely.js'
+    'external_libs/ilya-birman-likely-0.94/likely.js'
   ]
   styles: [
-    'external_libs/ilya-birman-likely-0.91/likely.css'
+    'external_libs/ilya-birman-likely-0.94/likely.css'
   ]
 
 # Tasks
