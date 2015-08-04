@@ -1,4 +1,4 @@
-app.controller 'MainCtrl', ($scope) ->
+app.controller 'Season1415Ctrl', ($scope) ->
   dateFormat = 'DD.MM.YYYY'
 
   $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
