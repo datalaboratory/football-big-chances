@@ -27,27 +27,16 @@
 
 				.goal {
 					color: $goal-color;
-					cursor: pointer;
 				}
 
 				.big-chance {
 					color: $big-chance-color;
-					cursor: pointer;
 				}
 			}
 		}
 
 		.leagues-switch-container {
 			padding: 10px 0 0 $common-padding-left - 15px;
-		}
-
-		.arrow-container {
-			padding: 0 0 0 10px;
-
-			img {
-				width: 33.5px;
-				height: 29px;
-			}
 		}
 
 		.view-switch-container {
