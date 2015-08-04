@@ -19,17 +19,17 @@ app.directive 'leagueTable', ->
         matches = _.filter $scope.leagueData[key].Matches, (M) ->
           moment($scope.currentDate).diff(M.Date, 'days') >= 0
         values = {
-          cf: if $scope.league is 'premierLeague' then _.sum matches, 'CF' else -1
+          cf: if $scope.league is 'premierLeague' or $scope.league is 'laLiga' then _.sum matches, 'CF' else -1
           gf: _.sum matches, 'GF'
-          ca: if $scope.league is 'premierLeague' then _.sum matches, 'CA' else -1
+          ca: if $scope.league is 'premierLeague' or $scope.league is 'laLiga' then _.sum matches, 'CA' else -1
           ga: _.sum matches, 'GA'
           m: matches.length
           gw: _.filter(matches, (m) -> m.GF > m.GA).length
           gd: _.filter(matches, (m) -> m.GF is m.GA).length
           gl: _.filter(matches, (m) -> m.GF < m.GA).length
-          cw: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF > m.CA).length else -1
-          cd: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF is m.CA).length else -1
-          cl: if $scope.league is 'premierLeague' then  _.filter(matches, (m) -> m.CF < m.CA).length else -1
+          cw: if $scope.league is 'premierLeague' or $scope.league is 'laLiga' then  _.filter(matches, (m) -> m.CF > m.CA).length else -1
+          cd: if $scope.league is 'premierLeague' or $scope.league is 'laLiga' then  _.filter(matches, (m) -> m.CF is m.CA).length else -1
+          cl: if $scope.league is 'premierLeague' or $scope.league is 'laLiga' then  _.filter(matches, (m) -> m.CF < m.CA).length else -1
         }
 
         values.cp = values.cw * 3 + values.cd

@@ -35,20 +35,55 @@ app.controller 'MainCtrl', ($scope) ->
       $scope.data.leaguesData[league] = {}
 
       rawData[index * 2].forEach (d) ->
-        matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
-          {
-            Opp: d.Opp
-            Date: moment(d.Date, dateFormat).toDate()
-            GF: parseInt d.GF
-            GA: parseInt d.GA
-            CF: parseInt d.CF
-            CA: parseInt d.CA
-          }
+        lines = []
+        matches = []
+
+        if league is 'premierLeague' or league is 'laLiga'
+          lines = _.map _.filter(rawData[index * 2 + 1], (rD) ->
+            rD.Team is d.Team or rD.Opp is d.Team
+          ), (fD) ->
+            {
+              Team: fD.Team
+              Opp: fD.Opp
+              Date: moment(fD.Date, dateFormat).toDate()
+              Type: fD.Type
+              Player: fD.Player
+              Timer: fD.Timer
+              x1: parseFloat fD.x1
+              y1: parseFloat fD.y1
+              x2: parseFloat fD.x2
+              y2: parseFloat fD.y2
+              unformattedDate: fD.Date
+            }
+
+          _.uniq(_.pluck(lines, 'unformattedDate')).forEach (unformattedDate) ->
+            matchLines = _.filter lines, (l) -> l.unformattedDate is unformattedDate
+
+            matches.push {
+              Opp: _.filter(_.uniq(_.pluck(matchLines, 'Opp')), (u) -> u isnt d.Team)[0]
+              Date: moment(unformattedDate, dateFormat).toDate()
+              GF: _.filter(matchLines, (mL) -> mL.Team is d.Team and mL.Type.indexOf('G') isnt -1).length
+              GA: _.filter(matchLines, (mL) -> mL.Team isnt d.Team and mL.Type.indexOf('G') isnt -1).length
+              CF: _.filter(matchLines, (mL) -> mL.Team is d.Team and mL.Type and mL.Type isnt 'GF').length
+              CA: _.filter(matchLines, (mL) -> mL.Team isnt d.Team and mL.Type and mL.Type isnt 'GF').length
+            }
+
+            lines = _.filter lines, (l) -> l.Type
+        else
+          matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
+            {
+              Opp: d.Opp
+              Date: moment(d.Date, dateFormat).toDate()
+              GF: parseInt d.GF
+              GA: parseInt d.GA
+              CF: parseInt d.CF
+              CA: parseInt d.CA
+            }
 
         $scope.data.leaguesData[league][d.Team] =
           RUS: d.RUS
           Matches: matches
-          Lines: []
+          Lines: lines
         return
       return
 
@@ -61,6 +96,7 @@ app.controller 'MainCtrl', ($scope) ->
       i += 2
 
     $scope.data.dates.matches = _.map(_.uniq(dates), (d) ->
+      console.log d, moment(d, dateFormat).toDate()
       moment(d, dateFormat).toDate()
     ).sort (a, b) ->
       a - b
@@ -72,66 +108,17 @@ app.controller 'MainCtrl', ($scope) ->
 
     $scope.data.dates.current = $scope.data.dates.matches[$scope.data.dates.matches.length - 1]
 
-    # Goals and chances
-    d3.csv '../data/premier-league-goals-chances.csv', ((d) ->
-      {
-        Team: d.Team
-        Opp: d.Opp
-        Date: moment(d.Date, dateFormat).toDate()
-        Type: d.Type
-        Player: d.Player
-        Timer: d.Timer
-        x1: parseFloat d.x1
-        y1: parseFloat d.y1
-        x2: parseFloat d.x2
-        y2: parseFloat d.y2
-      }
-    ), (error, preparsedData) ->
-      _.keys($scope.data.leaguesData['premierLeague']).forEach (key) ->
-        lines = _.filter preparsedData, (pD) ->
-          (pD.Team is key or pD.Opp is key) and pD.Type
+    $scope.isDataPrepared = true
 
-        $scope.data.leaguesData['premierLeague'][key].Lines = lines
-        return
-
-      d3.csv '../data/la-liga-goals-chances.csv', ((d) ->
-        {
-          Team: d.Team
-          Opp: d.Opp
-          Date: moment(d.Date, dateFormat).toDate()
-          Type: d.Type
-          Player: d.Player
-          Timer: d.Timer
-          x1: parseFloat d.x1
-          y1: parseFloat d.y1
-          x2: parseFloat d.x2
-          y2: parseFloat d.y2
-        }
-      ), (error, preparsedData) ->
-        _.keys($scope.data.leaguesData['laLiga']).forEach (key) ->
-          lines = _.filter preparsedData, (pD) ->
-            (pD.Team is key or pD.Opp is key) and pD.Type
-
-          $scope.data.leaguesData['laLiga'][key].Lines = lines
-          return
-
-        $scope.isDataPrepared = true
-
-        $scope.$apply()
-        return
-
-      $scope.isDataPrepared = true
-
-      $scope.$apply()
-      return
+    $scope.$apply()
     return
 
   # Load data
   queue()
   .defer d3.csv, '../data/premier-league-teams.csv'
-  .defer d3.csv, '../data/premier-league-results.csv'
+  .defer d3.csv, '../data/premier-league-goals-chances.csv'
   .defer d3.csv, '../data/la-liga-teams.csv'
-  .defer d3.csv, '../data/la-liga-results.csv'
+  .defer d3.csv, '../data/la-liga-goals-chances.csv'
   .defer d3.csv, '../data/bundesliga-teams.csv'
   .defer d3.csv, '../data/bundesliga-results.csv'
   .defer d3.csv, '../data/serie-a-teams.csv'
