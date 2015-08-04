@@ -1,4 +1,4 @@
-app.controller 'MainCtrl', ($scope) ->
+app.controller 'Season1516Ctrl', ($scope) ->
   dateFormat = 'DD.MM.YYYY'
 
   $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
@@ -96,7 +96,6 @@ app.controller 'MainCtrl', ($scope) ->
       i += 2
 
     $scope.data.dates.matches = _.map(_.uniq(dates), (d) ->
-      console.log d, moment(d, dateFormat).toDate()
       moment(d, dateFormat).toDate()
     ).sort (a, b) ->
       a - b
