@@ -3,6 +3,21 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
   $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
 
+  $scope.monthNames = [
+    ['янв', 'янв'],
+    ['фев', 'фев'],
+    ['мар', 'мар'],
+    ['апр', 'апр'],
+    ['май', 'мая'],
+    ['июнь', 'июня'],
+    ['июль', 'июля'],
+    ['авг', 'авг'],
+    ['сен', 'сен'],
+    ['окт', 'окт'],
+    ['ноя', 'ноя'],
+    ['дек', 'дек']
+  ]
+
   $scope.data =
     activeLeagues:
       premierLeague: true

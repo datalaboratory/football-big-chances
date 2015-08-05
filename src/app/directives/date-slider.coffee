@@ -1,18 +1,4 @@
 app.directive 'dateSlider', ($document) ->
-  monthNames = [
-    ['янв', 'янв'],
-    ['фев', 'фев'],
-    ['мар', 'мар'],
-    ['апр', 'апр'],
-    ['май', 'мая'],
-    ['июнь', 'июня'],
-    ['июль', 'июля'],
-    ['авг', 'авг'],
-    ['сен', 'сен'],
-    ['окт', 'окт'],
-    ['ноя', 'ноя'],
-    ['дек', 'дек']
-  ]
   restrict: 'E'
   templateUrl: 'templates/directives/date-slider.html'
   scope:
@@ -20,6 +6,7 @@ app.directive 'dateSlider', ($document) ->
     matchDates: '='
     startDate: '='
     currentDate: '='
+    monthNames: '='
   link: ($scope, $element, $attrs) ->
     sliderWidth = $element[0].getBoundingClientRect().width
     sliderLeftOffset = $element.offset().left
@@ -34,7 +21,7 @@ app.directive 'dateSlider', ($document) ->
     $scope.getCurrentDay = ->
       mDate = moment($scope.currentDate)
       if !mDate.isSame($scope.startDate)
-        mDate.date() + ' ' + monthNames[mDate.month()][1]
+        mDate.date() + ' ' + $scope.monthNames[mDate.month()][1]
       else
         ''
 
@@ -47,9 +34,9 @@ app.directive 'dateSlider', ($document) ->
       year = moment(date).year()
 
       if isStart or day is 1 and !month
-        monthNames[month][0] + ' ' + year
+        $scope.monthNames[month][0] + ' ' + year
       else if day is 1
-        monthNames[month][0]
+        $scope.monthNames[month][0]
       else
         ''
 

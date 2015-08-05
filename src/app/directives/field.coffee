@@ -1,5 +1,4 @@
 app.directive 'field', ->
-  shortMonths = ['янв', 'фев', 'мар', 'апр', 'мая', 'июня', 'июля', 'авг', 'сен', 'окт', 'ноя', 'дек']
   coeff =
     big: 3.36
     small: 5.17
@@ -14,6 +13,7 @@ app.directive 'field', ->
     team: '='
     currentDate: '='
     shownTypes: '='
+    monthNames: '='
     type: '@'
   link: ($scope, $element, $attrs) ->
     d3element = d3.select $element[0]
@@ -80,7 +80,7 @@ app.directive 'field', ->
 
     $scope.getFormattedDate = (date) ->
       mDate = moment(date)
-      mDate.date() + ' ' + shortMonths[mDate.month()]
+      mDate.date() + ' ' + $scope.monthNames[mDate.month()][1]
 
     $element.mousemove (event) ->
       tooltip.css
