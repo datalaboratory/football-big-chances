@@ -35,17 +35,6 @@ app.directive 'field', ->
 
     $scope.$watch 'team', (-> updateLines()), true
 
-    $scope.$watch 'shownTypes', (->
-      if $scope.shownTypes.length
-        d3element.selectAll('.line').style 'opacity', 0
-        $scope.shownTypes.forEach (type) ->
-          d3element.selectAll('.' + type).style 'opacity', .7
-          return
-      else
-        d3element.selectAll('.line').style 'opacity', .7
-      return
-    ), true
-
     $scope.getX = (original) ->
       original / coeff[$scope.type] + xOffset[$scope.type]
 
@@ -64,8 +53,6 @@ app.directive 'field', ->
         classes += ' for'
       else
         classes += ' against'
-
-      classes += ' ' + line.Type.toLowerCase()
 
       classes
 

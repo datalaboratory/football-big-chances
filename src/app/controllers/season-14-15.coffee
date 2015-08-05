@@ -21,7 +21,7 @@ app.controller 'Season1415Ctrl', ($scope) ->
     selectedTeam:
       league: 'premierLeague'
       name: 'CHE'
-    shownTypes: []
+    shownTypes: ['G', 'CG', 'CO', 'CB', 'CS']
 
   $scope.isDataPrepared = false
 

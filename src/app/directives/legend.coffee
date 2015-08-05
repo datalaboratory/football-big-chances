@@ -11,50 +11,50 @@ app.directive 'legend', ->
     $scope.legendItems = [
       {
         title: 'Явный голевой момент → гол'
-        type: 'cg'
+        type: 'CG'
         lineMarker: 'url(#common-goal)'
         lineClass: 'goal'
       }
       {
         title: '→ Промах'
-        type: 'co'
+        type: 'CO'
         lineMarker: 'url(#common-big-chance)'
         lineClass: 'big-chance'
       }
       {
         title: '→ Блок'
-        type: 'cb'
+        type: 'CB'
         lineMarker: 'url(#blocked)'
         lineClass: 'big-chance'
       }
       {
         title: '→ Сейв'
-        type: 'cs'
+        type: 'CS'
         lineMarker: 'url(#saved)'
         lineClass: 'big-chance'
       }
       {
         title: 'Голы без момента'
-        type: 'g'
+        type: 'G'
         lineMarker: 'url(#accidental-goal)'
         lineClass: 'goal'
       }
     ]
 
     $scope.values =
-      cg:
+      CG:
         for: 0
         against: 0
-      g:
+      G:
         for: 0
         against: 0
-      co:
+      CO:
         for: 0
         against: 0
-      cb:
+      CB:
         for: 0
         against: 0
-      cs:
+      CS:
         for: 0
         against: 0
 
@@ -62,16 +62,16 @@ app.directive 'legend', ->
       lines = _.filter $scope.linesData, (L) ->
         moment($scope.currentDate).diff(L.Date, 'days') >= 0
 
-      $scope.values.cg.for = _.filter(lines, (l) -> l.Type is 'CG' and l.Team is $scope.team.name).length
-      $scope.values.cg.against = _.filter(lines, (l) -> l.Type is 'CG' and l.Team isnt $scope.team.name).length
-      $scope.values.g.for = _.filter(lines, (l) -> l.Type is 'G' and l.Team is $scope.team.name).length
-      $scope.values.g.against = _.filter(lines, (l) -> l.Type is 'G' and l.Team isnt $scope.team.name).length
-      $scope.values.co.for = _.filter(lines, (l) -> l.Type is 'CO' and l.Team is $scope.team.name).length
-      $scope.values.co.against = _.filter(lines, (l) -> l.Type is 'CO' and l.Team isnt $scope.team.name).length
-      $scope.values.cb.for = _.filter(lines, (l) -> l.Type is 'CB' and l.Team is $scope.team.name).length
-      $scope.values.cb.against = _.filter(lines, (l) -> l.Type is 'CB' and l.Team isnt $scope.team.name).length
-      $scope.values.cs.for = _.filter(lines, (l) -> l.Type is 'CS' and l.Team is $scope.team.name).length
-      $scope.values.cs.against = _.filter(lines, (l) -> l.Type is 'CS' and l.Team isnt $scope.team.name).length
+      $scope.values.CG.for = _.filter(lines, (l) -> l.Type is 'CG' and l.Team is $scope.team.name).length
+      $scope.values.CG.against = _.filter(lines, (l) -> l.Type is 'CG' and l.Team isnt $scope.team.name).length
+      $scope.values.G.for = _.filter(lines, (l) -> l.Type is 'G' and l.Team is $scope.team.name).length
+      $scope.values.G.against = _.filter(lines, (l) -> l.Type is 'G' and l.Team isnt $scope.team.name).length
+      $scope.values.CO.for = _.filter(lines, (l) -> l.Type is 'CO' and l.Team is $scope.team.name).length
+      $scope.values.CO.against = _.filter(lines, (l) -> l.Type is 'CO' and l.Team isnt $scope.team.name).length
+      $scope.values.CB.for = _.filter(lines, (l) -> l.Type is 'CB' and l.Team is $scope.team.name).length
+      $scope.values.CB.against = _.filter(lines, (l) -> l.Type is 'CB' and l.Team isnt $scope.team.name).length
+      $scope.values.CS.for = _.filter(lines, (l) -> l.Type is 'CS' and l.Team is $scope.team.name).length
+      $scope.values.CS.against = _.filter(lines, (l) -> l.Type is 'CS' and l.Team isnt $scope.team.name).length
       return
 
     $scope.$watch 'currentDate', -> updateValues()
