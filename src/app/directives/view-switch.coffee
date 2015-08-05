@@ -11,7 +11,7 @@ app.directive 'viewSwitch', ->
     $scope.buttonOnClick = (view) ->
       $scope.view = view
       if view is 'fileds'
-        $scope.shownTypes = []
+        $scope.shownTypes = ['G', 'CG', 'CO', 'CB', 'CS']
       return
 
     $scope.isButtonActive = (view) ->
