@@ -14,7 +14,7 @@
         data-ng-repeat="line in lines track by $index"
         data-ng-mouseover="lineOnMouseover(line)"
         data-ng-mouseleave="lineOnMouseleave()"
-        data-ng-style="{'opacity': shownTypes.indexOf(line.Type) === -1 ? 0 : .7}">
+        data-ng-style="{'visibility': shownTypes.indexOf(line.Type) === -1 ? 'hidden' : 'visible'}">
         <line
           class="background-line"
           data-ng-attr-x1="{{getX(line.x1)}}"
