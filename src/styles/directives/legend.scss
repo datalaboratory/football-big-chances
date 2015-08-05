@@ -1,28 +1,64 @@
 @import '../variables';
 
 .legend {
-  .line-sample {
-    width: 60px;
-    height: 15px;
-
-    line {
-      stroke-width: .5;
-    }
-
-    .goal {
-      stroke: $goal-color;
-      fill: $goal-color;
-    }
-
-    .big-chance {
-      stroke: $big-chance-color;
-      fill: $big-chance-color;
-    }
+  img.legend-team-logo {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -25px;
+    left: 108px;
   }
 
-  .line-caption {
-    display: inline-block;
-    font-family: $helvetica-neue-light;
-    font-size: $small-font-size;
+  .legend-item {
+    margin: 0 0 5px 0;
+
+    .line-sample {
+      width: 50px;
+      height: 18px;
+
+      line {
+        stroke-width: .5;
+      }
+
+      .goal {
+        stroke: $goal-color;
+        fill: $goal-color;
+      }
+
+      .big-chance {
+        stroke: $big-chance-color;
+        fill: $big-chance-color;
+      }
+    }
+
+    .line-caption {
+      margin: 0 0 0 10px;
+      font-family: $helvetica-neue-light;
+      font-size: $common-font-size;
+      cursor: pointer;
+      transition: color 0.25s ease-out;
+
+      .against {
+        width: 30px;
+        margin: 0 5px 0 0;
+        text-align: right;
+      }
+
+      .for {
+        width: 30px;
+        margin: 0 15px 0 0;
+        text-align: right;
+      }
+
+      .checkbox {
+        width: 13px;
+        height: 14px;
+        margin: 1px 5px 0 0;
+      }
+    }
+
+    .line-caption.active {
+      color: $button-hover-color;
+    }
   }
 }

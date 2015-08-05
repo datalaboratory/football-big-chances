@@ -1,19 +1,19 @@
 @import '../variables';
 
 .field {
+  .line {
+    opacity: .7;
+    transition: opacity .25s ease-out;
+  }
+
   .main-line {
     stroke-width: .5;
-    transition: opacity .25s ease-out;
   }
 
   .background-line {
     stroke-width: 5;
     opacity: 0;
     stroke: white;
-  }
-
-  .goal {
-    cursor: pointer;
   }
 
   .goal .main-line {
@@ -25,15 +25,15 @@
     stroke: $big-chance-color;
     fill: $big-chance-color;
   }
-
-  .past .main-line {
-    opacity: .5;
-  }
 }
 
 .field.big {
   width: $big-field-width;
   height: $big-field-height;
+
+  .goal {
+    cursor: pointer;
+  }
 
   .for {
     -ms-transform: rotate(90deg) translate(0, 0 - $big-field-width);

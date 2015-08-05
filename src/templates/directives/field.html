@@ -36,6 +36,6 @@
 <div
   class="tooltip"
   data-ng-class="{'premier-league': team.league === 'premierLeague', 'la-liga': team.league === 'laLiga', 'bundesliga': team.league === 'bundesliga', 'serie-a': team.league === 'serieA', 'ligue-one': team.league === 'ligueOne'}"
-  data-ng-show="selectedLine.Type === 'GF' || selectedLine.Type === 'CF-G'">
+  data-ng-show="(selectedLine.Type === 'G' || selectedLine.Type === 'CG') && type === 'big'">
   {{selectedLine.Player}}, {{leagueData[team.name === selectedLine.Team ? selectedLine.Opp : selectedLine.Team].RUS}}, {{getFormattedDate(selectedLine.Date)}}
 </div>

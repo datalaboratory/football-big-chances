@@ -3,12 +3,15 @@ app.directive 'viewSwitch', ->
   templateUrl: 'templates/directives/view-switch.html'
   scope:
     view: '='
+    shownTypes: '='
   link: ($scope, $element, $attrs) ->
     $scope.lbHovered = false
     $scope.rbHovered = false
 
     $scope.buttonOnClick = (view) ->
       $scope.view = view
+      if view is 'fileds'
+        $scope.shownTypes = []
       return
 
     $scope.isButtonActive = (view) ->

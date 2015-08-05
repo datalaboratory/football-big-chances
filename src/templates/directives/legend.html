@@ -1,32 +1,34 @@
 <div class="legend">
-  <div class="legend-item">
-    <svg class="line-sample">
-      <line class="goal" x1="0" y1="9" x2="50" y2="9" marker-end="url(#common-goal)"></line>
+  <img
+    class="legend-team-logo"
+    data-ng-src="../img/teams/{{team.league}}/{{team.name}}.png" />
+  <div
+    class="legend-item"
+    data-ng-repeat="legendItem in legendItems track by $index">
+    <svg class="line-sample inline">
+      <line
+        data-ng-class="legendItem.lineClass"
+        x1="0"
+        y1="50%"
+        x2="90%"
+        y2="50%"
+        data-ng-attr-marker-end="{{legendItem.lineMarker}}">
+      </line>
     </svg>
-    <div class="line-caption">Гол из явного голевого момента</div>
-  </div>
-  <div class="legend-item">
-    <svg class="line-sample">
-      <line class="goal" x1="0" y1="9" x2="50" y2="9" marker-end="url(#accidental-goal)"></line>
-    </svg>
-    <div class="line-caption">Гол без момента</div>
-  </div>
-  <div class="legend-item">
-    <svg class="line-sample">
-      <line class="big-chance" x1="0" y1="9" x2="50" y2="9" marker-end="url(#common-big-chance)"></line>
-    </svg>
-    <div class="line-caption">Промах</div>
-  </div>
-  <div class="legend-item">
-    <svg class="line-sample">
-      <line class="big-chance" x1="0" y1="9" x2="50" y2="9" marker-end="url(#blocked)"></line>
-    </svg>
-    <div class="line-caption">Блок</div>
-  </div>
-  <div class="legend-item">
-    <svg class="line-sample">
-      <line class="big-chance" x1="0" y1="9" x2="50" y2="9" marker-end="url(#saved)"></line>
-    </svg>
-    <div class="line-caption">Сейв</div>
+    <div
+      class="line-caption inline"
+      data-ng-class="{'active': isItemSelected(legendItem.type) || hovered}"
+      data-ng-click="itemClick(legendItem.type)"
+      data-ng-mouseover="hovered = true"
+      data-ng-mouseout="hovered = false">
+      <span class="against inline">{{values[legendItem.type].against}}</span>
+      <span class="for inline">{{values[legendItem.type].for}}</span>
+      <img
+        class="checkbox inline"
+        data-ng-src="../img/accessories/check-box{{hovered ? (isItemSelected(legendItem.type) ? '-hover' : '-empty-hover') : (isItemSelected(legendItem.type) ? '' : '-empty')}}.png" />
+      <span class="inline">{{legendItem.title}}</span>
+      <br class="clear-both" />
+    </div>
+    <br class="clear-both" />
   </div>
 </div>

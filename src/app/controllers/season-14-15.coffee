@@ -21,7 +21,7 @@ app.controller 'Season1415Ctrl', ($scope) ->
     selectedTeam:
       league: 'premierLeague'
       name: 'CHE'
-    showOnly: ''
+    shownTypes: []
 
   $scope.isDataPrepared = false
 
@@ -64,8 +64,8 @@ app.controller 'Season1415Ctrl', ($scope) ->
               Date: moment(unformattedDate, dateFormat).toDate()
               GF: _.filter(matchLines, (mL) -> mL.Team is d.Team and mL.Type.indexOf('G') isnt -1).length
               GA: _.filter(matchLines, (mL) -> mL.Team isnt d.Team and mL.Type.indexOf('G') isnt -1).length
-              CF: _.filter(matchLines, (mL) -> mL.Team is d.Team and mL.Type and mL.Type isnt 'GF').length
-              CA: _.filter(matchLines, (mL) -> mL.Team isnt d.Team and mL.Type and mL.Type isnt 'GF').length
+              CF: _.filter(matchLines, (mL) -> mL.Team is d.Team and mL.Type and mL.Type isnt 'G').length
+              CA: _.filter(matchLines, (mL) -> mL.Team isnt d.Team and mL.Type and mL.Type isnt 'G').length
             }
 
             lines = _.filter lines, (l) -> l.Type

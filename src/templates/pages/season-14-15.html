@@ -23,7 +23,8 @@
 			</div>
 			<div class="view-switch-container inline">
 				<view-switch
-					data-view="data.currentView">
+					data-view="data.currentView"
+					data-shown-types="data.shownTypes">
 				</view-switch>
 			</div>
 			<br class="clear-both" />
@@ -47,14 +48,20 @@
 	      data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
 	      data-ng-src="../img/teams/{{data.selectedTeam.league}}/{{data.selectedTeam.name}}.png">
 			<div class="legend-container">
-				<legend></legend>
+				<legend
+					data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
+					data-shown-types="data.shownTypes"
+					data-team="data.selectedTeam"
+					data-lines-data="data.leaguesData[data.selectedTeam.league][data.selectedTeam.name].Lines"
+					data-current-date="data.dates.current">
+				</legend>
 			</div>
 		  <div class="svg-field-container inline">
 				<field
 					data-league-data="data.leaguesData[data.selectedTeam.league]"
 					data-team="data.selectedTeam"
 					data-current-date="data.dates.current"
-					data-show-only="data.showOnly"
+					data-shown-types="data.shownTypes"
 					data-type="big">
 				</field>
 		  </div>
@@ -86,7 +93,7 @@
 			data-active-leagues="data.activeLeagues"
 			data-leagues-data="data.leaguesData"
 			data-current-date="data.dates.current"
-			data-show-only="data.showOnly">
+			data-shown-types="data.shownTypes">
 		</small-multiples>
 		<datalab-footer></datalab-footer>
 	</div>

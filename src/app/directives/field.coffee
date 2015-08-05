@@ -13,13 +13,11 @@ app.directive 'field', ->
     leagueData: '='
     team: '='
     currentDate: '='
-    showOnly: '='
+    shownTypes: '='
     type: '@'
   link: ($scope, $element, $attrs) ->
     d3element = d3.select $element[0]
     tooltip = $element.find '.tooltip'
-
-    $scope.linesData = $scope.leagueData[$scope.team.name].Lines
 
     $scope.selectedLine = undefined
 
@@ -29,7 +27,7 @@ app.directive 'field', ->
       $scope.lines = []
       return unless $scope.team.league and $scope.team.name
 
-      $scope.lines = _.filter $scope.linesData, (L) ->
+      $scope.lines = _.filter $scope.leagueData[$scope.team.name].Lines, (L) ->
         moment($scope.currentDate).diff(L.Date, 'days') >= 0
       return
 
@@ -37,18 +35,16 @@ app.directive 'field', ->
 
     $scope.$watch 'team', (-> updateLines()), true
 
-    $scope.$watch 'showOnly', ->
-      if $scope.showOnly is 'goals'
-        d3element.selectAll('.big-chance').style 'opacity', 0
-      else if $scope.showOnly is 'big-chances'
-        d3element.selectAll('.goal').style 'opacity', 0
+    $scope.$watch 'shownTypes', (->
+      if $scope.shownTypes.length
+        d3element.selectAll('.line').style 'opacity', 0
+        $scope.shownTypes.forEach (type) ->
+          d3element.selectAll('.' + type).style 'opacity', .7
+          return
       else
-        d3element.selectAll('.line').style 'opacity', ->
-          if d3.select(@).classed('past')
-            .5
-          else
-            1
+        d3element.selectAll('.line').style 'opacity', .7
       return
+    ), true
 
     $scope.getX = (original) ->
       original / coeff[$scope.type] + xOffset[$scope.type]
@@ -69,21 +65,20 @@ app.directive 'field', ->
       else
         classes += ' against'
 
-      if moment($scope.currentDate).diff(line.Date, 'days')
-        classes += ' past'
+      classes += ' ' + line.Type.toLowerCase()
 
       classes
 
     $scope.getMarkerEnd = (line) ->
-      if line.Type is 'GF'
+      if line.Type is 'G'
         'url(#accidental-goal)'
-      else if line.Type is 'CF-G'
+      else if line.Type is 'CG'
         'url(#common-goal)'
-      else if line.Type is 'CF-O'
+      else if line.Type is 'CO'
         'url(#common-big-chance)'
-      else if line.Type is 'CF-B'
+      else if line.Type is 'CB'
         'url(#blocked)'
-      else if line.Type is 'CF-S'
+      else if line.Type is 'CS'
         'url(#saved)'
       else
         ''

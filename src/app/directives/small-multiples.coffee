@@ -5,7 +5,7 @@ app.directive 'smallMultiples', ->
     activeLeagues: '='
     leaguesData: '='
     currentDate: '='
-    showOnly: '='
+    shownTypes: '='
   link: ($scope, $element, $attrs) ->
     $scope.getPoints = (obj) ->
       gw = _.filter(obj.Matches, (M) -> M.GF > M.GA).length
