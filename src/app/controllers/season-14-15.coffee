@@ -70,14 +70,15 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
             lines = _.filter lines, (l) -> l.Type
         else
-          matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (d) ->
+          matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (fD) ->
             {
-              Opp: d.Opp
-              Date: moment(d.Date, dateFormat).toDate()
-              GF: parseInt d.GF
-              GA: parseInt d.GA
-              CF: parseInt d.CF
-              CA: parseInt d.CA
+              Opp: fD.Opp
+              Date: moment(fD.Date, dateFormat).toDate()
+              GF: parseInt fD.GF
+              GA: parseInt fD.GA
+              CF: parseInt fD.CF
+              CA: parseInt fD.CA
+              unformattedDate: fD.Date
             }
 
         $scope.data.leaguesData[league][d.Team] =

@@ -1,3 +1,6 @@
+<img
+  data-ng-class="{'big-field-image': type === 'big', 'small-field-image': type === 'small'}"
+  data-ng-src="../img/fields/{{type}}.png">
 <svg
   class="field"
   data-ng-class="{'big': type === 'big', 'small': type === 'small'}">
@@ -5,19 +8,34 @@
     <g
       class="lines"
       data-ng-if="lines.length">
-      <line
+      <g
         class="line"
-        data-ng-repeat="line in lines track by $index"
         data-ng-class="getStyle(line)"
-        data-ng-attr-x1="{{getX(line.x1)}}"
-        data-ng-attr-y1="{{getY(line.y1)}}"
-        data-ng-attr-x2="{{getX(line.x2)}}"
-        data-ng-attr-y2="{{getY(line.y2)}}"
-        data-ng-attr-marker-end="{{getMarkerEnd(line)}}"
-      </line>
+        data-ng-repeat="line in lines track by $index"
+        data-ng-mouseover="lineOnMouseover(line)"
+        data-ng-mouseleave="lineOnMouseleave()">
+        <line
+          class="background-line"
+          data-ng-attr-x1="{{getX(line.x1)}}"
+          data-ng-attr-y1="{{getY(line.y1)}}"
+          data-ng-attr-x2="{{getX(line.x2)}}"
+          data-ng-attr-y2="{{getY(line.y2)}}">
+        </line>
+        <line
+          class="main-line"
+          data-ng-attr-x1="{{getX(line.x1)}}"
+          data-ng-attr-y1="{{getY(line.y1)}}"
+          data-ng-attr-x2="{{getX(line.x2)}}"
+          data-ng-attr-y2="{{getY(line.y2)}}"
+          data-ng-attr-marker-end="{{getMarkerEnd(line)}}">
+        </line>
+      </g>
     </g>
   </g>
 </svg>
-<img
-  data-ng-class="{'big-field-image': type === 'big', 'small-field-image': type === 'small'}"
-  data-ng-src="../img/fields/{{type}}.png">
+<div
+  class="tooltip"
+  data-ng-class="{'premier-league': team.league === 'premierLeague', 'la-liga': team.league === 'laLiga', 'bundesliga': team.league === 'bundesliga', 'serie-a': team.league === 'serieA', 'ligue-one': team.league === 'ligueOne'}"
+  data-ng-show="selectedLine.Type === 'GF' || selectedLine.Type === 'CF-G'">
+  {{selectedLine.Player}}, {{leagueData[team.name === selectedLine.Team ? selectedLine.Opp : selectedLine.Team].RUS}}, {{getFormattedDate(selectedLine.Date)}}
+</div>

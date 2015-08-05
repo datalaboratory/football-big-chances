@@ -1,4 +1,5 @@
 app.directive 'field', ->
+  shortMonths = ['янв', 'фев', 'мар', 'апр', 'мая', 'июня', 'июля', 'авг', 'сен', 'окт', 'ноя', 'дек']
   coeff =
     big: 3.36
     small: 5.17
@@ -9,13 +10,18 @@ app.directive 'field', ->
   templateNamespace: 'svg'
   templateUrl: 'templates/directives/field.html'
   scope:
-    linesData: '='
+    leagueData: '='
     team: '='
     currentDate: '='
     showOnly: '='
     type: '@'
   link: ($scope, $element, $attrs) ->
     d3element = d3.select $element[0]
+    tooltip = $element.find '.tooltip'
+
+    $scope.linesData = $scope.leagueData[$scope.team.name].Lines
+
+    $scope.selectedLine = undefined
 
     $scope.lines = []
 
@@ -81,5 +87,23 @@ app.directive 'field', ->
         'url(#saved)'
       else
         ''
+
+    $scope.lineOnMouseover = (line) ->
+      $scope.selectedLine = line
+      return
+
+    $scope.lineOnMouseleave = ->
+      $scope.selectedLine = undefined
+      return
+
+    $scope.getFormattedDate = (date) ->
+      mDate = moment(date)
+      mDate.date() + ' ' + shortMonths[mDate.month()]
+
+    $element.mousemove (event) ->
+      tooltip.css
+        'top': event.clientY + 20
+        'left': event.clientX + 10
+      return
 
     return

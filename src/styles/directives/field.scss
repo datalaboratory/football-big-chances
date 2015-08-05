@@ -1,22 +1,32 @@
 @import '../variables';
 
 .field {
-  line {
+  .main-line {
     stroke-width: .5;
     transition: opacity .25s ease-out;
   }
 
+  .background-line {
+    stroke-width: 5;
+    opacity: 0;
+    stroke: white;
+  }
+
   .goal {
+    cursor: pointer;
+  }
+
+  .goal .main-line {
     stroke: $goal-color;
     fill: $goal-color;
   }
 
-  .big-chance {
+  .big-chance .main-line {
     stroke: $big-chance-color;
     fill: $big-chance-color;
   }
 
-  .past {
+  .past .main-line {
     opacity: .5;
   }
 }
@@ -47,6 +57,7 @@
   top: 10px;
   width: $big-field-width;
   height: $big-field-height;
+  pointer-events: none;
 }
 
 .field.small {
@@ -75,4 +86,34 @@
   top: 38px;
   width: $small-field-width;
   height: $small-field-height;
+  pointer-events: none;
+}
+
+.tooltip {
+  display: block;
+  position: fixed;
+  padding: 1px 3px 1px 3px;
+  border-radius: 3px;
+  font-family: $helvetica-neue-light;
+  font-size: $small-font-size;
+}
+
+.tooltip.premier-league {
+  background-color: $sm-premier-league-color;
+}
+
+.tooltip.la-liga {
+  background-color: $sm-la-liga-color;
+}
+
+.tooltip.bundesliga {
+  background-color: $sm-bundesliga-color;
+}
+
+.tooltip.serie-a {
+  background-color: $sm-serie-a-color;
+}
+
+.tooltip.ligue-one {
+  background-color: $sm-ligue-one-color;
 }

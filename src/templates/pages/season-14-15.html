@@ -46,18 +46,18 @@
 	      class="team-logo"
 	      data-ng-if="data.selectedTeam.league && data.selectedTeam.name"
 	      data-ng-src="../img/teams/{{data.selectedTeam.league}}/{{data.selectedTeam.name}}.png">
+			<div class="legend-container">
+				<legend></legend>
+			</div>
 		  <div class="svg-field-container inline">
 				<field
-					data-lines-data="data.leaguesData[data.selectedTeam.league][data.selectedTeam.name].Lines"
+					data-league-data="data.leaguesData[data.selectedTeam.league]"
 					data-team="data.selectedTeam"
 					data-current-date="data.dates.current"
 					data-show-only="data.showOnly"
 					data-type="big">
 				</field>
 		  </div>
-			<div class="legend-container">
-				<legend></legend>
-			</div>
 		</div>
 		<div class="tables-header-container">
 			<tables-header
