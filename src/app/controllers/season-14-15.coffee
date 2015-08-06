@@ -18,7 +18,14 @@ app.controller 'Season1415Ctrl', ($scope) ->
     ['дек', 'дек']
   ]
 
-  $scope.data =
+  $scope.seasons = ['2014-2015', '2015-2016']
+
+  $scope.allDates = []
+  $scope.matchDates = []
+
+  $scope.leaguesData = {}
+
+  $scope.model =
     activeLeagues:
       premierLeague: true
       laLiga: false
@@ -26,12 +33,8 @@ app.controller 'Season1415Ctrl', ($scope) ->
       serieA: false
       ligueOne: false
     currentView: 'field-table'
-    dates:
-      all: []
-      matches: []
-      left: undefined
-      right: undefined
-    leaguesData: {}
+    leftDate: undefined
+    rightDate: undefined
     sortBy: 'GP'
     sortingOrder: true
     selectedTeam:
@@ -48,7 +51,7 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
     # Leagues and teams data
     $scope.leagues.forEach (league, index) ->
-      $scope.data.leaguesData[league] = {}
+      $scope.leaguesData[league] = {}
 
       rawData[index * 2].forEach (d) ->
         lines = []
@@ -97,7 +100,7 @@ app.controller 'Season1415Ctrl', ($scope) ->
               unformattedDate: fD.Date
             }
 
-        $scope.data.leaguesData[league][d.Team] =
+        $scope.leaguesData[league][d.Team] =
           RUS: d.RUS
           Matches: matches
           Lines: lines
@@ -112,18 +115,18 @@ app.controller 'Season1415Ctrl', ($scope) ->
       dates = dates.concat _.pluck rawData[i], 'Date'
       i += 2
 
-    $scope.data.dates.matches = _.map(_.uniq(dates), (d) ->
+    $scope.matchDates = _.map(_.uniq(dates), (d) ->
       moment(d, dateFormat).toDate()
     ).sort (a, b) ->
       a - b
 
-    startDate = moment($scope.data.dates.matches[0]).subtract(1, 'days').toDate()
+    startDate = moment($scope.matchDates[0]).subtract(1, 'days').toDate()
 
-    moment.range(startDate, $scope.data.dates.matches[$scope.data.dates.matches.length - 1]).by 'days', (d) ->
-      $scope.data.dates.all.push d.toDate()
+    moment.range(startDate, $scope.matchDates[$scope.matchDates.length - 1]).by 'days', (d) ->
+      $scope.allDates.push d.toDate()
 
-    $scope.data.dates.right = if moment().toDate() > $scope.data.dates.matches[$scope.data.dates.matches.length - 1] then $scope.data.dates.matches[$scope.data.dates.matches.length - 1] else moment().toDate()
-    $scope.data.dates.left = $scope.data.dates.all[0]
+    $scope.model.rightDate = if moment().toDate() > $scope.matchDates[$scope.matchDates.length - 1] then $scope.matchDates[$scope.matchDates.length - 1] else moment().toDate()
+    $scope.model.leftDate = $scope.allDates[0]
 
     $scope.isDataPrepared = true
 
