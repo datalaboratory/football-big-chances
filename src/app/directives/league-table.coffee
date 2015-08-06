@@ -19,7 +19,7 @@ app.directive 'leagueTable', ->
         matches = _.filter $scope.leagueData[key].Matches, (M) ->
           moment($scope.currentDate).diff(M.Date, 'days') >= 0
 
-        noChancesData = !_.compact(_.pluck(matches, 'CF')).length or !_.compact(_.pluck(matches, 'CA')).length
+        noChancesData = _.filter(_.pluck(matches, 'CF'), (d) -> isNaN(d)).length or _.filter(_.pluck(matches, 'CA'), (d) -> isNaN(d)).length
 
         values = {
           GF: _.sum matches, 'GF'
