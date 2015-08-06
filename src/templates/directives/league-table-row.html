@@ -3,54 +3,54 @@
 <td class="name textual">{{rus}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.m}">{{teamValues.m}}</td>
+  data-ng-class="{'nil': !teamValues.M}">{{teamValues.M}}</td>
 <td class="buffer"></td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.cf}">{{teamValues.cf < 0 ? '' : teamValues.cf}}</td>
+  data-ng-class="{'nil': !teamValues.CF}">{{teamValues.CF < 0 ? '' : teamValues.CF}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.gf}">{{teamValues.gf}}</td>
+  data-ng-class="{'nil': !teamValues.GF}">{{teamValues.GF}}</td>
 <td class="buffer hidden-value">
-  <div class="minus">{{teamValues.cf < 0 ? '' : '−'}}</div>
-  <div class="difference">{{teamValues.cf < 0 ? '' : '= ' + (teamValues.cf - teamValues.gf | goodMinus)}}</div>
+  <div class="minus">{{teamValues.CF < 0 ? '' : '−'}}</div>
+  <div class="difference">{{teamValues.CF < 0 ? '' : '= ' + (teamValues.CF - teamValues.GF | goodMinus)}}</div>
 </td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.ca}">{{teamValues.ca < 0 ? '' : teamValues.ca}}</td>
+  data-ng-class="{'nil': !teamValues.CA}">{{teamValues.CA < 0 ? '' : teamValues.CA}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.ga}">{{teamValues.ga}}</td>
+  data-ng-class="{'nil': !teamValues.GA}">{{teamValues.GA}}</td>
 <td class="buffer hidden-value">
-  <div class="minus">{{teamValues.ca < 0 ? '' : '−'}}</div>
-  <div class="difference">{{teamValues.ca < 0 ? '' : '= ' + (teamValues.ca - teamValues.ga | goodMinus)}}</div>
+  <div class="minus">{{teamValues.CA < 0 ? '' : '−'}}</div>
+  <div class="difference">{{teamValues.CA < 0 ? '' : '= ' + (teamValues.CA - teamValues.GA | goodMinus)}}</div>
 </td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.cw}">{{teamValues.cw < 0 ? '' : teamValues.cw}}</td>
+  data-ng-class="{'nil': !teamValues.CW}">{{teamValues.CW < 0 ? '' : teamValues.CW}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.cd}">{{teamValues.cd < 0 ? '' : teamValues.cd}}</td>
+  data-ng-class="{'nil': !teamValues.CD}">{{teamValues.CD < 0 ? '' : teamValues.CD}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.cl}">{{teamValues.cl < 0 ? '' : teamValues.cl}}</td>
+  data-ng-class="{'nil': !teamValues.CL}">{{teamValues.CL < 0 ? '' : teamValues.CL}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.cp}">{{teamValues.cp < 0 ? '' : teamValues.cp}}</td>
+  data-ng-class="{'nil': !teamValues.CP}">{{teamValues.CP < 0 ? '' : teamValues.CP}}</td>
 <td class="buffer"></td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.gw}">{{teamValues.gw}}</td>
+  data-ng-class="{'nil': !teamValues.GW}">{{teamValues.GW}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.gd}">{{teamValues.gd}}</td>
+  data-ng-class="{'nil': !teamValues.GD}">{{teamValues.GD}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.gl}">{{teamValues.gl}}</td>
+  data-ng-class="{'nil': !teamValues.GL}">{{teamValues.GL}}</td>
 <td
   class="value numerical"
-  data-ng-class="{'nil': !teamValues.gp}">{{teamValues.gp}}</td>
+  data-ng-class="{'nil': !teamValues.GP}">{{teamValues.GP}}</td>
 <td class="buffer hidden-value">
-  <div class="points-difference">{{teamValues.cp < 0 ? '' : '− ' + teamValues.cp + ' = ' + (teamValues.gp - teamValues.cp | goodMinus)}}</div>
+  <div class="points-difference">{{teamValues.CP < 0 ? '' : '− ' + teamValues.CP + ' = ' + (teamValues.GP - teamValues.CP | goodMinus)}}</div>
 </td>
 <td class="buffer"></td>

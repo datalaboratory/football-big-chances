@@ -5,7 +5,7 @@
 		<tbody>
 			<tr
 				class="league-table-row"
-				data-ng-repeat="(key, value) in leagueData | toArray | orderBy : (sortBy === 'cf' ? [getCF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'gf' ? [getGF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ca' ? [getCA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'ga' ? [getGA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'cp' ? [getCP, getCDiff, getCW, (sortingOrder ? '-RUS' : 'RUS')] : [getGP, getGDiff, getGW, (sortingOrder ? '-RUS' : 'RUS')]) : sortingOrder"
+				data-ng-repeat="(key, value) in leagueData | toArray | orderBy : (sortBy === 'CF' ? [getCF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'GF' ? [getGF, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'CA' ? [getCA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'GA' ? [getGA, (sortingOrder ? '-RUS' : 'RUS')] : sortBy === 'CP' ? [getCP, getCDiff, getCW, (sortingOrder ? '-RUS' : 'RUS')] : [getGP, getGDiff, getGW, (sortingOrder ? '-RUS' : 'RUS')]) : sortingOrder"
 				data-index="$index + 1"
 				data-league="league"
 				data-team="value.$key"

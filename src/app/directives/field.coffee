@@ -41,7 +41,7 @@ app.directive 'field', ->
     $scope.getY = (original) ->
       original / coeff[$scope.type]
 
-    $scope.getStyle = (line) ->
+    $scope.getClasses = (line) ->
       classes = ''
 
       if line.Type.indexOf('G') isnt -1

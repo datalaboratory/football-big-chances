@@ -8,9 +8,9 @@ app.directive 'smallMultiples', ->
     shownTypes: '='
   link: ($scope, $element, $attrs) ->
     $scope.getPoints = (obj) ->
-      gw = _.filter(obj.Matches, (M) -> M.GF > M.GA).length
-      gd = _.filter(obj.Matches, (M) -> M.GF is M.GA).length
+      GW = _.filter(obj.Matches, (M) -> M.GF > M.GA).length
+      GD = _.filter(obj.Matches, (M) -> M.GF is M.GA).length
 
-      gw * 3 + gd
+      GW * 3 + GD
 
     return

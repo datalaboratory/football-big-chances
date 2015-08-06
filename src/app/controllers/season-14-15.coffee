@@ -31,7 +31,7 @@ app.controller 'Season1415Ctrl', ($scope) ->
       matches: []
       current: undefined
     leaguesData: {}
-    sortBy: 'gp'
+    sortBy: 'GP'
     sortingOrder: true
     selectedTeam:
       league: 'premierLeague'

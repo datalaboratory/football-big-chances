@@ -4,33 +4,31 @@
 <svg
   class="field"
   data-ng-class="{'big': type === 'big', 'small': type === 'small'}">
-  <g class="content">
+  <g
+    class="lines"
+    data-ng-if="lines.length">
     <g
-      class="lines"
-      data-ng-if="lines.length">
-      <g
-        class="line"
-        data-ng-class="getStyle(line)"
-        data-ng-repeat="line in lines track by $index"
-        data-ng-mouseover="lineOnMouseover(line)"
-        data-ng-mouseleave="lineOnMouseleave()"
-        data-ng-style="{'visibility': shownTypes.indexOf(line.Type) === -1 ? 'hidden' : 'visible'}">
-        <line
-          class="background-line"
-          data-ng-attr-x1="{{getX(line.x1)}}"
-          data-ng-attr-y1="{{getY(line.y1)}}"
-          data-ng-attr-x2="{{getX(line.x2)}}"
-          data-ng-attr-y2="{{getY(line.y2)}}">
-        </line>
-        <line
-          class="main-line"
-          data-ng-attr-x1="{{getX(line.x1)}}"
-          data-ng-attr-y1="{{getY(line.y1)}}"
-          data-ng-attr-x2="{{getX(line.x2)}}"
-          data-ng-attr-y2="{{getY(line.y2)}}"
-          data-ng-attr-marker-end="{{getMarkerEnd(line)}}">
-        </line>
-      </g>
+      class="line"
+      data-ng-class="getClasses(line)"
+      data-ng-repeat="line in lines track by $index"
+      data-ng-mouseover="lineOnMouseover(line)"
+      data-ng-mouseleave="lineOnMouseleave()"
+      data-ng-style="{'visibility': shownTypes.indexOf(line.Type) === -1 ? 'hidden' : 'visible'}">
+      <line
+        class="background-line"
+        data-ng-attr-x1="{{getX(line.x1)}}"
+        data-ng-attr-y1="{{getY(line.y1)}}"
+        data-ng-attr-x2="{{getX(line.x2)}}"
+        data-ng-attr-y2="{{getY(line.y2)}}">
+      </line>
+      <line
+        class="main-line"
+        data-ng-attr-x1="{{getX(line.x1)}}"
+        data-ng-attr-y1="{{getY(line.y1)}}"
+        data-ng-attr-x2="{{getX(line.x2)}}"
+        data-ng-attr-y2="{{getY(line.y2)}}"
+        data-ng-attr-marker-end="{{getMarkerEnd(line)}}">
+      </line>
     </g>
   </g>
 </svg>
