@@ -18,7 +18,7 @@
 			display: none;
 		}
 
-		.current-date-caption {
+		.handle-date-caption {
 			position: absolute;
 			font-family: $helvetica-neue-light;
 			font-size: $common-font-size;
@@ -45,13 +45,23 @@
 		}
 	}
 
-	.handle {
+	.left-handle {
 		position: absolute;
 		top: 21px;
-		width: 17px;
-		height: 32px;
-		background-image: url(../img/accessories/slider-handle.png);
-		background-size: 17px 32px;
+		width: 10px;
+		height: 29px;
+		background-image: url(../img/accessories/slider-handle-left.png);
+		background-size: 10px 29px;
+		cursor: pointer;
+	}
+
+	.right-handle {
+		position: absolute;
+		top: 21px;
+		width: 10px;
+		height: 29px;
+		background-image: url(../img/accessories/slider-handle-right.png);
+		background-size: 10px 29px;
 		cursor: pointer;
 	}
 }

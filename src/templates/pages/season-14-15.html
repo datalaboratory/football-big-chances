@@ -33,7 +33,8 @@
 					data-all-dates="data.dates.all"
 					data-match-dates="data.dates.matches"
 					data-start-date="data.dates.all[0]"
-					data-current-date="data.dates.current"
+					data-left-date="data.dates.left"
+	        data-right-date="data.dates.right"
 					data-month-names="monthNames">
 				</date-slider>
 			</div>
@@ -54,14 +55,16 @@
 					data-shown-types="data.shownTypes"
 					data-team="data.selectedTeam"
 					data-lines-data="data.leaguesData[data.selectedTeam.league][data.selectedTeam.name].Lines"
-					data-current-date="data.dates.current">
+					data-left-date="data.dates.left"
+	        data-right-date="data.dates.right">
 				</legend>
 			</div>
 		  <div class="svg-field-container inline">
 				<field
 					data-league-data="data.leaguesData[data.selectedTeam.league]"
 					data-team="data.selectedTeam"
-					data-current-date="data.dates.current"
+					data-left-date="data.dates.left"
+	        data-right-date="data.dates.right"
 					data-shown-types="data.shownTypes"
 					data-month-names="monthNames"
 					data-type="big">
@@ -80,7 +83,8 @@
 				data-ng-if="data.activeLeagues[league]"
 				data-league="league"
 				data-league-data="data.leaguesData[league]"
-				data-current-date="data.dates.current"
+				data-left-date="data.dates.left"
+				data-right-date="data.dates.right"
 				data-sort-by="data.sortBy"
 				data-sorting-order="data.sortingOrder"
 				data-selected-team="data.selectedTeam">
@@ -94,7 +98,8 @@
 		<small-multiples
 			data-active-leagues="data.activeLeagues"
 			data-leagues-data="data.leaguesData"
-			data-current-date="data.dates.current"
+			data-left-date="data.dates.left"
+			data-right-date="data.dates.right"
 			data-shown-types="data.shownTypes">
 		</small-multiples>
 		<datalab-footer></datalab-footer>

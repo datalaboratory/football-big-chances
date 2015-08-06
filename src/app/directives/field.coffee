@@ -11,7 +11,8 @@ app.directive 'field', ->
   scope:
     leagueData: '='
     team: '='
-    currentDate: '='
+    leftDate: '='
+    rightDate: '='
     shownTypes: '='
     monthNames: '='
     type: '@'
@@ -28,10 +29,12 @@ app.directive 'field', ->
       return unless $scope.team.league and $scope.team.name
 
       $scope.lines = _.filter $scope.leagueData[$scope.team.name].Lines, (L) ->
-        moment($scope.currentDate).diff(L.Date, 'days') >= 0
+        moment($scope.leftDate).diff(L.Date, 'days') <= 0 and moment($scope.rightDate).diff(L.Date, 'days') >= 0
       return
 
-    $scope.$watch 'currentDate', -> updateLines()
+    $scope.$watch 'leftDate', -> updateLines()
+
+    $scope.$watch 'rightDate', -> updateLines()
 
     $scope.$watch 'team', (-> updateLines()), true
 

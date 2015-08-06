@@ -7,14 +7,17 @@
 			data-ng-class="{'hidden': isCaptionHidden(date)}"
 			data-ng-style="{'transform': 'translateX(' + getDateX(date) + 'px)'}">{{getCaptionText(date, !$index)}}</div>
 		<div
-			class="current-date-caption"
-			data-ng-style="{'transform': 'translateX(' + (currentX - handleShift) + 'px)'}">{{getCurrentDay()}}</div>
+			class="handle-date-caption"
+			data-ng-style="{'transform': 'translateX(' + leftX + 'px)'}">{{getCurrentDay('left')}}</div>
+		<div
+			class="handle-date-caption"
+			data-ng-style="{'transform': 'translateX(' + rightX + 'px)'}">{{getCurrentDay('right')}}</div>
 		<br class="clear-both" />
 	</div>
 	<div class="track">
 		<div
 			class="fill"
-			data-ng-style="{'width': currentX + 'px'}"></div>
+			data-ng-style="{'transform': 'translateX(' + leftX + 'px)', 'width': (rightX - leftX) + 'px'}"></div>
 		<div class="ticks">
 			<div
 				class="tick"
@@ -23,6 +26,9 @@
 		</div>
 	</div>
 	<div
-		class="handle"
-		data-ng-style="{'transform': 'translateX(' + (currentX - handleShift) + 'px)'}"></div>
+		class="left-handle"
+		data-ng-style="{'transform': 'translateX(' + (leftX - handleShift) + 'px)'}"></div>
+	<div
+		class="right-handle"
+		data-ng-style="{'transform': 'translateX(' + rightX + 'px)'}"></div>
 </div>

@@ -5,21 +5,24 @@ app.directive 'dateSlider', ($document) ->
     allDates: '='
     matchDates: '='
     startDate: '='
-    currentDate: '='
+    leftDate: '='
+    rightDate: '='
     monthNames: '='
   link: ($scope, $element, $attrs) ->
     sliderWidth = $element[0].getBoundingClientRect().width
     sliderLeftOffset = $element.offset().left
-    $handle = $element.find '.handle'
+    $leftHandle = $element.find '.left-handle'
+    $rightHandle = $element.find '.right-handle'
     tickWidth = 1
     nOfDays = $scope.allDates.length
     step = sliderWidth / nOfDays
 
-    $scope.handleShift = ($handle.width() - tickWidth) / 2
-    $scope.currentX = moment($scope.currentDate).diff($scope.startDate, 'days') * step
+    $scope.handleShift = $leftHandle.width()
+    $scope.leftX = moment($scope.leftDate).diff($scope.startDate, 'days') * step
+    $scope.rightX = moment($scope.rightDate).diff($scope.startDate, 'days') * step
 
-    $scope.getCurrentDay = ->
-      mDate = moment($scope.currentDate)
+    $scope.getCurrentDay = (type) ->
+      mDate = moment(if type is 'left' then $scope.leftDate else $scope.rightDate)
       if !mDate.isSame($scope.startDate)
         mDate.date() + ' ' + $scope.monthNames[mDate.month()][1]
       else
@@ -41,16 +44,39 @@ app.directive 'dateSlider', ($document) ->
         ''
 
     $scope.isCaptionHidden = (date) ->
-      moment(date).month() is moment($scope.currentDate).month() and !moment($scope.currentDate).isSame($scope.startDate)
+      moment(date).month() is moment($scope.leftDate).month() and !moment($scope.leftDate).isSame($scope.startDate) or
+      moment(date).month() is moment($scope.rightDate).month() and !moment($scope.rightDate).isSame($scope.startDate)
 
-    $handle.on 'mousedown', (event) ->
+    $leftHandle.on 'mousedown', (event) ->
+      mousemove = (event) ->
+        daysFromStart = Math.floor (event.clientX - sliderLeftOffset) / step
+        daysFromStart = 0 if daysFromStart < 0
+        daysFromStart = moment($scope.rightDate).diff($scope.startDate, 'days') - 1 if daysFromStart > moment($scope.rightDate).diff($scope.startDate, 'days') - 1
+
+        $scope.leftX = daysFromStart * step
+        $scope.leftDate = moment($scope.startDate).add(daysFromStart, 'days').toDate()
+
+        $scope.$apply()
+        return
+
+      mouseup = ->
+        $document.unbind 'mousemove', mousemove
+        $document.unbind 'mouseup', mouseup
+        return
+
+      event.preventDefault()
+      $document.on 'mousemove', mousemove
+      $document.on 'mouseup', mouseup
+      return
+
+    $rightHandle.on 'mousedown', (event) ->
       mousemove = (event) ->
         daysFromStart = Math.floor (event.clientX - sliderLeftOffset) / step
         daysFromStart = 0 if daysFromStart < 0
         daysFromStart = nOfDays - 1 if daysFromStart > nOfDays - 1
 
-        $scope.currentX = daysFromStart * step
-        $scope.currentDate = moment($scope.startDate).add(daysFromStart, 'days').toDate()
+        $scope.rightX = daysFromStart * step
+        $scope.rightDate = moment($scope.startDate).add(daysFromStart, 'days').toDate()
 
         $scope.$apply()
         return

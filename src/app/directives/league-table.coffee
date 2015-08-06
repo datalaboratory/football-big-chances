@@ -4,7 +4,8 @@ app.directive 'leagueTable', ->
   scope:
     league: '='
     leagueData: '='
-    currentDate: '='
+    leftDate: '='
+    rightDate: '='
     sortBy: '='
     sortingOrder: '='
     selectedTeam: '='
@@ -14,10 +15,10 @@ app.directive 'leagueTable', ->
     _.keys($scope.leagueData).forEach (key) ->
       $scope.teamValues[key] = {}
 
-    $scope.$watch 'currentDate', ->
+    updateTeamValues = ->
       _.keys($scope.teamValues).forEach (key) ->
         matches = _.filter $scope.leagueData[key].Matches, (M) ->
-          moment($scope.currentDate).diff(M.Date, 'days') >= 0
+          moment($scope.leftDate).diff(M.Date, 'days') <= 0 and moment($scope.rightDate).diff(M.Date, 'days') >= 0
 
         noChancesData = _.filter(_.pluck(matches, 'CF'), (d) -> isNaN(d)).length or _.filter(_.pluck(matches, 'CA'), (d) -> isNaN(d)).length
 
@@ -40,6 +41,10 @@ app.directive 'leagueTable', ->
 
         $scope.teamValues[key] = values
       return
+
+    $scope.$watch 'leftDate', -> updateTeamValues()
+
+    $scope.$watch 'rightDate', -> updateTeamValues()
 
     $scope.getGF = (obj) ->
       $scope.teamValues[obj.$key].GF

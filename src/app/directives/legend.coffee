@@ -6,7 +6,8 @@ app.directive 'legend', ->
     shownTypes: '='
     team: '='
     linesData: '='
-    currentDate: '='
+    leftDate: '='
+    rightDate: '='
   link: ($scope, $element, $attrs) ->
     $scope.legendItems = [
       {
@@ -60,7 +61,7 @@ app.directive 'legend', ->
 
     updateValues = ->
       lines = _.filter $scope.linesData, (L) ->
-        moment($scope.currentDate).diff(L.Date, 'days') >= 0
+        moment($scope.leftDate).diff(L.Date, 'days') <= 0 and moment($scope.rightDate).diff(L.Date, 'days') >= 0
 
       $scope.values.CG.for = _.filter(lines, (l) -> l.Type is 'CG' and l.Team is $scope.team.name).length
       $scope.values.CG.against = _.filter(lines, (l) -> l.Type is 'CG' and l.Team isnt $scope.team.name).length
@@ -74,7 +75,9 @@ app.directive 'legend', ->
       $scope.values.CS.against = _.filter(lines, (l) -> l.Type is 'CS' and l.Team isnt $scope.team.name).length
       return
 
-    $scope.$watch 'currentDate', -> updateValues()
+    $scope.$watch 'leftDate', -> updateValues()
+
+    $scope.$watch 'rightDate', -> updateValues()
 
     $scope.$watch 'team', (-> updateValues()), true
 

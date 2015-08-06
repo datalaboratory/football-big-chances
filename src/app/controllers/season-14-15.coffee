@@ -29,7 +29,8 @@ app.controller 'Season1415Ctrl', ($scope) ->
     dates:
       all: []
       matches: []
-      current: undefined
+      left: undefined
+      right: undefined
     leaguesData: {}
     sortBy: 'GP'
     sortingOrder: true
@@ -121,7 +122,8 @@ app.controller 'Season1415Ctrl', ($scope) ->
     moment.range(startDate, $scope.data.dates.matches[$scope.data.dates.matches.length - 1]).by 'days', (d) ->
       $scope.data.dates.all.push d.toDate()
 
-    $scope.data.dates.current = $scope.data.dates.matches[$scope.data.dates.matches.length - 1]
+    $scope.data.dates.right = if moment().toDate() > $scope.data.dates.matches[$scope.data.dates.matches.length - 1] then $scope.data.dates.matches[$scope.data.dates.matches.length - 1] else moment().toDate()
+    $scope.data.dates.left = $scope.data.dates.all[0]
 
     $scope.isDataPrepared = true
 

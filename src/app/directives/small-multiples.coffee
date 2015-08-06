@@ -4,7 +4,8 @@ app.directive 'smallMultiples', ->
   scope:
     activeLeagues: '='
     leaguesData: '='
-    currentDate: '='
+    leftDate: '='
+    rightDate: '='
     shownTypes: '='
   link: ($scope, $element, $attrs) ->
     $scope.getPoints = (obj) ->
