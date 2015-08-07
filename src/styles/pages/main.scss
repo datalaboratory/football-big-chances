@@ -19,6 +19,7 @@
 		padding: 20px 0 0 0;
 
 		.header-container {
+			width: 900px;
 			padding: 0 0 0 $common-padding-left;
 
 			.header {
@@ -36,7 +37,10 @@
 		}
 
 		.seasons-switch-container {
-			margin: 0 0 0 10px;
+			position: absolute;
+			width: 160px;
+			left: 800px;
+			z-index: 1;
 		}
 
 		.leagues-switch-container {
@@ -49,7 +53,7 @@
 		}
 
 		.date-slider-container {
-			width: 100%;
+			width: 970px;
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			-ms-box-sizing: border-box;

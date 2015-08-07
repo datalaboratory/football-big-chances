@@ -18,8 +18,6 @@ app.controller 'MainCtrl', ($scope) ->
     ['дек', 'дек']
   ]
 
-  $scope.seasons = ['2014-2015', '2015-2016']
-
   $scope.allDates = []
   $scope.matchDates = []
 

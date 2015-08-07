@@ -1,1 +1,16 @@
-<div class="seasons-switch"></div>
+<div class="seasons-switch">
+  <div data-ng-click="expanded = !expanded">
+    <div class="inline">2014&ndash;2015</div>
+    <div
+      class="triangle"
+      data-ng-hide="expanded">&#9660;</div>
+    <div
+      class="triangle"
+      data-ng-show="expanded">&#9650;</div>
+    <br class="clear-both" />
+  </div>
+  <div data-ng-show="expanded">
+    <div class="inline"><a href="http://big-chances.datalaboratory.ru/">2015&ndash;2016</a></div>
+    <br class="clear-both" />
+  </div>
+</div>

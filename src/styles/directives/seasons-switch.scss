@@ -1,5 +1,27 @@
 @import '../variables';
 
 .seasons-switch {
-  
+  width: 100%;
+  padding: 0 5px 0 5px;
+  background-color: $slider-fill-color;
+  border-radius: 5px;
+  font-family: $helvetica-neue-medium;
+  font-size: $header-font-size;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .triangle {
+    float: right;
+    margin: 9px 0 0 10px;
+    font-family: $helvetica-neue-medium;
+    font-size: $small-font-size;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
