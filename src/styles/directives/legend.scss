@@ -1,12 +1,46 @@
 @import '../variables';
 
 .legend {
-  img.legend-team-logo {
+  .left-goal {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    top: -25px;
-    left: 108px;
+    width: 15px;
+    height: 30px;
+    top: -40px;
+    left: 75px;
+    border-top: 1px solid $thin-line-color;
+    border-left: 1px solid $thin-line-color;
+    border-bottom: 1px solid $thin-line-color;
+  }
+
+  .right-goal {
+    position: absolute;
+    width: 15px;
+    height: 30px;
+    top: -40px;
+    left: 110px;
+    border-top: 1px solid $thin-line-color;
+    border-right: 1px solid $thin-line-color;
+    border-bottom: 1px solid $thin-line-color;
+  }
+
+  .generalization {
+    position: absolute;
+    width: 120px;
+    top: 40px;
+    left: 230px;
+    font-family: $helvetica-neue-light;
+    font-size: $common-font-size;
+  }
+
+  .brace {
+    position: absolute;
+    width: 5px;
+    height: 89px;
+    top: 23px;
+    left: 215px;
+    border-top: 1px solid $thin-line-color;
+    border-right: 1px solid $thin-line-color;
+    border-bottom: 1px solid $thin-line-color;
   }
 
   .legend-item {

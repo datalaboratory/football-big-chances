@@ -11,34 +11,34 @@ app.directive 'legend', ->
   link: ($scope, $element, $attrs) ->
     $scope.legendItems = [
       {
-        title: 'Явный голевой момент → гол'
+        title: 'Гол без момента'
+        type: 'G'
+        lineMarker: 'url(#accidental-goal)'
+        lineClass: 'goal'
+      }
+      {
+        title: 'Гол'
         type: 'CG'
         lineMarker: 'url(#common-goal)'
         lineClass: 'goal'
       }
       {
-        title: '→ Промах'
+        title: 'Промах'
         type: 'CO'
         lineMarker: 'url(#common-big-chance)'
         lineClass: 'big-chance'
       }
       {
-        title: '→ Блок'
+        title: 'Блок'
         type: 'CB'
         lineMarker: 'url(#blocked)'
         lineClass: 'big-chance'
       }
       {
-        title: '→ Сейв'
+        title: 'Сейв'
         type: 'CS'
         lineMarker: 'url(#saved)'
         lineClass: 'big-chance'
-      }
-      {
-        title: 'Голы без момента'
-        type: 'G'
-        lineMarker: 'url(#accidental-goal)'
-        lineClass: 'goal'
       }
     ]
 

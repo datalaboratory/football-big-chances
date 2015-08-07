@@ -3,6 +3,7 @@
 .field {
   .line {
     opacity: .7;
+    cursor: pointer;
   }
 
   .main-line {
@@ -29,10 +30,6 @@
 .field.big {
   width: $big-field-width;
   height: $big-field-height;
-
-  .goal {
-    cursor: pointer;
-  }
 
   .for {
     -ms-transform: rotate(90deg) translate(0, 0 - $big-field-width);
@@ -98,21 +95,21 @@
 }
 
 .tooltip.premier-league {
-  background-color: $sm-premier-league-color;
+  background-color: $tooltip-premier-league-color;
 }
 
 .tooltip.la-liga {
-  background-color: $sm-la-liga-color;
+  background-color: $tooltip-la-liga-color;
 }
 
 .tooltip.bundesliga {
-  background-color: $sm-bundesliga-color;
+  background-color: $tooltip-bundesliga-color;
 }
 
 .tooltip.serie-a {
-  background-color: $sm-serie-a-color;
+  background-color: $tooltip-serie-a-color;
 }
 
 .tooltip.ligue-one {
-  background-color: $sm-ligue-one-color;
+  background-color: $tooltip-ligue-one-color;
 }

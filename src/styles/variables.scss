@@ -28,6 +28,12 @@ $sm-bundesliga-color: #ddd;
 $sm-serie-a-color: #ced;
 $sm-ligue-one-color: #d4daee;
 
+$tooltip-premier-league-color: rgba(255, 238, 238, .9);
+$tooltip-la-liga-color: rgba(255, 238, 204, .9);
+$tooltip-bundesliga-color: rgba(238, 238, 238, .9);
+$tooltip-serie-a-color: rgba(231, 245, 236, .9);
+$tooltip-ligue-one-color: rgba(238, 238, 255, .9);
+
 $outline-color: rgba(187, 194, 194, .5);
 $outline-hover-color: rgba(0, 85, 153, .5);
 $button-hover-color: #005599;
@@ -39,6 +45,8 @@ $slider-transparent-base-color: rgba(255, 255, 255, .8);
 
 $table-hover-color: #f6f7f7;
 $tables-header-full-color: rgba(255, 255, 255, .9);
+
+$thin-line-color: rgba(0, 0, 0, .167);
 
 $common-padding-left: 70px;
 

@@ -1,7 +1,8 @@
 <div class="legend">
-  <img
-    class="legend-team-logo"
-    data-ng-src="../img/teams/{{team.league}}/{{team.name}}.png" />
+  <div class="left-goal"></div>
+  <div class="right-goal"></div>
+  <div class="brace"></div>
+  <div class="generalization">Результаты явных голевых моментов</div>
   <div
     class="legend-item"
     data-ng-repeat="legendItem in legendItems track by $index">
@@ -17,7 +18,7 @@
     </svg>
     <div
       class="line-caption inline"
-      data-ng-class="{'active': isItemSelected(legendItem.type) || hovered}"
+      data-ng-class="{'active': hovered}"
       data-ng-click="itemClick(legendItem.type)"
       data-ng-mouseover="hovered = true"
       data-ng-mouseout="hovered = false">
