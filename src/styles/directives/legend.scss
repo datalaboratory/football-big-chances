@@ -3,31 +3,25 @@
 .legend {
   .left-goal {
     position: absolute;
-    width: 15px;
-    height: 30px;
-    top: -40px;
-    left: 75px;
-    border-top: 1px solid $thin-line-color;
-    border-left: 1px solid $thin-line-color;
-    border-bottom: 1px solid $thin-line-color;
+    width: 17.5px;
+    height: 38px;
+    top: -45px;
+    left: 12.5px;
   }
 
   .right-goal {
     position: absolute;
-    width: 15px;
-    height: 30px;
-    top: -40px;
-    left: 110px;
-    border-top: 1px solid $thin-line-color;
-    border-right: 1px solid $thin-line-color;
-    border-bottom: 1px solid $thin-line-color;
+    width: 17.5px;
+    height: 38px;
+    top: -45px;
+    left: 47.5px;
   }
 
   .generalization {
     position: absolute;
     width: 120px;
     top: 40px;
-    left: 230px;
+    left: 235px;
     font-family: $helvetica-neue-light;
     font-size: $common-font-size;
   }
@@ -37,7 +31,7 @@
     width: 5px;
     height: 89px;
     top: 23px;
-    left: 215px;
+    left: 220px;
     border-top: 1px solid $thin-line-color;
     border-right: 1px solid $thin-line-color;
     border-bottom: 1px solid $thin-line-color;
@@ -46,27 +40,7 @@
   .legend-item {
     margin: 0 0 5px 0;
 
-    .line-sample {
-      width: 50px;
-      height: 18px;
-
-      line {
-        stroke-width: .5;
-      }
-
-      .goal {
-        stroke: $goal-color;
-        fill: $goal-color;
-      }
-
-      .big-chance {
-        stroke: $big-chance-color;
-        fill: $big-chance-color;
-      }
-    }
-
     .line-caption {
-      margin: 0 0 0 10px;
       font-family: $helvetica-neue-light;
       font-size: $common-font-size;
       cursor: pointer;
@@ -82,6 +56,26 @@
         width: 30px;
         margin: 0 15px 0 0;
         text-align: right;
+      }
+
+      .line-sample {
+        width: 50px;
+        height: 18px;
+        margin: 0 15px 0 0;
+
+        line {
+          stroke-width: .5;
+        }
+
+        .goal {
+          stroke: $goal-color;
+          fill: $goal-color;
+        }
+
+        .big-chance {
+          stroke: $big-chance-color;
+          fill: $big-chance-color;
+        }
       }
 
       .checkbox {

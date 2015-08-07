@@ -1,21 +1,11 @@
 <div class="legend">
-  <div class="left-goal"></div>
-  <div class="right-goal"></div>
+  <img class="left-goal" src="../img/accessories/goal-left.png" />
+  <img class="right-goal" src="../img/accessories/goal-right.png" />
   <div class="brace"></div>
   <div class="generalization">Результаты явных голевых моментов</div>
   <div
     class="legend-item"
     data-ng-repeat="legendItem in legendItems track by $index">
-    <svg class="line-sample inline">
-      <line
-        data-ng-class="legendItem.lineClass"
-        x1="0"
-        y1="50%"
-        x2="90%"
-        y2="50%"
-        data-ng-attr-marker-end="{{legendItem.lineMarker}}">
-      </line>
-    </svg>
     <div
       class="line-caption inline"
       data-ng-class="{'active': hovered}"
@@ -24,6 +14,16 @@
       data-ng-mouseout="hovered = false">
       <span class="against inline">{{values[legendItem.type].against}}</span>
       <span class="for inline">{{values[legendItem.type].for}}</span>
+      <svg class="line-sample inline">
+        <line
+          data-ng-class="legendItem.lineClass"
+          x1="0"
+          y1="50%"
+          x2="90%"
+          y2="50%"
+          data-ng-attr-marker-end="{{legendItem.lineMarker}}">
+        </line>
+      </svg>
       <img
         class="checkbox inline"
         data-ng-src="../img/accessories/check-box{{hovered ? (isItemSelected(legendItem.type) ? '-hover' : '-empty-hover') : (isItemSelected(legendItem.type) ? '' : '-empty')}}.png" />
