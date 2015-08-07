@@ -13,15 +13,23 @@
   -ms-user-select: none;
   user-select: none;
 
+  .years, .years a {
+    transition: color 0.25s ease-out;
+  }
+
+  .years a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .years:hover, .years:hover a {
+    color: $button-hover-color;
+  }
+
   .triangle {
     float: right;
     margin: 9px 0 0 10px;
     font-family: $helvetica-neue-medium;
     font-size: $small-font-size;
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
   }
 }

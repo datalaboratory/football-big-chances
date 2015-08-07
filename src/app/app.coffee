@@ -8,7 +8,7 @@ app = angular.module 'app', appDependencies
   ($routeProvider, $locationProvider) ->
     $routeProvider
     .when '/',
-      templateUrl: '/templates/pages/main.html'
+      templateUrl: 'templates/pages/main.html'
       controller: 'MainCtrl'
     .otherwise redirectTo: '/'
 
