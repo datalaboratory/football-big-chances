@@ -72,7 +72,7 @@ app.directive 'dateSlider', ($document) ->
     $rightHandle.on 'mousedown', (event) ->
       mousemove = (event) ->
         daysFromStart = Math.floor (event.clientX - sliderLeftOffset) / step
-        daysFromStart = 0 if daysFromStart < 0
+        daysFromStart = moment($scope.leftDate).diff($scope.startDate, 'days') + 1 if daysFromStart < moment($scope.leftDate).diff($scope.startDate, 'days') + 1
         daysFromStart = nOfDays - 1 if daysFromStart > nOfDays - 1
 
         $scope.rightX = daysFromStart * step
