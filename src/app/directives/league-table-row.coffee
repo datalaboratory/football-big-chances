@@ -7,5 +7,6 @@ app.directive 'leagueTableRow', ->
     team: '='
     teamValues: '='
     rus: '='
+    season: '='
   link: ($scope, $element, $attrs) ->
     return

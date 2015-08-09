@@ -9,6 +9,7 @@ app.directive 'leagueTable', ->
     sortBy: '='
     sortingOrder: '='
     selectedTeam: '='
+    season: '='
   link: ($scope, $element, $attrs) ->
     $scope.teamValues = {}
 

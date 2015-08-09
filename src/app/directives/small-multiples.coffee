@@ -7,6 +7,7 @@ app.directive 'smallMultiples', ->
     leftDate: '='
     rightDate: '='
     shownTypes: '='
+    season: '='
   link: ($scope, $element, $attrs) ->
     $scope.getPoints = (obj) ->
       GW = _.filter(obj.Matches, (M) -> M.GF > M.GA).length

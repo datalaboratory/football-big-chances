@@ -1,5 +1,5 @@
-app.controller 'MainCtrl', ($scope) ->
-  dateFormat = 'DD.MM.YYYY'
+app.controller 'Season1415Ctrl', ($scope) ->
+  $scope.seasonActive = '14-15'
 
   $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
 
@@ -46,6 +46,8 @@ app.controller 'MainCtrl', ($scope) ->
   parseData = (error, rawData) ->
     if error
       console.log error
+
+    dateFormat = 'DD.MM.YYYY'
 
     # Leagues and teams data
     $scope.leagues.forEach (league, index) ->
@@ -133,16 +135,16 @@ app.controller 'MainCtrl', ($scope) ->
 
   # Load data
   queue()
-  .defer d3.csv, '../data/premier-league-teams.csv'
-  .defer d3.csv, '../data/premier-league-goals-chances.csv'
-  .defer d3.csv, '../data/la-liga-teams.csv'
-  .defer d3.csv, '../data/la-liga-goals-chances.csv'
-  .defer d3.csv, '../data/bundesliga-teams.csv'
-  .defer d3.csv, '../data/bundesliga-results.csv'
-  .defer d3.csv, '../data/serie-a-teams.csv'
-  .defer d3.csv, '../data/serie-a-results.csv'
-  .defer d3.csv, '../data/ligue-one-teams.csv'
-  .defer d3.csv, '../data/ligue-one-results.csv'
+  .defer d3.csv, '../data/14-15/premier-league-teams.csv'
+  .defer d3.csv, '../data/14-15/premier-league-goals-chances.csv'
+  .defer d3.csv, '../data/14-15/la-liga-teams.csv'
+  .defer d3.csv, '../data/14-15/la-liga-goals-chances.csv'
+  .defer d3.csv, '../data/14-15/bundesliga-teams.csv'
+  .defer d3.csv, '../data/14-15/bundesliga-results.csv'
+  .defer d3.csv, '../data/14-15/serie-a-teams.csv'
+  .defer d3.csv, '../data/14-15/serie-a-results.csv'
+  .defer d3.csv, '../data/14-15/ligue-one-teams.csv'
+  .defer d3.csv, '../data/14-15/ligue-one-results.csv'
   .awaitAll parseData
 
   return

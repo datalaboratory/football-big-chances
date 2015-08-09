@@ -52,7 +52,7 @@
 	    <img
 	      class="team-logo"
 	      data-ng-if="model.selectedTeam.league && model.selectedTeam.name"
-	      data-ng-src="../img/teams/{{model.selectedTeam.league}}/{{model.selectedTeam.name}}.png">
+	      data-ng-src="../img/teams/{{seasonActive}}/{{model.selectedTeam.league}}/{{model.selectedTeam.name}}.png">
 			<div class="legend-container">
 				<legend
 					data-ng-if="model.selectedTeam.league && model.selectedTeam.name"
@@ -91,7 +91,8 @@
 				data-right-date="model.rightDate"
 				data-sort-by="model.sortBy"
 				data-sorting-order="model.sortingOrder"
-				data-selected-team="model.selectedTeam">
+				data-selected-team="model.selectedTeam"
+				data-season="seasonActive">
 			</league-table>
 			<datalab-footer></datalab-footer>
 		</div>
@@ -104,7 +105,8 @@
 			data-leagues-data="leaguesData"
 			data-left-date="model.leftDate"
 			data-right-date="model.rightDate"
-			data-shown-types="model.shownTypes">
+			data-shown-types="model.shownTypes"
+			data-season="seasonActive">
 		</small-multiples>
 		<datalab-footer></datalab-footer>
 	</div>
