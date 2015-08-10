@@ -34,7 +34,7 @@
 </svg>
 <div
   class="tooltip"
-  data-ng-class="{'premier-league': team.league === 'premierLeague', 'la-liga': team.league === 'laLiga', 'bundesliga': team.league === 'bundesliga', 'serie-a': team.league === 'serieA', 'ligue-one': team.league === 'ligueOne'}"
+  data-ng-class="{'premier-league': team.league === 'premierLeague', 'la-liga': team.league === 'laLiga', 'bundesliga': team.league === 'bundesliga', 'serie-a': team.league === 'serieA', 'ligue-one': team.league === 'ligueOne', 'rfpl': team.league === 'rfpl'}"
   data-ng-show="selectedLine && type === 'big'">
   {{selectedLine.Player ? selectedLine.Player + ', ' : ''}}{{selectedLine.Type === 'G' || selectedLine.Type === 'CG' ? 'гол, ' : selectedLine.Type === 'CO' ? 'промах, ' : selectedLine.Type === 'CB' ? 'блок, ' : 'сейв, '}}{{leagueData[team.name === selectedLine.Team ? selectedLine.Opp : selectedLine.Team].RUS}}, {{getFormattedDate(selectedLine.Date)}}
 </div>

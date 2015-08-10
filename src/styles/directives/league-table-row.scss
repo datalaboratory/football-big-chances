@@ -101,3 +101,9 @@
     background-color: $table-ligue-one-color;
   }
 }
+
+.rfpl {
+  .league-table-row.active, .league-table-row:hover {
+    background-color: $table-rfpl-color;
+  }
+}

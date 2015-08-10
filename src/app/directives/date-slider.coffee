@@ -36,9 +36,7 @@ app.directive 'dateSlider', ($document) ->
       month = moment(date).month()
       year = moment(date).year()
 
-      if isStart or day is 1 and !month
-        $scope.monthNames[month][0] + ' ' + year
-      else if day is 1
+      if isStart or day is 1
         $scope.monthNames[month][0]
       else
         ''

@@ -16,8 +16,13 @@
 		data-ng-click="buttonOnClick('serieA')"
 		data-ng-class="{'active': isButtonActive('serieA')}">Серия А<img src="../img/leagues/it.png"></div>
 	<div
-		class="button right-button inline ligue-one"
+		class="button inline ligue-one"
 		data-ng-click="buttonOnClick('ligueOne')"
-		data-ng-class="{'active': isButtonActive('ligueOne')}">Лига 1<img src="../img/leagues/fr.png"><img src="../img/leagues/mc.png"></div>
+		data-ng-class="{'active': isButtonActive('ligueOne'), 'central-button': season !== '2014-2015', 'right-button': season === '2014-2015'}">Лига 1<img src="../img/leagues/fr.png"><img src="../img/leagues/mc.png"></div>
+	<div
+		class="button right-button inline rfpl"
+		data-ng-if="season !== '2014-2015'"
+		data-ng-click="buttonOnClick('rfpl')"
+		data-ng-class="{'active': isButtonActive('rfpl')}">РФПЛ<img src="../img/leagues/ru.png"></div>
 	<br class="clear-both" />
 </div>

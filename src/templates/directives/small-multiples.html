@@ -7,7 +7,7 @@
     data-ng-repeat="(key, value) in leaguesData[league] | toArray | orderBy : getPoints : true">
     <div
       class="team-number inline"
-      data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne'}">{{$index + 1}}</div>
+      data-ng-class="{'premier-league': league === 'premierLeague', 'la-liga': league === 'laLiga', 'bundesliga': league === 'bundesliga', 'serie-a': league === 'serieA', 'ligue-one': league === 'ligueOne', 'rfpl': league === 'rfpl'}">{{$index + 1}}</div>
     <div class="team-name inline">{{value.RUS}}</div>
     <br class="clear-both" />
     <img

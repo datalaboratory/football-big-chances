@@ -1,7 +1,9 @@
-app.controller 'Season1415Ctrl', ($scope) ->
-  $scope.seasonActive = '14-15'
+app.controller 'Season1516Ctrl', ($scope) ->
+  $scope.seasonActive = '2015-2016'
 
-  $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne']
+  $scope.seasons = ['2014-2015', '2015-2016']
+
+  $scope.leagues = ['premierLeague', 'laLiga', 'bundesliga', 'serieA', 'ligueOne', 'rfpl']
 
   $scope.monthNames = [
     ['янв', 'янв'],
@@ -25,19 +27,20 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
   $scope.model =
     activeLeagues:
-      premierLeague: true
+      premierLeague: false
       laLiga: false
       bundesliga: false
       serieA: false
       ligueOne: false
+      rfpl: true
     currentView: 'field-table'
     leftDate: undefined
     rightDate: undefined
     sortBy: 'GP'
     sortingOrder: true
     selectedTeam:
-      league: 'premierLeague'
-      name: 'CHE'
+      league: 'rfpl'
+      name: 'ZEN'
     shownTypes: ['G', 'CG', 'CO', 'CB', 'CS']
 
   $scope.isDataPrepared = false
@@ -57,10 +60,8 @@ app.controller 'Season1415Ctrl', ($scope) ->
         lines = []
         matches = []
 
-        if league is 'premierLeague' or league is 'laLiga'
-          lines = _.map _.filter(rawData[index * 2 + 1], (rD) ->
-            rD.Team is d.Team or rD.Opp is d.Team
-          ), (fD) ->
+        unless league is 'rfpl'
+          lines = _.map _.filter(rawData[index * 2 + 1], (rD) -> rD.Team is d.Team or rD.Opp is d.Team), (fD) ->
             {
               Team: fD.Team
               Opp: fD.Opp
@@ -89,14 +90,16 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
             lines = _.filter lines, (l) -> l.Type
         else
-          matches = _.map _.filter(rawData[index * 2 + 1], 'Team': d.Team), (fD) ->
+          matches = _.map _.filter(rawData[index * 2 + 1], (rD) -> rD.Team is d.Team or rD.Opp is d.Team), (fD) ->
+            isTeamOpp = fD.Team isnt d.Team
+
             {
-              Opp: fD.Opp
+              Opp: if isTeamOpp then fD.Team else fD.Opp
               Date: moment(fD.Date, dateFormat).toDate()
-              GF: parseInt fD.GF
-              GA: parseInt fD.GA
-              CF: parseInt fD.CF
-              CA: parseInt fD.CA
+              GF: parseInt if isTeamOpp then fD.GO else fD.GT
+              GA: parseInt if isTeamOpp then fD.GT else fD.GO
+              CF: parseInt if isTeamOpp then fD.CO else fD.CT
+              CA: parseInt if isTeamOpp then fD.CT else fD.CO
               unformattedDate: fD.Date
             }
 
@@ -135,16 +138,18 @@ app.controller 'Season1415Ctrl', ($scope) ->
 
   # Load data
   queue()
-  .defer d3.csv, '../data/14-15/premier-league-teams.csv'
-  .defer d3.csv, '../data/14-15/premier-league-goals-chances.csv'
-  .defer d3.csv, '../data/14-15/la-liga-teams.csv'
-  .defer d3.csv, '../data/14-15/la-liga-goals-chances.csv'
-  .defer d3.csv, '../data/14-15/bundesliga-teams.csv'
-  .defer d3.csv, '../data/14-15/bundesliga-results.csv'
-  .defer d3.csv, '../data/14-15/serie-a-teams.csv'
-  .defer d3.csv, '../data/14-15/serie-a-results.csv'
-  .defer d3.csv, '../data/14-15/ligue-one-teams.csv'
-  .defer d3.csv, '../data/14-15/ligue-one-results.csv'
+  .defer d3.csv, '../data/2015-2016/premier-league-teams.csv'
+  .defer d3.csv, '../data/2015-2016/premier-league-goals-chances.csv'
+  .defer d3.csv, '../data/2015-2016/la-liga-teams.csv'
+  .defer d3.csv, '../data/2015-2016/la-liga-goals-chances.csv'
+  .defer d3.csv, '../data/2015-2016/bundesliga-teams.csv'
+  .defer d3.csv, '../data/2015-2016/bundesliga-goals-chances.csv'
+  .defer d3.csv, '../data/2015-2016/serie-a-teams.csv'
+  .defer d3.csv, '../data/2015-2016/serie-a-goals-chances.csv'
+  .defer d3.csv, '../data/2015-2016/ligue-one-teams.csv'
+  .defer d3.csv, '../data/2015-2016/ligue-one-goals-chances.csv'
+  .defer d3.csv, '../data/2015-2016/rfpl-teams.csv'
+  .defer d3.csv, '../data/2015-2016/rfpl-results.csv'
   .awaitAll parseData
 
   return

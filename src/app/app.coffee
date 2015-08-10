@@ -7,10 +7,13 @@ app = angular.module 'app', appDependencies
   '$routeProvider', '$locationProvider'
   ($routeProvider, $locationProvider) ->
     $routeProvider
-    .when '/14-15',
+    .when '/2014-2015',
       templateUrl: 'templates/pages/season-14-15.html'
       controller: 'Season1415Ctrl'
-    .otherwise redirectTo: '/14-15'
+    .when '/2015-2016',
+      templateUrl: 'templates/pages/season-15-16.html'
+      controller: 'Season1516Ctrl'
+    .otherwise redirectTo: '/2015-2016'
 
     $locationProvider.html5Mode enabled: true, requireBase: false
     return

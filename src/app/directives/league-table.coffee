@@ -19,7 +19,7 @@ app.directive 'leagueTable', ->
     updateTeamValues = ->
       _.keys($scope.teamValues).forEach (key) ->
         matches = _.filter $scope.leagueData[key].Matches, (M) ->
-          moment($scope.leftDate).diff(M.Date, 'days') <= 0 and moment($scope.rightDate).diff(M.Date, 'days') >= 0
+          (moment($scope.leftDate).diff(M.Date, 'days') <= 0 and moment($scope.rightDate).diff(M.Date, 'days') >= 0) and ((!isNaN(M.GF) and !isNaN(M.GA)) or (!isNaN(M.CF) and !isNaN(M.CA)))
 
         noChancesData = _.filter(_.pluck(matches, 'CF'), (d) -> isNaN(d)).length or _.filter(_.pluck(matches, 'CA'), (d) -> isNaN(d)).length
 
