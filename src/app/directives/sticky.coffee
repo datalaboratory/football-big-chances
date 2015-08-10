@@ -2,12 +2,11 @@ app.directive 'sticky', ($window, $document) ->
   restrict: 'C'
   scope:
     offset: '='
+    initialPos: '='
     condition: '='
   link: ($scope, $element, $attrs) ->
-    elementInitialPos = $element.offset().top
-
     angular.element($window).bind 'scroll', ->
-      isConditionMet = $document.scrollTop() > elementInitialPos - $scope.offset and $scope.condition
+      isConditionMet = $document.scrollTop() > $scope.initialPos - $scope.offset and $scope.condition
 
       $element.css
         'position': if isConditionMet then 'fixed' else ''

@@ -1,7 +1,7 @@
 <div
   class="small-multiples"
   data-ng-repeat="(league, isActive) in activeLeagues"
-  data-ng-if="isActive">
+  data-ng-if="isActive && league !== 'rfpl'">
   <div
     class="small-multiple"
     data-ng-repeat="(key, value) in leaguesData[league] | toArray | orderBy : getPoints : true">

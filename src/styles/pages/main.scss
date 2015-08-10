@@ -93,6 +93,10 @@
 		}
 	}
 
+	.field-container.only-rfpl {
+		display: none;
+	}
+
 	.tables-header-container {
 		display: block;
 		position: absolute;
@@ -100,10 +104,18 @@
 		padding: 0 0 0 $common-padding-left - $num-td-width - $logo-td-width;
 	}
 
+	.tables-header-container.only-rfpl {
+		top: 150px + 20px;
+	}
+
 	.tables-container {
 		display: block;
 		position: absolute;
 		top: 150px + 20px + 317px + 55px;
+	}
+
+	.tables-container.only-rfpl {
+		top: 150px + 20px + 55px;
 	}
 
 	.small-multiples-container {

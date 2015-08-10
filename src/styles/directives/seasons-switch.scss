@@ -7,6 +7,7 @@
   border-radius: 5px;
   font-family: $helvetica-neue-medium;
   font-size: $header-font-size;
+  transition: color 0.25s ease-out;
 
   .years a {
     text-decoration: none;
@@ -24,4 +25,8 @@
     font-family: $helvetica-neue-medium;
     font-size: $small-font-size;
   }
+}
+
+.seasons-switch:hover {
+  color: $button-hover-color;
 }

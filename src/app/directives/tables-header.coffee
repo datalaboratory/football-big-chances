@@ -4,6 +4,8 @@ app.directive 'tablesHeader', ->
   scope:
     sortBy: '='
     sortingOrder: '='
+    initialPos: '='
+    offset: '='
   link: ($scope, $element, $attrs) ->
     $scope.sortableOnClick = (value) ->
       if $scope.sortBy is value

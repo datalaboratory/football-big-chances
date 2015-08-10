@@ -10,6 +10,6 @@
 		data-ng-mouseover="rbHovered = true"
 		data-ng-mouseleave="rbHovered = false"
 		data-ng-click="buttonOnClick('fields')"
-		data-ng-class="{'active': isButtonActive('fields')}"><img data-ng-src="../img/accessories/{{'fields' + (rbHovered ? '-hover' : '')}}.png"></div>
+		data-ng-class="{'active': isButtonActive('fields'), 'disabled': blockSmallMultiples}"><img data-ng-src="../img/accessories/{{'fields' + (rbHovered ? '-hover' : '')}}.png"></div>
 	<br class="clear-both" />
 </div>

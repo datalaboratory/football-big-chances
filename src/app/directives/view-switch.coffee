@@ -4,11 +4,13 @@ app.directive 'viewSwitch', ->
   scope:
     view: '='
     shownTypes: '='
+    blockSmallMultiples: '='
   link: ($scope, $element, $attrs) ->
     $scope.lbHovered = false
     $scope.rbHovered = false
 
     $scope.buttonOnClick = (view) ->
+      return if $scope.blockSmallMultiples
       $scope.view = view
       if view is 'fileds'
         $scope.shownTypes = ['G', 'CG', 'CO', 'CB', 'CS']

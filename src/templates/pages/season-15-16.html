@@ -7,6 +7,7 @@
 	<markers></markers>
 	<div
 		class="roof-container sticky"
+		data-initial-pos="0"
 		data-offset="0"
 		data-condition="model.currentView === 'fields'">
 		<div class="roof">
@@ -32,7 +33,8 @@
 			<div class="view-switch-container inline">
 				<view-switch
 					data-view="model.currentView"
-					data-shown-types="model.shownTypes">
+					data-shown-types="model.shownTypes"
+					data-block-small-multiples="model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected()">
 				</view-switch>
 			</div>
 			<br class="clear-both" />
@@ -51,8 +53,10 @@
 	<div data-ng-if="model.currentView === 'field-table'">
 		<div
 			class="field-container sticky"
+			data-initial-pos="170"
 			data-offset="0"
-			data-condition="true">
+			data-condition="true"
+			data-ng-class="{'only-rfpl': model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected()}">
 	    <img
 	      class="team-logo"
 	      data-ng-if="model.selectedTeam.league && model.selectedTeam.name"
@@ -79,13 +83,19 @@
 				</field>
 		  </div>
 		</div>
-		<div class="tables-header-container">
+		<div
+			class="tables-header-container"
+			data-ng-class="{'only-rfpl': model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected()}">
 			<tables-header
 				data-sort-by="model.sortBy"
-				data-sorting-order="model.sortingOrder">
+				data-sorting-order="model.sortingOrder"
+				data-initial-pos="model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected() ? 170 : 487"
+				data-offset="model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected() ? 0 : 317">
 			</tables-header>
 		</div>
-		<div class="tables-container">
+		<div
+			class="tables-container"
+			data-ng-class="{'only-rfpl': model.activeLeagues.rfpl === true && isOnlyOneLeagueSelected()}">
 			<league-table
 				data-ng-repeat="league in leagues track by $index"
 				data-ng-if="model.activeLeagues[league]"

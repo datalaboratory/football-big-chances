@@ -45,6 +45,9 @@ app.controller 'Season1516Ctrl', ($scope) ->
 
   $scope.isDataPrepared = false
 
+  $scope.isOnlyOneLeagueSelected = ->
+    _.compact(_.values($scope.model.activeLeagues)).length is 1
+
   # Parse data
   parseData = (error, rawData) ->
     if error
