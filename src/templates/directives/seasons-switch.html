@@ -2,7 +2,7 @@
   <div
     data-ng-click="expanded = !expanded">
     <div class="years inline">
-      <a data-ng-href="/{{season}}">{{season | goodNdash}}</a>
+      <a data-ng-href="/#/{{season}}">{{season | goodNdash}}</a>
     </div>
     <div
       class="triangle"
@@ -17,7 +17,7 @@
     data-ng-if="s !== season"
     data-ng-show="expanded">
     <div class="years">
-      <a data-ng-href="/{{s}}">{{s | goodNdash}}</a>
+      <a data-ng-href="/#/{{s}}">{{s | goodNdash}}</a>
     </div>
   </div>
 </div>

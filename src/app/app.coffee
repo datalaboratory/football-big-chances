@@ -14,7 +14,5 @@ app = angular.module 'app', appDependencies
       templateUrl: 'templates/pages/season-15-16.html'
       controller: 'Season1516Ctrl'
     .otherwise redirectTo: '/2015-2016'
-
-    $locationProvider.html5Mode enabled: true, requireBase: false
     return
 ]
