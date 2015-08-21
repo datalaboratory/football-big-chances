@@ -7,6 +7,7 @@
 	<markers></markers>
 	<div
 		class="roof-container sticky"
+		data-initial-pos="0"
 		data-offset="0"
 		data-condition="model.currentView === 'fields'">
 		<div class="roof">
@@ -51,6 +52,7 @@
 	<div data-ng-if="model.currentView === 'field-table'">
 		<div
 			class="field-container sticky"
+			data-initial-pos="170"
 			data-offset="0"
 			data-condition="true">
 	    <img
@@ -82,7 +84,9 @@
 		<div class="tables-header-container">
 			<tables-header
 				data-sort-by="model.sortBy"
-				data-sorting-order="model.sortingOrder">
+				data-sorting-order="model.sortingOrder"
+				data-initial-pos="487"
+				data-offset="317">
 			</tables-header>
 		</div>
 		<div class="tables-container">
