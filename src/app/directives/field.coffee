@@ -39,10 +39,10 @@ app.directive 'field', ->
     $scope.$watch 'team', (-> updateLines()), true
 
     $scope.getX = (original) ->
-      original / coeff[$scope.type] + xOffset[$scope.type]
+      unless isNaN(original) then (original / coeff[$scope.type] + xOffset[$scope.type]) else 0
 
     $scope.getY = (original) ->
-      original / coeff[$scope.type]
+      unless isNaN(original) then (original / coeff[$scope.type]) else 0
 
     $scope.getClasses = (line) ->
       classes = ''

@@ -7,6 +7,7 @@ app.directive 'smallMultiples', ->
     leftDate: '='
     rightDate: '='
     shownTypes: '='
+    monthNames: '='
     season: '='
   link: ($scope, $element, $attrs) ->
     $scope.getPoints = (obj) ->
