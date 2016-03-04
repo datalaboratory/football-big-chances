@@ -27,20 +27,20 @@ app.controller 'Season1516Ctrl', ($scope) ->
 
   $scope.model =
     activeLeagues:
-      premierLeague: false
+      premierLeague: true
       laLiga: false
       bundesliga: false
       serieA: false
       ligueOne: false
-      rfpl: true
+      rfpl: false
     currentView: 'field-table'
     leftDate: undefined
     rightDate: undefined
     sortBy: 'GP'
     sortingOrder: true
     selectedTeam:
-      league: 'rfpl'
-      name: 'ZEN'
+      league: 'premierLeague'
+      name: 'MCI'
     shownTypes: ['G', 'CG', 'CO', 'CB', 'CS']
 
   $scope.isDataPrepared = false

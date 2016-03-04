@@ -13,6 +13,6 @@ app = angular.module 'app', appDependencies
     .when '/2015-2016',
       templateUrl: 'templates/pages/season-15-16.html'
       controller: 'Season1516Ctrl'
-    .otherwise redirectTo: '/2015-2016'
+    .otherwise redirectTo: '/2014-2015'
     return
 ]
